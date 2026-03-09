@@ -181,6 +181,9 @@ const Index = () => {
                 <span className="flex items-center gap-1.5">
                   <Star className="w-4 h-4 text-primary" /> 5-Star Rated
                 </span>
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-primary" /> All Skin Tones
+                </span>
               </div>
             </div>
 
