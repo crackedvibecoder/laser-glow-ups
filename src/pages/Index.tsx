@@ -153,7 +153,7 @@ const Index = () => {
                 Medical-Grade Laser Hair Removal · Bury, Manchester
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
-                Permanently Smooth Skin{" "}
+                Lasting Smooth Skin{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
                   Starts Here
                 </span>
