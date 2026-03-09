@@ -281,7 +281,7 @@ const Index = () => {
             Temporary fixes cost time, money, and confidence. There's a permanent solution.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {[
               {
                 emoji: "🪒",
@@ -297,6 +297,11 @@ const Index = () => {
                 emoji: "🔄",
                 title: "The Never-Ending Cycle",
                 desc: "You've spent thousands on temporary fixes. It's time for a long-term solution.",
+              },
+              {
+                emoji: "🌸",
+                title: "PCOS or Hormonal Hair Growth?",
+                desc: "Excessive or coarse facial and body hair affects 1 in 10 women. Laser targets the root cause — not just the surface.",
               },
             ].map((item) => (
               <div
