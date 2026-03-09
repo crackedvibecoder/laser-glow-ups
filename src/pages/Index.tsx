@@ -120,11 +120,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Logo */}
-      <div className="py-2 bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
+      <div className="pt-4 pb-[5px] bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
         <img
           src={laserWatermark}
           alt="Laser Location"
-          className="h-40 md:h-48 -my-14 md:-my-16 mx-auto"
+          className="h-40 md:h-48 -mt-10 md:-mt-12 -mb-14 md:-mb-16 mx-auto"
           loading="eager"
         />
       </div>
