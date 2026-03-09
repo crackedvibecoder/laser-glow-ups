@@ -120,7 +120,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Logo */}
-      <div className="pt-4 pb-[5px] bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
+      <div className="pt-4 pb-3.5 bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
         <img
           src={laserWatermark}
           alt="Laser Location"
