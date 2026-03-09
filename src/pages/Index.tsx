@@ -284,7 +284,7 @@ const Index = () => {
             Temporary fixes cost time, money, and confidence. There's a permanent solution.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               {
                 emoji: "🪒",
@@ -306,10 +306,17 @@ const Index = () => {
                 title: "PCOS or Hormonal Hair Growth?",
                 desc: "Excessive or coarse facial and body hair affects 1 in 10 women. Laser targets the root cause — not just the surface.",
               },
-            ].map((item) => (
+              {
+                emoji: "💪",
+                title: "All Genders. All Areas.",
+                desc: "Back, chest, shoulders, jawline — laser hair removal is for everyone. Discreet, professional sessions with lasting results.",
+              },
+            ].map((item, index) => (
               <div
                 key={item.title}
-                className="p-8 rounded-xl bg-card border border-border text-center"
+                className={`p-8 rounded-xl bg-card border border-border text-center ${
+                  index >= 3 ? "md:col-span-1 lg:last:col-start-2 lg:[&:nth-child(4)]:col-start-auto" : ""
+                }`}
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
                 <h3 className="text-xl font-serif mb-3">{item.title}</h3>
