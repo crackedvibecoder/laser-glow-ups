@@ -347,11 +347,11 @@ const Index = () => {
               },
               {
                 step: "03",
-                title: "Smooth For Life",
-                desc: "After your final session, enjoy permanently smooth, confident skin.",
+                title: "Lasting Results",
+                desc: "Enjoy smooth, confident skin with up to 90% hair reduction and occasional maintenance as needed.",
               },
             ].map((item) => (
-              <div key={item.step} className="text-center">
+              <div key={item.step} className="p-8 rounded-xl bg-card border border-border text-center">
                 <span className="text-5xl font-serif text-gold-metallic font-semibold block mb-4">
                   {item.step}
                 </span>
