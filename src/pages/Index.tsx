@@ -261,6 +261,20 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-12">
+            <a
+              href="#claim"
+              className="btn-gold-metallic"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Claim Your £100 Discount →
+            </a>
+          </div>
         </div>
       </section>
 
