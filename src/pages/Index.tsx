@@ -338,8 +338,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-        </div>
-      </section>
 
       {/* How It Works */}
       <section className="section-padding-compact bg-secondary">
