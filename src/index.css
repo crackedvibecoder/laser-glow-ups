@@ -148,11 +148,11 @@
   .dark-section h2,
   .dark-section h3,
   .dark-section h4 {
-    color: hsl(40 20% 90%);
+    color: hsl(var(--foreground));
   }
 
   .dark-section p {
-    color: hsl(35 15% 65%);
+    color: hsl(var(--muted-foreground));
   }
 
   .gold-divider {
