@@ -6,11 +6,8 @@ import { Check, Star, Clock, Shield, Users, Sparkles, ChevronDown } from "lucide
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import laserWatermark from "@/assets/laser-watermark.png";
-import armLaser from "@/assets/arm-laser.jpg";
-import legLaser from "@/assets/leg-laser.jpg";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
 import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
-import practitionerTreatment from "@/assets/practitioner-treatment.jpg";
 import {
   Accordion,
   AccordionContent,
