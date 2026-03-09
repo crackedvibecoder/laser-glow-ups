@@ -116,6 +116,16 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo */}
+      <div className="py-4 bg-background border-b border-border text-center">
+        <img
+          src="https://fifmmrdngtgxxmmplvrb.supabase.co/storage/v1/object/public/website-photos/brand-logos/Laser%20final%20logo.webp"
+          alt="Laser Location"
+          className="h-10 md:h-12 mx-auto"
+          loading="eager"
+        />
+      </div>
+
       {/* Urgency Bar */}
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 px-4 text-center">
         <p className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
@@ -251,6 +261,20 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          {/* Mid-page CTA */}
+          <div className="mt-12">
+            <a
+              href="#claim"
+              className="btn-gold-metallic"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Claim Your £100 Discount →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -292,7 +316,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Reviews Widget */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
@@ -302,46 +326,29 @@ const Index = () => {
             Trusted by 1,000+ Clients in Manchester
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote:
-                  "After 6 sessions, I'm completely hair-free. I can't believe I waited so long. Worth every penny.",
-                name: "Lauren D.",
-                location: "Rochdale",
-              },
-              {
-                quote:
-                  "The team made me feel so comfortable from the first consultation. The results are incredible.",
-                name: "Priya K.",
-                location: "Manchester",
-              },
-              {
-                quote:
-                  "I've tried everything: waxing, IPL, creams. This actually works. Best money I've ever spent.",
-                name: "Sophie M.",
-                location: "Bolton",
-              },
-            ].map((t) => (
-              <div
-                key={t.name}
-                className="p-8 rounded-xl bg-card border border-border text-left"
-              >
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <p className="text-foreground mb-6 italic">"{t.quote}"</p>
-                <p className="font-medium text-sm">
-                  {t.name},{" "}
-                  <span className="text-muted-foreground">{t.location}</span>
-                </p>
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
+            <iframe
+              className="lc_reviews_widget"
+              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
+              frameBorder="0"
+              scrolling="no"
+              style={{ minWidth: "100%", width: "100%" }}
+              title="Laser Location Reviews"
+            />
+          </div>
+
+          {/* Post-reviews CTA */}
+          <div className="mt-12">
+            <a
+              href="#claim"
+              className="btn-gold-metallic"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Claim Your £100 Discount →
+            </a>
           </div>
         </div>
       </section>
