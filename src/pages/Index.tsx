@@ -124,7 +124,7 @@ const Index = () => {
         <img
           src={laserWatermark}
           alt="Laser Location"
-          className="h-20 md:h-24 -my-6 mx-auto"
+          className="h-40 md:h-48 -my-14 md:-my-16 mx-auto"
           loading="eager"
         />
       </div>
@@ -153,14 +153,14 @@ const Index = () => {
                 Medical-Grade Laser Hair Removal · Bury, Manchester
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
-                Permanently Smooth Skin{" "}
+                Lasting Smooth Skin{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
                   Starts Here
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-lg">
                 Full-body laser hair removal. 6 sessions. Medical-grade
-                technology. FDA approved for all skin types.
+                technology. Safe for all skin types.
               </p>
 
               {/* Pricing Badge */}
@@ -173,7 +173,7 @@ const Index = () => {
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
-                  <Shield className="w-4 h-4 text-primary" /> FDA Approved
+                  <Shield className="w-4 h-4 text-primary" /> Medical-Grade
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
@@ -296,7 +296,7 @@ const Index = () => {
               {
                 emoji: "🔄",
                 title: "The Never-Ending Cycle",
-                desc: "You've spent thousands on temporary fixes. It's time for a permanent solution.",
+                desc: "You've spent thousands on temporary fixes. It's time for a long-term solution.",
               },
             ].map((item) => (
               <div
@@ -347,11 +347,11 @@ const Index = () => {
               },
               {
                 step: "03",
-                title: "Smooth For Life",
-                desc: "After your final session, enjoy permanently smooth, confident skin.",
+                title: "Lasting Results",
+                desc: "Enjoy smooth, confident skin with up to 90% hair reduction and occasional maintenance as needed.",
               },
             ].map((item) => (
-              <div key={item.step} className="text-center">
+              <div key={item.step} className="p-8 rounded-xl bg-card border border-border text-center">
                 <span className="text-5xl font-serif text-gold-metallic font-semibold block mb-4">
                   {item.step}
                 </span>
@@ -426,7 +426,7 @@ const Index = () => {
             <div className="text-left space-y-3 mb-8">
               {[
                 "6 full-body sessions (legs, arms, underarms, bikini, back, chest, stomach)",
-                "Medical-grade laser technology (FDA approved)",
+                "AW3 Crystal Freeze Diamond laser system (3-wavelength)",
                 "Qualified, fully insured practitioner",
                 "Personalised treatment plan",
                 "Aftercare guidance included",
@@ -475,23 +475,31 @@ const Index = () => {
             {[
               {
                 q: "Does laser hair removal hurt?",
-                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our medical-grade lasers include built-in cooling technology for maximum comfort.",
+                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our AW3 Crystal Freeze Diamond laser features patented Crystal Freeze cooling technology for maximum comfort during treatment.",
               },
               {
                 q: "Is it safe for all skin types?",
-                a: "Yes. Our FDA-approved technology is clinically proven safe and effective for all skin types and tones.",
+                a: "Yes. Our AW3 Crystal Freeze Diamond laser uses 3-wavelength technology (755/810/1064nm) that is clinically proven safe and effective for all skin types and tones (Fitzpatrick I–VI).",
               },
               {
                 q: "How many sessions do I need?",
-                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions.",
+                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions, with up to 90% hair reduction overall.",
               },
               {
                 q: "How long does each session take?",
                 a: "A full-body session typically takes 60–90 minutes. Individual areas like underarms take just 10–15 minutes.",
               },
               {
+                q: "Who performs the treatments?",
+                a: "All treatments are carried out by fully qualified and insured practitioners with VTCT-accredited laser hair removal qualifications (Level 3 & Level 4).",
+              },
+              {
                 q: "What happens during the free consultation?",
                 a: "We'll assess your skin type and hair, discuss your goals, answer all your questions, and create a personalised treatment plan. No cost, no obligation, no pressure.",
+              },
+              {
+                q: "Is laser cheaper than waxing long-term?",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 (or £595 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
