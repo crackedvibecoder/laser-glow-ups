@@ -160,7 +160,7 @@ const Index = () => {
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-lg">
                 Full-body laser hair removal. 6 sessions. Medical-grade
-                technology. FDA approved for all skin types.
+                technology. Safe for all skin types.
               </p>
 
               {/* Pricing Badge */}
