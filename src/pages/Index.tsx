@@ -363,6 +363,33 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Your First Visit - Video */}
+      <section className="section-padding-compact bg-accent">
+        <div className="content-container text-center">
+          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            What to Expect
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Your First Visit
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
+            See what to expect at your first session
+          </p>
+          <div className="max-w-2xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
+            <video
+              autoPlay
+              muted
+              playsInline
+              controls
+              className="w-full"
+            >
+              <source src="/videos/first-visit.mov" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Widget */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
@@ -372,6 +399,23 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
             Trusted by 1,000+ Clients in Manchester
           </h2>
+
+          {/* Testimonial Video */}
+          <div className="max-w-2xl mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
+            <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
+              Hear From Our Clients
+            </p>
+            <video
+              autoPlay
+              muted
+              playsInline
+              controls
+              className="w-full"
+            >
+              <source src="/videos/testimonial.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
           <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
             <iframe
