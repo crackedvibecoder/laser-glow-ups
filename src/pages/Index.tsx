@@ -426,7 +426,7 @@ const Index = () => {
             <div className="text-left space-y-3 mb-8">
               {[
                 "6 full-body sessions (legs, arms, underarms, bikini, back, chest, stomach)",
-                "Medical-grade laser technology (FDA approved)",
+                "AW3 Crystal Freeze Diamond laser system (3-wavelength)",
                 "Qualified, fully insured practitioner",
                 "Personalised treatment plan",
                 "Aftercare guidance included",
