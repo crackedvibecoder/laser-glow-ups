@@ -402,7 +402,7 @@ const Index = () => {
           </h2>
 
           {/* Testimonial Video */}
-          <div className="max-w-lg mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
+          <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
             <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
