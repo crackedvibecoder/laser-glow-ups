@@ -173,7 +173,7 @@ const Index = () => {
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
-                  <Shield className="w-4 h-4 text-primary" /> FDA Approved
+                  <Shield className="w-4 h-4 text-primary" /> Medical-Grade
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
