@@ -123,9 +123,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Logo */}
-      <div className="py-4 bg-background border-b border-border text-center">
+      <div className="py-4 bg-[hsl(30,10%,10%)] border-b border-foreground/10 text-center">
         <img
-          src="https://fifmmrdngtgxxmmplvrb.supabase.co/storage/v1/object/public/website-photos/brand-logos/Laser%20final%20logo.webp"
+          src={laserWatermark}
           alt="Laser Location"
           className="h-10 md:h-12 mx-auto"
           loading="eager"
