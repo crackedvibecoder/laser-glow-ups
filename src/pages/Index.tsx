@@ -375,15 +375,16 @@ const Index = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
             See what to expect at your first session
           </p>
-          <div className="max-w-lg mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
+          <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
             <video
               autoPlay
               muted
               playsInline
               controls
+              preload="auto"
               className="w-full"
             >
-              <source src="/videos/first-visit.mov" type="video/mp4" />
+              <source src="/videos/first-visit.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
