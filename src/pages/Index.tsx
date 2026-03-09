@@ -296,7 +296,7 @@ const Index = () => {
               {
                 emoji: "🔄",
                 title: "The Never-Ending Cycle",
-                desc: "You've spent thousands on temporary fixes. It's time for a permanent solution.",
+                desc: "You've spent thousands on temporary fixes. It's time for a long-term solution.",
               },
             ].map((item) => (
               <div
