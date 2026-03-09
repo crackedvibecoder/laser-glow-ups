@@ -5,6 +5,12 @@ import { z } from "zod";
 import { Check, Star, Clock, Shield, Users, Sparkles, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import laserWatermark from "@/assets/laser-watermark.png";
+import armLaser from "@/assets/arm-laser.jpg";
+import legLaser from "@/assets/leg-laser.jpg";
+import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
+import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
+import practitionerTreatment from "@/assets/practitioner-treatment.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -117,9 +123,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Logo */}
-      <div className="py-4 bg-background border-b border-border text-center">
+      <div className="py-4 bg-[hsl(30,10%,10%)] border-b border-foreground/10 text-center">
         <img
-          src="https://fifmmrdngtgxxmmplvrb.supabase.co/storage/v1/object/public/website-photos/brand-logos/Laser%20final%20logo.webp"
+          src={laserWatermark}
           alt="Laser Location"
           className="h-10 md:h-12 mx-auto"
           loading="eager"
@@ -274,6 +280,61 @@ const Index = () => {
             >
               Claim Your £100 Discount →
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Real Results Gallery */}
+      <section className="section-padding-compact bg-secondary">
+        <div className="content-container text-center">
+          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            Real Results
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            See the Difference
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+            Real clients. Real results. Medical-grade laser hair removal that delivers.
+          </p>
+
+          {/* Before & After Pairs */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img src={chinBeforeAfter} alt="Chin laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
+              <div className="bg-card p-4">
+                <p className="font-serif text-lg">Chin & Upper Lip</p>
+                <p className="text-sm text-muted-foreground">Before & after 6 sessions</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
+              <div className="bg-card p-4">
+                <p className="font-serif text-lg">Bikini Line</p>
+                <p className="text-sm text-muted-foreground">Before & after 6 sessions</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Treatment in Action */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img src={armLaser} alt="Arm laser hair removal treatment" className="w-full h-56 object-cover" loading="lazy" />
+              <div className="bg-card p-3">
+                <p className="text-sm font-serif">Arm Treatment</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img src={practitionerTreatment} alt="Professional laser treatment session" className="w-full h-56 object-cover" loading="lazy" />
+              <div className="bg-card p-3">
+                <p className="text-sm font-serif">Professional Care</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img src={legLaser} alt="Leg laser hair removal treatment" className="w-full h-56 object-cover" loading="lazy" />
+              <div className="bg-card p-3">
+                <p className="text-sm font-serif">Leg Treatment</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
