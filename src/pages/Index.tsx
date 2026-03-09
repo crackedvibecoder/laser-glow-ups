@@ -124,7 +124,7 @@ const Index = () => {
         <img
           src={laserWatermark}
           alt="Laser Location"
-          className="h-20 md:h-24 -my-6 mx-auto"
+          className="h-40 md:h-48 -my-14 md:-my-16 mx-auto"
           loading="eager"
         />
       </div>
