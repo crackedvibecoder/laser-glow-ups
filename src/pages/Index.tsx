@@ -116,6 +116,16 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo */}
+      <div className="py-4 bg-background border-b border-border text-center">
+        <img
+          src="https://fifmmrdngtgxxmmplvrb.supabase.co/storage/v1/object/public/website-photos/brand-logos/Laser%20final%20logo.webp"
+          alt="Laser Location"
+          className="h-10 md:h-12 mx-auto"
+          loading="eager"
+        />
+      </div>
+
       {/* Urgency Bar */}
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 px-4 text-center">
         <p className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
