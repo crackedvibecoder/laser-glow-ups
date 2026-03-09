@@ -50,9 +50,9 @@
 
     --radius: 0.375rem;
 
-    /* Dark section colors */
-    --dark-section-bg: 30 12% 24%;
-    --dark-section-fg: 40 20% 90%;
+    /* Dark section colors - dusty blush */
+    --dark-section-bg: 15 30% 88%;
+    --dark-section-fg: 30 10% 15%;
 
     --sidebar-background: 40 25% 97%;
     --sidebar-foreground: 30 10% 25%;
@@ -148,11 +148,11 @@
   .dark-section h2,
   .dark-section h3,
   .dark-section h4 {
-    color: hsl(40 20% 90%);
+    color: hsl(var(--foreground));
   }
 
   .dark-section p {
-    color: hsl(35 15% 65%);
+    color: hsl(var(--muted-foreground));
   }
 
   .gold-divider {

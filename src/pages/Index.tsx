@@ -354,7 +354,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Card */}
-      <section className="dark-section section-padding-compact">
+      <section className="bg-accent section-padding-compact">
         <div className="content-container text-center relative z-10">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
             Limited Time
@@ -363,16 +363,16 @@ const Index = () => {
             Spring 2026 Special
           </h2>
 
-          <div className="max-w-lg mx-auto bg-foreground/5 border border-foreground/10 rounded-2xl p-10">
+          <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
             <div className="mb-6">
-              <span className="text-2xl text-foreground/40 line-through mr-3">
+              <span className="text-2xl text-muted-foreground line-through mr-3">
                 £795
               </span>
               <span className="text-5xl font-serif text-gold-metallic font-semibold">
                 £695
               </span>
             </div>
-            <p className="text-lg font-serif mb-8" style={{ color: "hsl(40 20% 90%)" }}>
+            <p className="text-lg font-serif mb-8 text-foreground">
               for 6 Full-Body Sessions
             </p>
 
@@ -387,7 +387,7 @@ const Index = () => {
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm" style={{ color: "hsl(35 15% 65%)" }}>
+                  <span className="text-sm text-muted-foreground">
                     {item}
                   </span>
                 </div>
@@ -407,7 +407,7 @@ const Index = () => {
               Claim Your £100 Discount →
             </a>
 
-            <p className="text-xs mt-4" style={{ color: "hsl(35 15% 50%)" }}>
+            <p className="text-xs mt-4 text-muted-foreground">
               Save £100 when you book your free consultation this month
             </p>
           </div>
