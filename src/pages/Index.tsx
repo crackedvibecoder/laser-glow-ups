@@ -475,23 +475,31 @@ const Index = () => {
             {[
               {
                 q: "Does laser hair removal hurt?",
-                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our medical-grade lasers include built-in cooling technology for maximum comfort.",
+                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our AW3 Crystal Freeze Diamond laser features patented Crystal Freeze cooling technology for maximum comfort during treatment.",
               },
               {
                 q: "Is it safe for all skin types?",
-                a: "Yes. Our FDA-approved technology is clinically proven safe and effective for all skin types and tones.",
+                a: "Yes. Our AW3 Crystal Freeze Diamond laser uses 3-wavelength technology (755/810/1064nm) that is clinically proven safe and effective for all skin types and tones (Fitzpatrick I–VI).",
               },
               {
                 q: "How many sessions do I need?",
-                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions.",
+                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions, with up to 90% hair reduction overall.",
               },
               {
                 q: "How long does each session take?",
                 a: "A full-body session typically takes 60–90 minutes. Individual areas like underarms take just 10–15 minutes.",
               },
               {
+                q: "Who performs the treatments?",
+                a: "All treatments are carried out by fully qualified and insured practitioners with VTCT-accredited laser hair removal qualifications (Level 3 & Level 4).",
+              },
+              {
                 q: "What happens during the free consultation?",
                 a: "We'll assess your skin type and hair, discuss your goals, answer all your questions, and create a personalised treatment plan. No cost, no obligation, no pressure.",
+              },
+              {
+                q: "Is laser cheaper than waxing long-term?",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 (or £595 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
