@@ -181,8 +181,8 @@ const Index = () => {
 
               {/* Pricing Badge */}
               <div className="inline-flex items-baseline gap-3 mb-8 px-6 py-3 rounded-full bg-background/80 border border-border">
-                <span className="text-lg text-muted-foreground line-through">£795</span>
-                <span className="text-3xl font-serif text-gold-metallic font-semibold">£695</span>
+                <span className="text-lg text-muted-foreground line-through">£895</span>
+                <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
                 <span className="text-sm text-muted-foreground">for 6 sessions</span>
               </div>
 
