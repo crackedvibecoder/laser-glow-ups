@@ -86,11 +86,10 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
             Book your free consultation below:
           </p>
         </div>
-        <div className="rounded-xl overflow-hidden border border-border">
+        <div className="rounded-xl border border-border">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/AOejqJ66RHJNQ7Tu6BAI"
-            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "600px" }}
-            scrolling="no"
+            style={{ width: "100%", border: "none", minHeight: "800px" }}
             title="Book Your Consultation"
           />
         </div>
