@@ -579,7 +579,7 @@ const Index = () => {
               },
               {
                 q: "Are payment plans available?",
-                a: "Yes. We offer flexible payment plans from £116 per month over 6 months. We'll discuss all options during your free consultation.",
+                a: "Yes. We offer flexible payment plans from £133 per month over 6 months. We'll discuss all options during your free consultation.",
               },
             ].map((item, i) => (
               <AccordionItem
