@@ -181,8 +181,8 @@ const Index = () => {
 
               {/* Pricing Badge */}
               <div className="inline-flex items-baseline gap-3 mb-8 px-6 py-3 rounded-full bg-background/80 border border-border">
-                <span className="text-lg text-muted-foreground line-through">£795</span>
-                <span className="text-3xl font-serif text-gold-metallic font-semibold">£695</span>
+                <span className="text-lg text-muted-foreground line-through">£895</span>
+                <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
                 <span className="text-sm text-muted-foreground">for 6 sessions</span>
               </div>
 
@@ -489,10 +489,10 @@ const Index = () => {
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
             <div className="mb-6">
               <span className="text-2xl text-muted-foreground line-through mr-3">
-                £795
+                £895
               </span>
               <span className="text-5xl font-serif text-gold-metallic font-semibold">
-                £695
+                £795
               </span>
             </div>
             <p className="text-lg font-serif mb-8 text-foreground">
@@ -506,7 +506,7 @@ const Index = () => {
                 "Qualified, fully insured practitioner",
                 "Personalised treatment plan",
                 "Aftercare guidance included",
-                "Payment plans available (from £116/mo)",
+                "Payment plans available (from £133/mo)",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -575,11 +575,11 @@ const Index = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 (or £595 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £795 (or £695 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
-                a: "Yes. We offer flexible payment plans from £116 per month over 6 months. We'll discuss all options during your free consultation.",
+                a: "Yes. We offer flexible payment plans from £133 per month over 6 months. We'll discuss all options during your free consultation.",
               },
             ].map((item, i) => (
               <AccordionItem
