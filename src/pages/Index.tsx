@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -34,34 +34,50 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     resolver: zodResolver(leadSchema),
   });
 
+  useEffect(() => {
+    if (submitted) {
+      const script = document.createElement("script");
+      script.src = "https://link.msgsndr.com/js/form_embed.js";
+      script.type = "text/javascript";
+      script.async = true;
+      document.body.appendChild(script);
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, [submitted]);
+
   const onSubmit = (data: LeadFormData) => {
     console.log("Lead captured:", data);
     setSubmitted(true);
-    // Redirect to GoHighLevel booking after short delay
-    setTimeout(() => {
-      window.open(
-        "https://api.leadconnectorhq.com/widget/booking/sY2JEbJCGznFxOJLfgMC",
-        "_blank"
-      );
-    }, 2000);
   };
 
   if (submitted) {
     return (
-      <div className="text-center py-8 animate-fade-up">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 mb-4">
-          <Check className="w-8 h-8 text-primary" />
+      <div className="animate-fade-up">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 mb-3">
+            <Check className="w-6 h-6 text-primary" />
+          </div>
+          <h3 className="text-xl font-serif mb-1">You're In!</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            Your Spring Special voucher code is:
+          </p>
+          <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 mb-3">
+            <span className="text-lg font-semibold tracking-widest text-primary">SPRING100</span>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Book your free consultation below:
+          </p>
         </div>
-        <h3 className="text-2xl mb-2">You're In!</h3>
-        <p className="text-muted-foreground mb-4">
-          Your Spring Special voucher code is:
-        </p>
-        <div className="inline-block px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 mb-4">
-          <span className="text-2xl font-semibold tracking-widest text-primary">SPRING100</span>
+        <div className="rounded-xl overflow-hidden border border-border">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/AOejqJ66RHJNQ7Tu6BAI"
+            style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "600px" }}
+            scrolling="no"
+            title="Book Your Consultation"
+          />
         </div>
-        <p className="text-sm text-muted-foreground">
-          Redirecting you to book your free consultation...
-        </p>
       </div>
     );
   }
