@@ -49,16 +49,16 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
 
   const onSubmit = async (data: LeadFormData) => {
     try {
+      const formBody = new URLSearchParams({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+      });
       await fetch(
         "https://services.leadconnectorhq.com/hooks/PWKfLNPWUuSeU4ukiccO/webhook-trigger/3hSiNxkqCXRF8UO67ADh",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-          }),
+          body: formBody,
           mode: "no-cors",
         }
       );
