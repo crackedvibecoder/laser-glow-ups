@@ -316,7 +316,7 @@ const Index = () => {
             Temporary fixes cost time, money, and confidence. There's a permanent solution.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
             {[
               {
                 emoji: "🪒",
@@ -347,7 +347,7 @@ const Index = () => {
               <div
                 key={item.title}
                 className={`p-8 rounded-xl bg-card border border-border text-center ${
-                  index >= 3 ? "md:col-span-1 lg:last:col-start-2 lg:[&:nth-child(4)]:col-start-auto" : ""
+                  index < 3 ? "lg:col-span-2" : "lg:col-span-3"
                 }`}
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
