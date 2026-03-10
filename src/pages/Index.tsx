@@ -47,8 +47,24 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     }
   }, [submitted]);
 
-  const onSubmit = (data: LeadFormData) => {
-    console.log("Lead captured:", data);
+  const onSubmit = async (data: LeadFormData) => {
+    try {
+      await fetch(
+        "https://services.leadconnectorhq.com/hooks/PWKfLNPWUuSeU4ukiccO/webhook-trigger/3hSiNxkqCXRF8UO67ADh",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+          }),
+          mode: "no-cors",
+        }
+      );
+    } catch (err) {
+      console.error("Webhook error:", err);
+    }
     setSubmitted(true);
   };
 
