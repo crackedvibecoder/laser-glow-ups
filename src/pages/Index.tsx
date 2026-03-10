@@ -506,7 +506,7 @@ const Index = () => {
                 "Qualified, fully insured practitioner",
                 "Personalised treatment plan",
                 "Aftercare guidance included",
-                "Payment plans available (from £116/mo)",
+                "Payment plans available (from £133/mo)",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
