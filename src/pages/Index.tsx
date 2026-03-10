@@ -575,7 +575,7 @@ const Index = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 (or £595 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £795 (or £695 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
