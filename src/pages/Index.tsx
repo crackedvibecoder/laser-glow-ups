@@ -489,10 +489,10 @@ const Index = () => {
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
             <div className="mb-6">
               <span className="text-2xl text-muted-foreground line-through mr-3">
-                £795
+                £895
               </span>
               <span className="text-5xl font-serif text-gold-metallic font-semibold">
-                £695
+                £795
               </span>
             </div>
             <p className="text-lg font-serif mb-8 text-foreground">
