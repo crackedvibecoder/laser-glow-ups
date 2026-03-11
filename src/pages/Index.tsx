@@ -243,9 +243,6 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       {fields.map((field) => (
         <div key={field.name}>
-          <label className="text-xs text-muted-foreground mb-1 block tracking-wide">
-            Step {field.step} of 3
-          </label>
           <Input
             type={field.type}
             placeholder={field.placeholder}
