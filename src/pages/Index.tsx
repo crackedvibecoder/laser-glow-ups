@@ -800,11 +800,7 @@ const Index = () => {
             Spring 2026 offer subject to availability. Treatment suitability
             assessed during consultation.
           </p>
-          <p className="space-x-2">
-            <a href="https://laserlocation.co.uk/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>
-            <span>·</span>
-            <a href="https://laserlocation.co.uk/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms of Service</a>
-          </p>
+          <PrivacyPolicyPopup />
         </div>
       </footer>
 
