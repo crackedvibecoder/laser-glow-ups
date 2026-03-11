@@ -30,46 +30,6 @@ const leadSchema = z.object({
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
-/* ──────────────────── Lazy Video ──────────────────── */
-const LazyVideo = ({ src, className, ...props }: { src: string; className?: string } & React.VideoHTMLAttributes<HTMLVideoElement>) => {
-  const ref = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (isVisible && ref.current) {
-      ref.current.play().catch(() => {});
-    }
-  }, [isVisible]);
-
-  return (
-    <div ref={containerRef} className={className}>
-      {isVisible ? (
-        <video ref={ref} muted playsInline controls className="w-full" {...props}>
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        <div className="w-full aspect-video bg-muted animate-pulse rounded-lg" />
-      )}
-    </div>
-  );
 };
 
 /* ──────────────────── Countdown Timer ──────────────────── */
