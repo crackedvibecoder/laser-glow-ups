@@ -585,7 +585,9 @@ const Index = () => {
             See what to expect at your first session
           </p>
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
-            <LazyVideo src="/videos/first-visit.mp4" />
+            <video autoPlay muted playsInline controls className="w-full">
+              <source src="/videos/first-visit.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </section>
