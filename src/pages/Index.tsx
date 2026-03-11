@@ -607,7 +607,9 @@ const Index = () => {
             <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
-            <LazyVideo src="/videos/testimonial.mp4" />
+            <video autoPlay muted playsInline controls className="w-full">
+              <source src="/videos/testimonial.mp4" type="video/mp4" />
+            </video>
           </div>
 
           <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
