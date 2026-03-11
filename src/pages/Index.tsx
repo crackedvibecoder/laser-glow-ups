@@ -234,18 +234,15 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
 
   const isDark = variant === "dark";
   const fields = [
-    { name: "name" as const, placeholder: "Your name", type: "text", step: 1 },
-    { name: "email" as const, placeholder: "Email address", type: "email", step: 2 },
-    { name: "phone" as const, placeholder: "Phone number", type: "tel", step: 3 },
+    { name: "name" as const, placeholder: "Your name", type: "text" },
+    { name: "email" as const, placeholder: "Email address", type: "email" },
+    { name: "phone" as const, placeholder: "Phone number", type: "tel" },
   ];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       {fields.map((field) => (
         <div key={field.name}>
-          <label className="text-xs text-muted-foreground mb-1 block tracking-wide">
-            Step {field.step} of 3
-          </label>
           <Input
             type={field.type}
             placeholder={field.placeholder}
@@ -271,7 +268,65 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
   );
 };
 
-/* ──────────────────── Sticky Desktop CTA ──────────────────── */
+/* ──────────────────── Privacy Policy Popup ──────────────────── */
+const PrivacyPolicyPopup = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className="text-primary hover:underline text-xs"
+      >
+        Privacy Policy
+      </button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-serif">Privacy Policy</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              Laser Location — Privacy Policy
+            </DialogDescription>
+          </DialogHeader>
+          <div className="text-sm text-muted-foreground space-y-4 leading-relaxed">
+            <p>
+              <strong className="text-foreground">1. Who We Are</strong><br />
+              Laser Location ("we", "us", "our") operates from Bury, Manchester. We are committed to protecting your personal data and respecting your privacy.
+            </p>
+            <p>
+              <strong className="text-foreground">2. Information We Collect</strong><br />
+              When you submit a consultation request, we collect your name, email address, and phone number. We may also collect information about your visit through cookies and analytics tools.
+            </p>
+            <p>
+              <strong className="text-foreground">3. How We Use Your Information</strong><br />
+              We use your personal information to: contact you about your consultation enquiry, send appointment confirmations and reminders, provide aftercare information, and improve our services.
+            </p>
+            <p>
+              <strong className="text-foreground">4. Data Sharing</strong><br />
+              We do not sell, rent, or share your personal data with third parties for marketing purposes. We may share data with service providers who assist us in operating our business (e.g., booking systems, email platforms), under strict data processing agreements.
+            </p>
+            <p>
+              <strong className="text-foreground">5. Data Retention</strong><br />
+              We retain your personal information only for as long as necessary to fulfil the purposes for which it was collected, or as required by law.
+            </p>
+            <p>
+              <strong className="text-foreground">6. Your Rights</strong><br />
+              You have the right to access, correct, or delete your personal data. You may also withdraw consent at any time. To exercise these rights, contact us at{" "}
+              <a href="mailto:info@laserlocation.co.uk" className="text-primary hover:underline">info@laserlocation.co.uk</a>.
+            </p>
+            <p>
+              <strong className="text-foreground">7. Contact</strong><br />
+              For any privacy-related questions, please email{" "}
+              <a href="mailto:info@laserlocation.co.uk" className="text-primary hover:underline">info@laserlocation.co.uk</a>.
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+
 const StickyDesktopCTA = () => {
   const [visible, setVisible] = useState(false);
 
@@ -803,11 +858,7 @@ const Index = () => {
             Spring 2026 offer subject to availability. Treatment suitability
             assessed during consultation.
           </p>
-          <p className="space-x-2">
-            <a href="https://laserlocation.co.uk/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>
-            <span>·</span>
-            <a href="https://laserlocation.co.uk/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms of Service</a>
-          </p>
+          <PrivacyPolicyPopup />
         </div>
       </footer>
 
