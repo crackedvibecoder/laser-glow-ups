@@ -30,7 +30,6 @@ const leadSchema = z.object({
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
-};
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const CountdownTimer = () => {
