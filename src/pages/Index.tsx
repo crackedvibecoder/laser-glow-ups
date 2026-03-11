@@ -30,47 +30,6 @@ const leadSchema = z.object({
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
-/* ──────────────────── Lazy Video ──────────────────── */
-const LazyVideo = ({ src, className, ...props }: { src: string; className?: string } & React.VideoHTMLAttributes<HTMLVideoElement>) => {
-  const ref = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (isVisible && ref.current) {
-      ref.current.play().catch(() => {});
-    }
-  }, [isVisible]);
-
-  return (
-    <div ref={containerRef} className={className}>
-      {isVisible ? (
-        <video ref={ref} muted playsInline controls className="w-full" {...props}>
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        <div className="w-full aspect-video bg-muted animate-pulse rounded-lg" />
-      )}
-    </div>
-  );
-};
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const CountdownTimer = () => {
@@ -492,14 +451,14 @@ const Index = () => {
               <img src={chinBeforeAfter} alt="Chin laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
                 <p className="font-serif text-lg">Chin & Upper Lip</p>
-                <p className="text-sm text-muted-foreground">Before & after 6 sessions</p>
+                <p className="text-sm text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
               <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
                 <p className="font-serif text-lg">Bikini Line</p>
-                <p className="text-sm text-muted-foreground">Before & after 6 sessions</p>
+                <p className="text-sm text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
           </div>
@@ -625,7 +584,9 @@ const Index = () => {
             See what to expect at your first session
           </p>
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
-            <LazyVideo src="/videos/first-visit.mp4" />
+            <video autoPlay muted playsInline controls className="w-full">
+              <source src="/videos/first-visit.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </section>
@@ -645,7 +606,9 @@ const Index = () => {
             <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
-            <LazyVideo src="/videos/testimonial.mp4" />
+            <video autoPlay muted playsInline controls className="w-full">
+              <source src="/videos/testimonial.mp4" type="video/mp4" />
+            </video>
           </div>
 
           <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
