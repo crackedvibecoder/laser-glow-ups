@@ -234,9 +234,9 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
 
   const isDark = variant === "dark";
   const fields = [
-    { name: "name" as const, placeholder: "Your name", type: "text", step: 1 },
-    { name: "email" as const, placeholder: "Email address", type: "email", step: 2 },
-    { name: "phone" as const, placeholder: "Phone number", type: "tel", step: 3 },
+    { name: "name" as const, placeholder: "Your name", type: "text" },
+    { name: "email" as const, placeholder: "Email address", type: "email" },
+    { name: "phone" as const, placeholder: "Phone number", type: "tel" },
   ];
 
   return (
