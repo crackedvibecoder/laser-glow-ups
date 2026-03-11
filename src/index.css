@@ -203,6 +203,20 @@
     font-family: "Great Vibes", cursive;
     font-weight: 400;
   }
+
+  /* How It Works timeline connectors */
+  @media (min-width: 768px) {
+    .how-it-works-has-connector::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -1.25rem;
+      width: 2rem;
+      border-top: 2px dashed hsl(var(--primary) / 0.4);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
 }
 
 @layer utilities {

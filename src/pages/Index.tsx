@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Check, Star, Clock, Shield, Users, Sparkles, ChevronDown } from "lucide-react";
+import { Check, Star, Clock, Shield, Users, Sparkles, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
 import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
@@ -14,6 +14,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -23,6 +30,174 @@ const leadSchema = z.object({
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
+/* ──────────────────── Lazy Video ──────────────────── */
+const LazyVideo = ({ src, className, ...props }: { src: string; className?: string } & React.VideoHTMLAttributes<HTMLVideoElement>) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isVisible && ref.current) {
+      ref.current.play().catch(() => {});
+    }
+  }, [isVisible]);
+
+  return (
+    <div ref={containerRef} className={className}>
+      {isVisible ? (
+        <video ref={ref} muted playsInline controls className="w-full" {...props}>
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div className="w-full aspect-video bg-muted animate-pulse rounded-lg" />
+      )}
+    </div>
+  );
+};
+
+/* ──────────────────── Countdown Timer ──────────────────── */
+const CountdownTimer = () => {
+  const getTimeLeft = useCallback(() => {
+    const now = new Date();
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    const diff = endOfMonth.getTime() - now.getTime();
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / (1000 * 60)) % 60),
+    };
+  }, []);
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
+  useEffect(() => {
+    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 60000);
+    return () => clearInterval(interval);
+  }, [getTimeLeft]);
+
+  return (
+    <span>
+      Offer ends in{" "}
+      <strong className="text-primary">
+        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
+      </strong>
+    </span>
+  );
+};
+
+/* ──────────────────── Social Proof Toasts ──────────────────── */
+const SOCIAL_PROOF = [
+  { name: "Sophie", area: "Didsbury" },
+  { name: "James", area: "Bury" },
+  { name: "Amira", area: "Salford" },
+  { name: "Rachel", area: "Prestwich" },
+  { name: "Dan", area: "Bolton" },
+  { name: "Priya", area: "Whitefield" },
+  { name: "Emma", area: "Ramsbottom" },
+  { name: "Liam", area: "Rochdale" },
+];
+
+const useSocialProofToasts = () => {
+  useEffect(() => {
+    let index = Math.floor(Math.random() * SOCIAL_PROOF.length);
+    const initialDelay = setTimeout(() => {
+      const show = () => {
+        const person = SOCIAL_PROOF[index % SOCIAL_PROOF.length];
+        toast(`${person.name} from ${person.area} just booked a consultation`, {
+          duration: 4000,
+          position: "bottom-left",
+          className: "hidden md:flex",
+        });
+        index++;
+      };
+      show();
+      const interval = setInterval(show, 25000 + Math.random() * 10000);
+      return () => clearInterval(interval);
+    }, 10000);
+    return () => clearTimeout(initialDelay);
+  }, []);
+};
+
+/* ──────────────────── Exit Intent Popup ──────────────────── */
+const ExitIntentPopup = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("exit_popup_shown")) return;
+
+    // Desktop: mouse leaves viewport from top
+    const handleMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !sessionStorage.getItem("exit_popup_shown")) {
+        sessionStorage.setItem("exit_popup_shown", "1");
+        setOpen(true);
+      }
+    };
+
+    // Mobile: 60% scroll + 15s on page
+    let scrollTriggered = false;
+    const startTime = Date.now();
+    const handleScroll = () => {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      const timeOnPage = (Date.now() - startTime) / 1000;
+      if (scrollPercent > 0.6 && timeOnPage > 15 && !scrollTriggered && !sessionStorage.getItem("exit_popup_shown")) {
+        scrollTriggered = true;
+        sessionStorage.setItem("exit_popup_shown", "1");
+        setOpen(true);
+      }
+    };
+
+    document.addEventListener("mouseout", handleMouseOut);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      document.removeEventListener("mouseout", handleMouseOut);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToClaim = () => {
+    setOpen(false);
+    document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogContent className="max-w-md text-center">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-serif">Wait — Don't Miss This</DialogTitle>
+          <DialogDescription className="text-muted-foreground mt-2">
+            Your <strong className="text-primary">£100 Spring Discount</strong> is still available. Book your free consultation before spots fill up.
+          </DialogDescription>
+        </DialogHeader>
+        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-4">
+          Claim My £100 Discount →
+        </button>
+        <p className="text-xs text-muted-foreground mt-2">
+          No payment required · Free consultation · No obligation
+        </p>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+/* ──────────────────── Lead Capture Form ──────────────────── */
 const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
   const [submitted, setSubmitted] = useState(false);
 
@@ -99,41 +274,30 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
   }
 
   const isDark = variant === "dark";
+  const fields = [
+    { name: "name" as const, placeholder: "Your name", type: "text", step: 1 },
+    { name: "email" as const, placeholder: "Email address", type: "email", step: 2 },
+    { name: "phone" as const, placeholder: "Phone number", type: "tel", step: 3 },
+  ];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div>
-        <Input
-          placeholder="Your name"
-          {...register("name")}
-          className={`h-12 rounded-lg text-base ${isDark ? "bg-foreground/5 border-foreground/20 placeholder:text-foreground/40" : "bg-background border-border"}`}
-        />
-        {errors.name && (
-          <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
-        )}
-      </div>
-      <div>
-        <Input
-          type="email"
-          placeholder="Email address"
-          {...register("email")}
-          className={`h-12 rounded-lg text-base ${isDark ? "bg-foreground/5 border-foreground/20 placeholder:text-foreground/40" : "bg-background border-border"}`}
-        />
-        {errors.email && (
-          <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
-        )}
-      </div>
-      <div>
-        <Input
-          type="tel"
-          placeholder="Phone number"
-          {...register("phone")}
-          className={`h-12 rounded-lg text-base ${isDark ? "bg-foreground/5 border-foreground/20 placeholder:text-foreground/40" : "bg-background border-border"}`}
-        />
-        {errors.phone && (
-          <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>
-        )}
-      </div>
+      {fields.map((field) => (
+        <div key={field.name}>
+          <label className="text-xs text-muted-foreground mb-1 block tracking-wide">
+            Step {field.step} of 3
+          </label>
+          <Input
+            type={field.type}
+            placeholder={field.placeholder}
+            {...register(field.name)}
+            className={`h-12 rounded-lg text-base ${isDark ? "bg-foreground/5 border-foreground/20 placeholder:text-foreground/40" : "bg-background border-border"}`}
+          />
+          {errors[field.name] && (
+            <p className="text-destructive text-sm mt-1">{errors[field.name]?.message}</p>
+          )}
+        </div>
+      ))}
       <button
         type="submit"
         disabled={isSubmitting}
@@ -148,9 +312,62 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
   );
 };
 
+/* ──────────────────── Sticky Desktop CTA ──────────────────── */
+const StickyDesktopCTA = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.querySelector("[data-hero]");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 hidden md:block bg-[hsl(30,10%,6%)] border-b border-primary/20 transition-transform duration-300 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="content-container flex items-center justify-between py-2.5">
+        <p className="text-sm text-[hsl(40,20%,85%)]">
+          <span className="font-serif">Spring Special</span> — Full-body laser hair removal{" "}
+          <strong className="text-primary">£795</strong>{" "}
+          <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
+        </p>
+        <a
+          href="#claim"
+          className="btn-gold-metallic !py-2 !px-6 !text-xs"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          Book Now →
+        </a>
+      </div>
+    </div>
+  );
+};
+
+/* ──────────────────── Main Page ──────────────────── */
 const Index = () => {
+  useSocialProofToasts();
+
+  const scrollToClaim = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <StickyDesktopCTA />
+      <ExitIntentPopup />
+
       {/* Logo */}
       <div className="pt-4 pb-3.5 bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
         <img
@@ -161,19 +378,18 @@ const Index = () => {
         />
       </div>
 
-      {/* Urgency Bar */}
+      {/* Urgency Bar with Countdown */}
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 px-4 text-center">
         <p className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
           <Clock className="w-4 h-4 text-primary" />
-          <span>
-            Only <strong className="text-primary">15 consultation spots</strong> left this month
-          </span>
+          <CountdownTimer />
           <Clock className="w-4 h-4 text-primary" />
         </p>
       </div>
 
       {/* Hero Section */}
       <section
+        data-hero
         className="relative py-16 md:py-24"
         style={{ backgroundColor: "hsl(var(--hero-bg, 36 30% 92%))" }}
       >
@@ -289,14 +505,7 @@ const Index = () => {
           </div>
 
           <div className="mt-10">
-            <a
-              href="#claim"
-              className="btn-gold-metallic"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
+            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
               Claim Your £100 Discount →
             </a>
           </div>
@@ -358,14 +567,7 @@ const Index = () => {
           </div>
 
           <div className="mt-12">
-            <a
-              href="#claim"
-              className="btn-gold-metallic"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
+            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
               Claim Your £100 Discount →
             </a>
           </div>
@@ -380,7 +582,7 @@ const Index = () => {
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">How It Works</h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 how-it-works-grid">
             {[
               {
                 step: "01",
@@ -397,8 +599,8 @@ const Index = () => {
                 title: "Lasting Results",
                 desc: "Enjoy smooth, confident skin with up to 90% hair reduction and occasional maintenance as needed.",
               },
-            ].map((item) => (
-              <div key={item.step} className="p-8 rounded-xl bg-card border border-border text-center">
+            ].map((item, index) => (
+              <div key={item.step} className={`how-it-works-step p-8 rounded-xl bg-card border border-border text-center relative ${index < 2 ? "how-it-works-has-connector" : ""}`}>
                 <span className="text-5xl font-serif text-gold-metallic font-semibold block mb-4">
                   {item.step}
                 </span>
@@ -410,7 +612,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Your First Visit - Video */}
+      {/* Your First Visit - Video (Lazy Loaded) */}
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
@@ -423,17 +625,7 @@ const Index = () => {
             See what to expect at your first session
           </p>
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
-            <video
-              autoPlay
-              muted
-              playsInline
-              controls
-              preload="auto"
-              className="w-full"
-            >
-              <source src="/videos/first-visit.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <LazyVideo src="/videos/first-visit.mp4" />
           </div>
         </div>
       </section>
@@ -448,21 +640,12 @@ const Index = () => {
             Trusted by 1,000+ Clients in Manchester
           </h2>
 
-          {/* Testimonial Video */}
+          {/* Testimonial Video (Lazy Loaded) */}
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
             <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
-            <video
-              autoPlay
-              muted
-              playsInline
-              controls
-              className="w-full"
-            >
-              <source src="/videos/testimonial.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <LazyVideo src="/videos/testimonial.mp4" />
           </div>
 
           <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
@@ -471,6 +654,7 @@ const Index = () => {
               src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
               frameBorder="0"
               scrolling="no"
+              loading="lazy"
               style={{ minWidth: "100%", width: "100%" }}
               title="Laser Location Reviews"
             />
@@ -478,14 +662,7 @@ const Index = () => {
 
           {/* Post-reviews CTA */}
           <div className="mt-12">
-            <a
-              href="#claim"
-              className="btn-gold-metallic"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
+            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
               Claim Your £100 Discount →
             </a>
           </div>
@@ -536,12 +713,7 @@ const Index = () => {
             <a
               href="#claim"
               className="btn-gold-metallic w-full !block !text-center"
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("claim")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={scrollToClaim}
             >
               Claim Your £100 Discount →
             </a>
@@ -681,10 +853,7 @@ const Index = () => {
         <a
           href="#claim"
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-          }}
+          onClick={scrollToClaim}
         >
           Claim Your £100 Discount →
         </a>
