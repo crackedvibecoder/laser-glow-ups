@@ -30,6 +30,58 @@ const leadSchema = z.object({
 
 type LeadFormData = z.infer<typeof leadSchema>;
 
+type LeadInsertPayload = {
+  full_name: string;
+  email: string;
+  phone: string;
+  source: "website" | "meta";
+  page_url: string;
+  referrer: string;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  raw_payload: Record<string, unknown>;
+};
+
+const getLeadContext = () => {
+  if (typeof window === "undefined") {
+    return {
+      pageUrl: "",
+      referrer: "",
+      utmSource: null,
+      utmMedium: null,
+      utmCampaign: null,
+    };
+  }
+
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    pageUrl: window.location.href,
+    referrer: document.referrer || "",
+    utmSource: params.get("utm_source"),
+    utmMedium: params.get("utm_medium"),
+    utmCampaign: params.get("utm_campaign"),
+  };
+};
+
+const saveLeadToBackend = async (payload: LeadInsertPayload) => {
+  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/leads`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Lead save failed with status ${response.status}`);
+  }
+};
+
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const CountdownTimer = () => {
