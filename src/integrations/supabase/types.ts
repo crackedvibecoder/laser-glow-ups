@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          ad_name: string | null
+          campaign_name: string | null
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          meta_form_id: string | null
+          meta_lead_id: string | null
+          page_url: string | null
+          phone: string | null
+          raw_payload: Json | null
+          referrer: string | null
+          source: string
+          status: string
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          ad_name?: string | null
+          campaign_name?: string | null
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          meta_form_id?: string | null
+          meta_lead_id?: string | null
+          page_url?: string | null
+          phone?: string | null
+          raw_payload?: Json | null
+          referrer?: string | null
+          source?: string
+          status?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          ad_name?: string | null
+          campaign_name?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          meta_form_id?: string | null
+          meta_lead_id?: string | null
+          page_url?: string | null
+          phone?: string | null
+          raw_payload?: Json | null
+          referrer?: string | null
+          source?: string
+          status?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
