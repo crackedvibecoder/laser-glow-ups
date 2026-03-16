@@ -234,6 +234,30 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
   }, [submitted]);
 
   const onSubmit = async (data: LeadFormData) => {
+    const { pageUrl, referrer, utmSource, utmMedium, utmCampaign } = getLeadContext();
+
+    try {
+      await saveLeadToBackend({
+        full_name: data.name,
+        email: data.email,
+        phone: data.phone,
+        source: "website",
+        page_url: pageUrl,
+        referrer,
+        utm_source: utmSource,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign,
+        raw_payload: {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          submitted_from: "website_form",
+        },
+      });
+    } catch (err) {
+      console.error("Lead save error:", err);
+    }
+
     try {
       const formBody = new URLSearchParams({
         name: data.name,
@@ -251,6 +275,7 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     } catch (err) {
       console.error("Webhook error:", err);
     }
+
     setSubmitted(true);
   };
 
