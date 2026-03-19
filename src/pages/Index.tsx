@@ -474,12 +474,11 @@ const Index = () => {
       </div>
 
       {/* Urgency Bar with Countdown */}
-      <div className="bg-primary/10 border-b border-primary/20 py-2.5 px-4 text-center">
-        <p className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
-          <Clock className="w-4 h-4 text-primary" />
+      <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
+        <div className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
+          <Clock className="w-4 h-4 text-primary shrink-0" />
           <CountdownTimer />
-          <Clock className="w-4 h-4 text-primary" />
-        </p>
+        </div>
       </div>
 
       {/* Hero Section */}
