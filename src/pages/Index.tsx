@@ -532,7 +532,7 @@ const Index = () => {
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-serif mb-2">Book Your Free Consultation</h2>
                   <p className="text-muted-foreground text-sm">
-                    Claim your <strong className="text-primary">£100 Spring Discount</strong> — no payment required
+                    Limited availability — secure your spot with no payment required
                   </p>
                 </div>
                 <LeadCaptureForm />
