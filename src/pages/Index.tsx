@@ -106,7 +106,7 @@ const CountdownTimer = () => {
 
   return (
     <span>
-      Offer ends in{" "}
+      Spring Special — Save £100 · Offer ends in{" "}
       <strong className="text-primary">
         {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
       </strong>
@@ -135,7 +135,7 @@ const useSocialProofToasts = () => {
         toast(`${person.name} from ${person.area} just booked a consultation`, {
           duration: 4000,
           position: "bottom-left",
-          className: "hidden md:flex",
+          className: "",
         });
         index++;
       };
@@ -492,14 +492,14 @@ const Index = () => {
                 Medical-Grade Laser Hair Removal · Bury, Manchester
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
-                Lasting Smooth Skin{" "}
+                Full-Body Laser Hair Removal — Save £100{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
-                  Starts Here
+                  This Spring
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-                Full-body laser hair removal. 6 sessions. Medical-grade
-                technology. Safe for all skin types.
+                Ditch the razor for good. 6 painless sessions, all skin types
+                welcome — trusted by 1,000+ clients in Manchester.
               </p>
 
               {/* Pricing Badge */}
@@ -532,7 +532,7 @@ const Index = () => {
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-serif mb-2">Book Your Free Consultation</h2>
                   <p className="text-muted-foreground text-sm">
-                    Claim your <strong className="text-primary">£100 Spring Discount</strong> — no payment required
+                    Limited availability — secure your spot with no payment required
                   </p>
                 </div>
                 <LeadCaptureForm />
@@ -946,7 +946,7 @@ const Index = () => {
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
           onClick={scrollToClaim}
         >
-          Claim Your £100 Discount →
+          Claim £100 Off — Book Free Consultation →
         </a>
       </div>
     </div>
