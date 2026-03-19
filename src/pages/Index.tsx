@@ -135,7 +135,7 @@ const useSocialProofToasts = () => {
         toast(`${person.name} from ${person.area} just booked a consultation`, {
           duration: 4000,
           position: "bottom-left",
-          className: "hidden md:flex",
+          className: "",
         });
         index++;
       };
