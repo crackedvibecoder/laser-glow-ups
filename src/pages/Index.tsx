@@ -946,7 +946,7 @@ const Index = () => {
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
           onClick={scrollToClaim}
         >
-          Claim Your £100 Discount →
+          Claim £100 Off — Book Free Consultation →
         </a>
       </div>
     </div>
