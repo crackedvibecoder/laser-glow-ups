@@ -1,68 +1,37 @@
 
 
-# Training Courses Funnel Page
+# Reduce Bounce Rate — Copy & Engagement Fixes
 
-## Overview
-Create a new conversion-focused landing page at `/training` promoting Laser Location's laser training courses. It will follow the same editorial luxury design system, CRO patterns, and lead capture mechanics as the existing laser hair removal funnel.
+No structural or layout changes. Focused on copy rewrites and small visual tweaks that improve first-impression relevance for Facebook ad traffic on mobile.
 
-## Content Source
-All course information comes from laserlocation.co.uk/training:
+## Changes
 
-**Courses to feature:**
-- **Ultimate Laser Hair Removal** (VTCT Level 3 & 4 combined) -- £2,295 without machine / £6,295 with machine -- 4 days hybrid
-- **CPD Laser Hair Removal** -- £1,295 -- 2 days
-- **Tattoo Removal CPD** -- £800 -- 1 day
-- **VTCT Level 4 Laser** -- £1,800 -- 3 days hybrid
+### 1. Hero headline rewrite
+**Current:** "Lasting Smooth Skin Starts Here"
+**Problem:** Aspirational but vague — doesn't match the urgency of a paid ad click. Users from Facebook expect the offer they clicked on.
+**Proposed:** "Full-Body Laser Hair Removal — Save £100 This Spring" — leads with the offer and matches ad copy. The script accent can stay on a shorter phrase like "This Spring".
 
-**Key selling points:** VTCT-accredited, insurance-ready certification, small class sizes, AW3 Crystal Freeze Diamond equipment, trained by Carmen Douglas (6+ years, 1,000+ clients), ongoing support, all models provided, free parking.
+### 2. Hero subhead rewrite
+**Current:** "Full-body laser hair removal. 6 sessions. Medical-grade technology. Safe for all skin types."
+**Problem:** Reads like a feature list, not a benefit. No emotional hook.
+**Proposed:** "Ditch the razor for good. 6 painless sessions, all skin types welcome — trusted by 1,000+ clients in Manchester."
 
-**Target audience:** Beauty therapists, newly qualified practitioners, clinic owners, career changers entering aesthetics.
+### 3. Urgency bar copy
+**Current:** Shows countdown only (via CountdownTimer component).
+**Proposed:** Add explicit savings text alongside the timer: "Spring Special — Save £100 · Offer ends in [countdown]" — reinforces the discount before they even reach the pricing badge.
 
-## Page Structure (single-page funnel)
+### 4. Form card subhead
+**Current:** "Claim your £100 Spring Discount — no payment required"
+**Proposed:** "Limited availability — secure your spot with no payment required" — shifts from discount language (which they've already seen) to scarcity.
 
-1. **Logo bar** -- same dark header with Laser Location watermark
-2. **Urgency bar** -- countdown timer (e.g. "Limited spots -- Next cohort starts soon")
-3. **Hero section** -- headline about building a career in laser, subhead about VTCT-accredited training, CTA to enquiry form
-4. **Trust bar** -- VTCT Accredited, Insurance-Ready, 1,000+ Clients Treated, Small Class Sizes
-5. **Pain points** -- why people hesitate (cost of unaccredited courses, lack of hands-on practice, no business support, etc.)
-6. **Course cards** -- the 4 courses with pricing, duration, accreditation type, and CTA
-7. **Trainer section** -- Carmen Douglas credentials, experience stats
-8. **How It Works** -- 3 steps: Enquire, Train, Launch (with dashed timeline connectors)
-9. **Why Train With Us** -- differentiators list (same format as existing funnel's benefit cards)
-10. **FAQ accordion** -- training-specific questions
-11. **Lead capture form** -- "Enquire About Training" with name, email, phone
-12. **Footer** -- Privacy Policy popup, copyright
+### 5. Enable social proof toasts on mobile
+Currently hidden with `hidden md:flex`. Remove that restriction so mobile users (90% of traffic) actually see them.
 
-## Technical Approach
+### 6. Sticky mobile CTA copy
+If currently generic ("Book Now"), change to "Claim £100 Off — Book Free Consultation" to reinforce the offer on every scroll.
 
-### New files:
-- `src/pages/Training.tsx` -- the full funnel page, modelled closely on `Index.tsx`
+## Files to modify
+- `src/pages/Index.tsx` — all 6 changes (copy updates + toast visibility class)
 
-### Modified files:
-- `src/App.tsx` -- add route `/training` pointing to Training page
-
-### Reused from existing funnel:
-- Same design system (CSS classes, gold metallic buttons, dark sections, etc.)
-- `CountdownTimer` component (extracted or duplicated)
-- `LeadCaptureForm` component adapted for training enquiries (different webhook URL or same one with a source identifier)
-- `ExitIntentPopup` adapted for training context
-- `StickyDesktopCTA` and sticky mobile CTA adapted for training
-- `PrivacyPolicyPopup` reused as-is
-- Social proof toasts adapted (e.g. "Rebecca from Manchester just enrolled")
-- Same `saveLeadToBackend` function -- leads table already supports this via `page_url` differentiation
-
-### Lead tracking:
-- Saves to the existing `leads` table with `source: 'website'` and `page_url` will naturally identify training leads
-- Fires `fbq('track', 'Lead')` on form submission (same as existing)
-- Microsoft Clarity and Meta Pixel already installed globally via `index.html`
-
-### No database changes needed
-The existing `leads` table schema already captures everything needed. Training leads will be distinguishable by their `page_url` containing `/training`.
-
-## Images
-Will use the training academy images from their existing CDN (the Supabase storage URLs found on their website), including:
-- `rebecca.webp` (training instructor)
-- `teaching-moment.jpg` (hands-on training)
-- `carmen-aw3.jpg` (Carmen with laser equipment)
-- `team laser.jpg` (training team)
+No structural, layout, or loading changes. No database changes.
 
