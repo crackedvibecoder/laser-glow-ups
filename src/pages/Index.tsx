@@ -106,7 +106,7 @@ const CountdownTimer = () => {
 
   return (
     <span>
-      Offer ends in{" "}
+      Spring Special — Save £100 · Offer ends in{" "}
       <strong className="text-primary">
         {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
       </strong>
