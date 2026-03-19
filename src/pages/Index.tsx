@@ -726,47 +726,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews Widget */}
-      <section className="section-padding-compact bg-background">
-        <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Real Results
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-12">
-            Trusted by 1,000+ Clients in Manchester
-          </h2>
-
-          {/* Testimonial Video (Lazy Loaded) */}
-          <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
-              Hear From Our Clients
-            </p>
-            <video autoPlay muted playsInline controls className="w-full">
-              <source src="/videos/testimonial.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
-            <iframe
-              className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              style={{ minWidth: "100%", width: "100%" }}
-              title="Laser Location Reviews"
-            />
-          </div>
-
-          {/* Post-reviews CTA */}
-          <div className="mt-12">
-            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
-              Claim Your £100 Discount →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Card */}
       <section className="bg-accent section-padding-compact">
         <div className="content-container text-center relative z-10">
@@ -819,6 +778,47 @@ const Index = () => {
             <p className="text-xs mt-4 text-muted-foreground">
               Save £100 when you book your free consultation this month
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Widget */}
+      <section className="section-padding-compact bg-background">
+        <div className="content-container text-center">
+          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            Real Results
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-12">
+            Trusted by 1,000+ Clients in Manchester
+          </h2>
+
+          {/* Testimonial Video (Lazy Loaded) */}
+          <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
+            <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
+              Hear From Our Clients
+            </p>
+            <video autoPlay muted playsInline controls className="w-full">
+              <source src="/videos/testimonial.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
+            <iframe
+              className="lc_reviews_widget"
+              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
+              frameBorder="0"
+              scrolling="no"
+              loading="lazy"
+              style={{ minWidth: "100%", width: "100%" }}
+              title="Laser Location Reviews"
+            />
+          </div>
+
+          {/* Post-reviews CTA */}
+          <div className="mt-12">
+            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
+              Claim Your £100 Discount →
+            </a>
           </div>
         </div>
       </section>
