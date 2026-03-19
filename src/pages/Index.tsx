@@ -492,14 +492,14 @@ const Index = () => {
                 Medical-Grade Laser Hair Removal · Bury, Manchester
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
-                Lasting Smooth Skin{" "}
+                Full-Body Laser Hair Removal — Save £100{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
-                  Starts Here
+                  This Spring
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-                Full-body laser hair removal. 6 sessions. Medical-grade
-                technology. Safe for all skin types.
+                Ditch the razor for good. 6 painless sessions, all skin types
+                welcome — trusted by 1,000+ clients in Manchester.
               </p>
 
               {/* Pricing Badge */}
