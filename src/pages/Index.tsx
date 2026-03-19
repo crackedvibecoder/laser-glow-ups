@@ -105,11 +105,15 @@ const CountdownTimer = () => {
   }, [getTimeLeft]);
 
   return (
-    <span>
-      Spring Special — Save £100 · Offer ends in{" "}
-      <strong className="text-primary">
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
-      </strong>
+    <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
+      <span>Spring Special — Save £100</span>
+      <span className="hidden md:inline">·</span>
+      <span>
+        Offer ends in{" "}
+        <strong className="text-primary">
+          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
+        </strong>
+      </span>
     </span>
   );
 };
