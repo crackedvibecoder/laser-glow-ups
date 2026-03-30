@@ -194,19 +194,22 @@ const ExitIntentPopup = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md text-center p-8">
-        <DialogHeader className="space-y-4">
-          <div className="mx-auto inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary/15">
-            <span className="text-3xl font-bold text-primary tracking-tight">£100 OFF</span>
+      <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30 shadow-2xl">
+        <DialogHeader className="space-y-5">
+          <div className="mx-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary/15">
+            <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£100 OFF</span>
           </div>
-          <DialogTitle className="text-2xl md:text-3xl font-serif leading-tight">
+          <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
             Your Spring Discount Is Still Waiting
           </DialogTitle>
-          <DialogDescription className="text-muted-foreground text-base">
+          <DialogDescription className="text-muted-foreground text-lg">
             Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
           </DialogDescription>
         </DialogHeader>
-        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-4 text-base py-3">
+        <p className="text-sm text-primary font-medium mt-2 animate-pulse">
+          ⏳ Limited spots available this week
+        </p>
+        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider">
           Claim My £100 Discount →
         </button>
         <button
