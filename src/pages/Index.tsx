@@ -194,17 +194,28 @@ const ExitIntentPopup = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md text-center">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-serif">Wait — Don't Miss This</DialogTitle>
-          <DialogDescription className="text-muted-foreground mt-2">
-            Your <strong className="text-primary">£100 Spring Discount</strong> is still available. Book your free consultation before spots fill up.
+      <DialogContent className="max-w-md text-center p-8">
+        <DialogHeader className="space-y-4">
+          <div className="mx-auto inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary/15">
+            <span className="text-3xl font-bold text-primary tracking-tight">£100 OFF</span>
+          </div>
+          <DialogTitle className="text-2xl md:text-3xl font-serif leading-tight">
+            Your Spring Discount Is Still Waiting
+          </DialogTitle>
+          <DialogDescription className="text-muted-foreground text-base">
+            Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
           </DialogDescription>
         </DialogHeader>
-        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-4">
+        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-4 text-base py-3">
           Claim My £100 Discount →
         </button>
-        <p className="text-xs text-muted-foreground mt-2">
+        <button
+          onClick={() => setOpen(false)}
+          className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors mt-1 underline underline-offset-2"
+        >
+          No thanks, I'll pay full price
+        </button>
+        <p className="text-xs text-muted-foreground mt-1">
           No payment required · Free consultation · No obligation
         </p>
       </DialogContent>
@@ -286,29 +297,27 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
   if (submitted) {
     return (
       <div className="animate-fade-up">
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 mb-3">
+        <div className="text-center mb-3">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 mb-2">
             <Check className="w-6 h-6 text-primary" />
           </div>
           <h3 className="text-xl font-serif mb-1">You're In!</h3>
-          <p className="text-muted-foreground text-sm mb-3">
+          <p className="text-muted-foreground text-sm mb-2">
             Your Spring Special voucher code is:
           </p>
-          <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 mb-3">
+          <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 mb-2">
             <span className="text-lg font-semibold tracking-widest text-primary">SPRING100</span>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground mb-0">
             Book your free consultation below:
           </p>
         </div>
-        <div className="rounded-xl border border-border">
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
-            style={{ width: "100%", border: "none", minHeight: "800px" }}
-            id="WKJHfaDYyUDdQrbeGrlS_1773178006930"
-            title="Book Your Consultation"
-          />
-        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
+          style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
+          id="WKJHfaDYyUDdQrbeGrlS_1773178006930"
+          title="Book Your Consultation"
+        />
       </div>
     );
   }
