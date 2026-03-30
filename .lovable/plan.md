@@ -1,27 +1,25 @@
 
 
-# Reorder Sections for Better Conversion Flow
+# Exit Intent Redesign + Inline Booking Cleanup
 
-Two swaps in `src/pages/Index.tsx`:
+## Changes in `src/pages/Index.tsx`
 
-## Swap 1: Pain Points before Before & After
-Move the Pain Points section (lines 609–727) above the Before & After section (lines 571–607). This follows Problem → Proof flow — agitate the pain first, then show results.
+### 1. Exit Intent Popup — Better Visual Hierarchy (lines 195–211)
+- Add a large gold "£100 OFF" badge at top (oversized text, `bg-primary/15` rounded pill)
+- Headline in `font-serif text-2xl`: "Your Spring Discount Is Still Waiting"
+- Social proof line: "Trusted by 1,000+ clients in Manchester"
+- CTA: full-width `btn-gold-metallic` — "Claim My £100 Discount →"
+- Dismiss: small muted link — "No thanks, I'll pay full price"
+- Keep trust line below
 
-## Swap 2: Pricing above Reviews
-Move the Pricing Card section (lines 770–824) above the Reviews Widget section (lines 729–768). Present the offer while motivation is high, then use reviews to overcome hesitation.
+### 2. Inline Booking — Remove Gap (lines 286–313)
+- Reduce spacing between voucher code and iframe: `mb-6` → `mb-3` on the text-center wrapper, `mb-3` → `mb-2` on voucher elements
+- Remove the `rounded-xl border border-border` wrapper div around the iframe (causes visual gap)
+- Keep `minHeight: 800px` on iframe but add `overflow: hidden` to prevent double scrollbars
+- Tighten the "Book your free consultation below:" text — reduce bottom margin
 
-### Resulting section order:
-1. Hero + Form
-2. Social Proof Strip
-3. **Pain Points** (moved up)
-4. **Before & After** (moved down)
-5. How It Works
-6. First Visit Video
-7. **Pricing** (moved up)
-8. **Reviews** (moved down)
-9. FAQ
-10. Final CTA
+### Files modified
+- `src/pages/Index.tsx` — exit intent popup markup + post-submission spacing
 
-### File modified
-- `src/pages/Index.tsx` — reorder only, no content changes
+No database or routing changes.
 
