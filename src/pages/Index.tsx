@@ -497,8 +497,8 @@ const Index = () => {
         <div className="content-container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Copy */}
-            <div className="animate-fade-up">
-              <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">
+            <div className="animate-fade-up text-center lg:text-left">
+              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-4">
                 Medical-Grade Laser Hair Removal
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
@@ -507,23 +507,25 @@ const Index = () => {
                   This Spring
                 </span>
               </h1>
-              <p className="text-base font-medium text-foreground/80 -mt-3 mb-4">
-                📍 Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond
+              <p className="text-sm text-muted-foreground -mt-3 mb-4">
+                Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond
               </p>
-              <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
                 Ditch the razor for good. 6 painless sessions, all skin types
                 welcome — trusted by 1,000+ clients in Manchester.
               </p>
 
               {/* Pricing Badge */}
-              <div className="inline-flex items-baseline gap-3 mb-8 px-6 py-3 rounded-full bg-background/80 border border-border">
-                <span className="text-lg text-muted-foreground line-through">£895</span>
-                <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
-                <span className="text-sm text-muted-foreground">for 6 sessions</span>
+              <div className="flex justify-center lg:justify-start mb-8">
+                <div className="inline-flex items-baseline gap-3 px-6 py-3 rounded-full bg-background/80 border border-border">
+                  <span className="text-lg text-muted-foreground line-through">£895</span>
+                  <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
+                  <span className="text-sm text-muted-foreground">for 6 sessions</span>
+                </div>
               </div>
 
               {/* Trust Badges */}
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <Shield className="w-4 h-4 text-primary" /> Medical-Grade
                 </span>
