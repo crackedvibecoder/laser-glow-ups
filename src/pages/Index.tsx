@@ -276,7 +276,6 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     try {
       const formBody = new URLSearchParams({
         name: data.name,
-        email: data.email,
         phone: data.phone,
       });
       await fetch(
