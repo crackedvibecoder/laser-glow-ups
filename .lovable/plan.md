@@ -1,46 +1,35 @@
 
 
-# Analysis: March Facebook Ads Report vs Funnel Performance
+# Hero Section — Text Hierarchy & Alignment Consistency
 
-## Key Findings from the Report
+## Problem
+The hero has several text elements at similar sizes (kicker, location line, subheading all around `text-sm`/`text-base`/`text-lg`), making it hard to scan. Additionally, the hero copy is left-aligned while sections below (Social Proof, Pain Points, How It Works, etc.) are centered, creating inconsistency.
 
-The ads team report reveals critical insights directly relevant to this funnel:
+## Changes in `src/pages/Index.tsx`
 
-1. **The voucher campaigns (Campaigns 1 & 2) are the winners** — £0.15–£0.18 CPC, 2.86–9.32% CTR. These send traffic to a direct booking path.
-2. **The form/website campaign (Campaign 3) has friction** — £0.47 CPC, 1.63% CTR, £5.74 CPL. The report explicitly says "the form or landing page is likely the bottleneck" and recommends "simplify form fields, strengthen the offer on-page."
-3. **No retargeting exists** — warm prospects who engaged but didn't convert are lost.
-4. **Page 3 recommendations include**: "Review load speed, headline clarity, offer visibility, trust signals, before/after imagery, mobile experience, and calendar friction."
+### 1. Improve text hierarchy (left column, lines 500–539)
 
-## What This Means for Our Funnel
+| Element | Current | Proposed |
+|---|---|---|
+| Kicker ("Medical-Grade…") | `text-sm` uppercase | `text-xs` uppercase — smaller to clearly subordinate it |
+| H1 headline | `text-4xl md:text-5xl lg:text-6xl` | Keep as-is — this is the anchor |
+| Location line | `text-base font-medium` | `text-sm text-muted-foreground` — demote to secondary info, drop emoji |
+| Subheading | `text-lg text-muted-foreground` | `text-xl md:text-2xl` — increase to create clear second tier below h1 |
+| Pricing badge | `text-3xl` for price | Keep — already distinct |
+| Trust badges | `text-sm` | Keep — fine as tertiary |
 
-The report confirms our funnel IS Campaign 3's landing page — the one with the higher CPL. The voucher campaigns link directly to a booking page, bypassing our funnel entirely. So we need to make this funnel convert better for the form-based traffic it receives.
+This creates a clear visual ladder: **Kicker (xs) → H1 (5xl–6xl) → Subhead (xl–2xl) → Location/Trust (sm)**.
 
-## Recommended Tweaks
+### 2. Center-align the hero content
 
-### 1. Reduce form fields from 3 to 2
-The report says "reduce form fields." Drop the email field — for a consultation booking via Facebook traffic, name + phone is sufficient. Email can be collected later. This is the single highest-impact change for reducing form friction.
+Switch the hero from the current left-aligned two-column grid to a centered, stacked layout on mobile. On desktop, keep the two-column grid but center the text within the left column:
 
-### 2. Make the voucher code visible BEFORE form submission
-Currently the voucher code (SPRING100) only appears after submission. The ads promote a voucher — visitors expect to see it immediately. Show "Your £100 Voucher" prominently in the hero and form header so there's instant message match with the ad creative.
+- Add `text-center lg:text-left` to the copy column
+- Center the trust badges row on mobile: `justify-center lg:justify-start`
+- Center the pricing badge on mobile: wrap with `flex justify-center lg:justify-start`
 
-### 3. Add "Bury, Manchester" more prominently to the hero
-The report mentions targeting Bury and surrounding areas. Local relevance reduces bounce — visitors from Facebook need instant confirmation they're in the right place. Currently it's in small uppercase text above the headline. Make the location more prominent.
+This matches the centered approach used by every other section on the page while keeping the desktop two-column layout intact.
 
-### 4. Strengthen the offer headline for ad-to-page message match
-The voucher campaigns use voucher-based creative. Our hero headline says "Save £100 This Spring" which is good, but the form card header says "Book Your Free Consultation" — generic. Change it to "Claim Your £100 Voucher" to match the ad promise.
-
-### 5. Add a "Limited spots" indicator near the form
-The report recommends urgency-led messaging. Add a real-time-feeling "Only 4 consultation slots left this week" near the form to create booking urgency.
-
-## Technical Details
-
-All changes are in `src/pages/Index.tsx`:
-
-- **Form fields**: Remove the email field from the `fields` array and `leadSchema`. Update the backend payload to make email optional.
-- **Voucher visibility**: Add a voucher badge (e.g., "YOUR £100 VOUCHER: SPRING100") inside the form card, above the inputs.
-- **Form card header**: Change "Book Your Free Consultation" to "Claim Your £100 Voucher".
-- **Location emphasis**: Increase the kicker text size or add "Bury, Manchester" into the main headline.
-- **Spots indicator**: Add a small line below the form card header: "⚡ Only 4 consultation slots left this week".
-
-No database migrations needed — the `email` column in `leads` should be made nullable if we remove it from the form, but we can also keep it and send an empty string or skip that change if you'd prefer to keep collecting emails.
+## File modified
+- `src/pages/Index.tsx` — hero text classes only (lines 500–539), no structural changes
 
