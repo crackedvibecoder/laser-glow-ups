@@ -256,7 +256,6 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
     try {
       await saveLeadToBackend({
         full_name: data.name,
-        email: data.email,
         phone: data.phone,
         source: "website",
         page_url: pageUrl,
@@ -266,7 +265,6 @@ const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) 
         utm_campaign: utmCampaign,
         raw_payload: {
           name: data.name,
-          email: data.email,
           phone: data.phone,
           submitted_from: "website_form",
         },
