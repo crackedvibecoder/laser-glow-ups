@@ -31,7 +31,7 @@ type LeadFormData = z.infer<typeof leadSchema>;
 
 type LeadInsertPayload = {
   full_name: string;
-  email: string;
+  email?: string;
   phone: string;
   source: "website" | "meta";
   page_url: string;
