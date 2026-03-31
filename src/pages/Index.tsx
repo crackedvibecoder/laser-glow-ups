@@ -24,7 +24,6 @@ import {
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
 });
 
