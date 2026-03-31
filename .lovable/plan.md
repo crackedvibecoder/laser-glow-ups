@@ -1,35 +1,27 @@
 
 
-# Hero Section — Text Hierarchy & Alignment Consistency
+# Hero Cleanup — Honest Adjustments
 
-## Problem
-The hero has several text elements at similar sizes (kicker, location line, subheading all around `text-sm`/`text-base`/`text-lg`), making it hard to scan. Additionally, the hero copy is left-aligned while sections below (Social Proof, Pain Points, How It Works, etc.) are centered, creating inconsistency.
+## What's actually worth changing
 
-## Changes in `src/pages/Index.tsx`
+### 1. Simplify location line
+**Current:** "Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond"
+**Change to:** "Bury, Manchester"
+Listing neighbouring towns implies multi-location and adds confusion for geo-targeted Facebook traffic.
 
-### 1. Improve text hierarchy (left column, lines 500–539)
+### 2. Move pricing badge into the form card
+The pricing badge (£895 → £795) currently sits in the hero copy column between the subheading and trust badges. It's a conversion element that belongs next to the form — seeing the price saving right where you're asked to claim the voucher is more persuasive.
 
-| Element | Current | Proposed |
-|---|---|---|
-| Kicker ("Medical-Grade…") | `text-sm` uppercase | `text-xs` uppercase — smaller to clearly subordinate it |
-| H1 headline | `text-4xl md:text-5xl lg:text-6xl` | Keep as-is — this is the anchor |
-| Location line | `text-base font-medium` | `text-sm text-muted-foreground` — demote to secondary info, drop emoji |
-| Subheading | `text-lg text-muted-foreground` | `text-xl md:text-2xl` — increase to create clear second tier below h1 |
-| Pricing badge | `text-3xl` for price | Keep — already distinct |
-| Trust badges | `text-sm` | Keep — fine as tertiary |
+Move it inside the form card, between the voucher badge and the form heading.
 
-This creates a clear visual ladder: **Kicker (xs) → H1 (5xl–6xl) → Subhead (xl–2xl) → Location/Trust (sm)**.
+### 3. Keep trust badges where they are
+They're lightweight, serve as a scanning layer for people who haven't scrolled yet, and moving them into the form card would make it cluttered.
 
-### 2. Center-align the hero content
+## Technical details
+All changes in `src/pages/Index.tsx`:
+- Line 511: shorten location text to "Bury, Manchester"
+- Lines 518–525: remove pricing badge from hero copy column
+- Lines 548–550 area: insert pricing badge inside form card (above or below the voucher pill)
 
-Switch the hero from the current left-aligned two-column grid to a centered, stacked layout on mobile. On desktop, keep the two-column grid but center the text within the left column:
-
-- Add `text-center lg:text-left` to the copy column
-- Center the trust badges row on mobile: `justify-center lg:justify-start`
-- Center the pricing badge on mobile: wrap with `flex justify-center lg:justify-start`
-
-This matches the centered approach used by every other section on the page while keeping the desktop two-column layout intact.
-
-## File modified
-- `src/pages/Index.tsx` — hero text classes only (lines 500–539), no structural changes
+No structural, database, or routing changes.
 
