@@ -515,14 +515,6 @@ const Index = () => {
                 welcome — trusted by 1,000+ clients in Manchester.
               </p>
 
-              {/* Pricing Badge */}
-              <div className="flex justify-center lg:justify-start mb-8">
-                <div className="inline-flex items-baseline gap-3 px-6 py-3 rounded-full bg-background/80 border border-border">
-                  <span className="text-lg text-muted-foreground line-through">£895</span>
-                  <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
-                  <span className="text-sm text-muted-foreground">for 6 sessions</span>
-                </div>
-              </div>
 
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center lg:justify-start">
