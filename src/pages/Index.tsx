@@ -537,6 +537,11 @@ const Index = () => {
             <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
               <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
                 <div className="text-center mb-5">
+                  <div className="inline-flex items-baseline gap-3 px-5 py-2 rounded-full bg-background border border-border mb-3">
+                    <span className="text-base text-muted-foreground line-through">£895</span>
+                    <span className="text-2xl font-serif text-gold-metallic font-semibold">£795</span>
+                    <span className="text-xs text-muted-foreground">for 6 sessions</span>
+                  </div>
                   <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-3">
                     <span className="text-sm font-semibold tracking-widest text-primary">YOUR £100 VOUCHER: SPRING100</span>
                   </div>
