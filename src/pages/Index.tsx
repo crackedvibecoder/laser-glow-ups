@@ -542,10 +542,16 @@ const Index = () => {
             {/* Right - Lead Capture Form */}
             <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
               <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-serif mb-2">Book Your Free Consultation</h2>
+                <div className="text-center mb-5">
+                  <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-3">
+                    <span className="text-sm font-semibold tracking-widest text-primary">YOUR £100 VOUCHER: SPRING100</span>
+                  </div>
+                  <h2 className="text-2xl font-serif mb-2">Claim Your £100 Voucher</h2>
                   <p className="text-muted-foreground text-sm">
-                    Limited availability — secure your spot with no payment required
+                    Free consultation · No payment required
+                  </p>
+                  <p className="text-sm text-primary font-medium mt-2">
+                    ⚡ Only 4 consultation slots left this week
                   </p>
                 </div>
                 <LeadCaptureForm />
