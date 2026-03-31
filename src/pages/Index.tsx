@@ -499,7 +499,7 @@ const Index = () => {
             {/* Left - Copy */}
             <div className="animate-fade-up">
               <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">
-                Medical-Grade Laser Hair Removal · Bury, Manchester
+                Medical-Grade Laser Hair Removal
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
                 Full-Body Laser Hair Removal — Save £100{" "}
@@ -507,6 +507,9 @@ const Index = () => {
                   This Spring
                 </span>
               </h1>
+              <p className="text-base font-medium text-foreground/80 -mt-3 mb-4">
+                📍 Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond
+              </p>
               <p className="text-lg text-muted-foreground mb-8 max-w-lg">
                 Ditch the razor for good. 6 painless sessions, all skin types
                 welcome — trusted by 1,000+ clients in Manchester.
