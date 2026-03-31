@@ -508,21 +508,13 @@ const Index = () => {
                 </span>
               </h1>
               <p className="text-sm text-muted-foreground -mt-3 mb-4">
-                Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond
+                Bury, Manchester
               </p>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
                 Ditch the razor for good. 6 painless sessions, all skin types
                 welcome — trusted by 1,000+ clients in Manchester.
               </p>
 
-              {/* Pricing Badge */}
-              <div className="flex justify-center lg:justify-start mb-8">
-                <div className="inline-flex items-baseline gap-3 px-6 py-3 rounded-full bg-background/80 border border-border">
-                  <span className="text-lg text-muted-foreground line-through">£895</span>
-                  <span className="text-3xl font-serif text-gold-metallic font-semibold">£795</span>
-                  <span className="text-sm text-muted-foreground">for 6 sessions</span>
-                </div>
-              </div>
 
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center lg:justify-start">
@@ -545,6 +537,11 @@ const Index = () => {
             <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
               <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
                 <div className="text-center mb-5">
+                  <div className="inline-flex items-baseline gap-3 px-5 py-2 rounded-full bg-background border border-border mb-3">
+                    <span className="text-base text-muted-foreground line-through">£895</span>
+                    <span className="text-2xl font-serif text-gold-metallic font-semibold">£795</span>
+                    <span className="text-xs text-muted-foreground">for 6 sessions</span>
+                  </div>
                   <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-3">
                     <span className="text-sm font-semibold tracking-widest text-primary">YOUR £100 VOUCHER: SPRING100</span>
                   </div>
