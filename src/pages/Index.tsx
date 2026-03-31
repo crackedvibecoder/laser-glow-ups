@@ -508,7 +508,7 @@ const Index = () => {
                 </span>
               </h1>
               <p className="text-sm text-muted-foreground -mt-3 mb-4">
-                Bury, Manchester — Serving Bolton, Prestwich, Whitefield & beyond
+                Bury, Manchester
               </p>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
                 Ditch the razor for good. 6 painless sessions, all skin types
