@@ -336,28 +336,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Social Proof Strip */}
-      <section className="py-6 border-y border-border bg-background">
-        <div className="content-container">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
-            {[
-              { number: "1,000+", label: "Happy Clients" },
-              { number: "8,500+", label: "Sessions Completed" },
-              { number: "5★", label: "Average Rating" },
-              { number: "6+", label: "Years Experience" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-serif text-gold-metallic font-semibold">
-                  {stat.number}
-                </p>
-                <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Pain Points */}
       <section className="section-padding-compact bg-background">
