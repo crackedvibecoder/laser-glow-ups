@@ -29,10 +29,10 @@ const ThankYou = () => {
         <div className="bg-card border border-border rounded-xl p-6 md:p-8 text-left space-y-5">
           <h2 className="font-semibold text-foreground text-center">What To Do Now</h2>
           <div className="space-y-5">
-            <div className="flex items-start gap-3">
-              <CalendarPlus className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+            <div className="flex items-start gap-3 border-b border-border pb-5">
+              <CalendarPlus className="w-6 h-6 text-primary mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium text-foreground">Add it to your calendar</p>
+                <p className="text-base font-semibold text-foreground">Add it to your calendar</p>
                 <p className="text-sm text-muted-foreground">
                   Check your email for a confirmation and tap "Add to Calendar" so you don't forget your slot.
                 </p>
