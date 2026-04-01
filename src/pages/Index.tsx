@@ -137,7 +137,7 @@ const ExitIntentPopup = () => {
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
           ⏳ Limited spots available this week
         </p>
-        <a href="/book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
+        <a href="#book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
           Claim My £100 Discount →
         </a>
         <button
@@ -240,7 +240,7 @@ const StickyDesktopCTA = () => {
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
-          href="/book"
+          href="#book"
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
           Book Now →
@@ -253,6 +253,17 @@ const StickyDesktopCTA = () => {
 /* ──────────────────── Main Page ──────────────────── */
 const Index = () => {
   useSocialProofToasts();
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://link.msgsndr.com/js/form_embed.js";
+    script.type = "text/javascript";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -303,7 +314,7 @@ const Index = () => {
             </p>
 
             <a
-              href="/book"
+              href="#book"
               className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-8"
             >
               Claim Your £100 Discount →
@@ -406,7 +417,7 @@ const Index = () => {
           </div>
 
           <div className="mt-12">
-            <a href="/book" className="btn-gold-metallic">
+            <a href="#book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
@@ -444,7 +455,7 @@ const Index = () => {
           </div>
 
           <div className="mt-10">
-            <a href="/book" className="btn-gold-metallic">
+            <a href="#book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
@@ -551,7 +562,7 @@ const Index = () => {
             </div>
 
             <a
-              href="/book"
+              href="#book"
               className="btn-gold-metallic w-full !block !text-center"
             >
               Claim Your £100 Discount →
@@ -598,10 +609,39 @@ const Index = () => {
 
           {/* Post-reviews CTA */}
           <div className="mt-12">
-            <a href="/book" className="btn-gold-metallic">
+            <a href="#book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Booking Calendar */}
+      <section id="book" className="section-padding-compact bg-secondary scroll-mt-24">
+        <div className="content-container max-w-2xl text-center">
+          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            Book Now
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-3">
+            Book Your Free Consultation
+          </h2>
+          <p className="text-muted-foreground mb-2">
+            Choose a time that works for you. No commitment, no pressure.
+          </p>
+          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-6">
+            <span className="text-sm font-semibold tracking-widest text-primary">VOUCHER: SPRING100</span>
+          </div>
+
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
+            style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
+            id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
+            title="Book Your Consultation"
+          />
+
+          <p className="text-xs text-muted-foreground mt-4">
+            No payment required · Free consultation · All skin types welcome
+          </p>
         </div>
       </section>
 
@@ -682,7 +722,7 @@ const Index = () => {
           </p>
 
           <a
-            href="/book"
+            href="#book"
             className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
           >
             Claim Your £100 Discount →
@@ -730,7 +770,7 @@ const Index = () => {
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3">
         <a
-          href="/book"
+          href="#book"
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
         >
           Claim £100 Off — Book Free Consultation →
