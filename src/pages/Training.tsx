@@ -174,19 +174,29 @@ const ExitIntentPopup = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-md text-center">
+      <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-serif">Wait — Don't Miss This</DialogTitle>
-          <DialogDescription className="text-muted-foreground mt-2">
-            Our next <strong className="text-primary">VTCT-accredited cohort</strong> has limited spots. Enquire now to secure your place.
+          <div className="mb-4">
+            <span className="inline-block bg-primary/15 text-primary font-bold text-lg px-5 py-2 rounded-full">
+              Limited Spots Available
+            </span>
+          </div>
+          <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
+            Your Career in Aesthetics<br />Starts Here
+          </DialogTitle>
+          <DialogDescription className="text-lg text-muted-foreground mt-3">
+            Our next <strong className="text-primary">VTCT-accredited cohort</strong> is filling fast. Don't miss your chance to train with Manchester's most trusted laser clinic.
           </DialogDescription>
         </DialogHeader>
-        <button onClick={scrollToEnquire} className="btn-gold-metallic w-full mt-4">
+        <button onClick={scrollToEnquire} className="btn-gold-metallic w-full mt-6 !py-5 !text-lg tracking-wider">
           Enquire About Training →
         </button>
-        <p className="text-xs text-muted-foreground mt-2">
-          No obligation · Flexible scheduling · Payment plans available
-        </p>
+        <button
+          onClick={() => setOpen(false)}
+          className="text-sm text-muted-foreground hover:text-foreground mt-3 underline underline-offset-4 transition-colors"
+        >
+          No thanks, I'll miss out
+        </button>
       </DialogContent>
     </Dialog>
   );
