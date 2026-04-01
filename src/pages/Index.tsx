@@ -137,7 +137,7 @@ const ExitIntentPopup = () => {
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
           ⏳ Limited spots available this week
         </p>
-        <a href="/book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
+        <a href="#book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
           Claim My £100 Discount →
         </a>
         <button
