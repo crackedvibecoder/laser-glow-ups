@@ -240,7 +240,7 @@ const StickyDesktopCTA = () => {
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
-          href="/book"
+          href="#book"
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
           Book Now →
