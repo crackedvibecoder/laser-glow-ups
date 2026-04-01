@@ -730,7 +730,7 @@ const Index = () => {
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3">
         <a
-          href="/book"
+          href="#book"
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
         >
           Claim £100 Off — Book Free Consultation →
