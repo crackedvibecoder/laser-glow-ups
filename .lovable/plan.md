@@ -1,62 +1,37 @@
 
 
-# Replace Form with CTA Buttons + Create /book Page
+# Move Calendar Inline + Remove /book Page
 
-## What changes and why
+## Why this is better
 
-The GoHighLevel booking calendar already collects name, phone, and email — so the current lead capture form creates double data entry. Replace it with a direct CTA button that sends users to a dedicated `/book` page with the calendar iframe. This matches the flow that performed best in the ads report (direct booking path = lowest CPC).
+You're right — sending users to a separate page adds friction. Keeping the calendar on the same page means all CTAs just smooth-scroll down to it. One page, one flow, no context switch.
+
+The calendar iframe URL (`https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH`) and embed script are correct — the calendar likely isn't rendering in the Lovable preview due to sandbox iframe restrictions, but will work on the published domain.
 
 ## Changes
 
-### 1. Create `/book` page (`src/pages/Booking.tsx`)
+### 1. Add booking calendar section at bottom of `src/pages/Index.tsx`
 
-Replicate the style of `laserlocation.co.uk/book/offer`:
-- Clean, distraction-free page (no nav, no other sections)
-- Heading: "Your £100 Off — Book Your Free Consultation"
+Place it just before the FAQ section (or after final CTA). Add an `id="book"` anchor so all CTAs scroll to it:
+
+- Heading: "Book Your Free Consultation"
 - Subtitle: "Choose a time that works for you. No commitment, no pressure."
-- GoHighLevel calendar iframe (same embed ID: `XFCIVqAZ7Ha6pnxEiKXH`)
-- Small trust line at bottom: "No payment required · Free consultation · All skin types"
-- Keep the urgency bar at top for consistency
+- SPRING100 voucher display
+- GoHighLevel calendar iframe (same embed ID)
+- Trust line: "No payment required · Free consultation · All skin types welcome"
+- Load the `form_embed.js` script via useEffect
 
-### 2. Add route in `App.tsx`
+### 2. Update all CTA links from `/book` to `#book`
 
-Add `/book` route pointing to `Booking.tsx`.
+Change every `href="/book"` across the page (~10 instances including sticky bars, exit intent, section CTAs) to `href="#book"` for smooth in-page scrolling. Add `scroll-mt-24` class to the booking section for proper offset.
 
-### 3. Simplify hero section (`src/pages/Index.tsx`)
+### 3. Remove `/book` route and `Booking.tsx`
 
-Remove the entire form card (right column, lines 537-558). Replace the two-column grid with a single centered column:
+- Remove the `/book` route from `src/App.tsx`
+- Delete `src/pages/Booking.tsx` (no longer needed)
 
-- Kicker
-- Headline
-- Location
-- Subheading
-- **CTA button**: "Claim Your £100 Discount →" (links to `/book`)
-- Trust badges (below the button)
-
-This cuts the hero height significantly on mobile — the CTA is visible almost immediately.
-
-### 4. Replace final CTA section (lines 903-932)
-
-Remove the `LeadCaptureForm` instance. Replace with a simple CTA button linking to `/book`, keeping the heading and trust checkmarks.
-
-### 5. Update all `#claim` anchors to link to `/book`
-
-All existing CTA buttons throughout the page (Pain Points, Before & After, Pricing, Reviews, sticky mobile bar, sticky desktop bar, exit intent popup) currently scroll to `#claim`. Change them to navigate to `/book` instead.
-
-Affected locations (~7 buttons + sticky bars + exit intent).
-
-### 6. Remove LeadCaptureForm component
-
-Once no longer used anywhere on Index.tsx, remove the component definition (lines 228-360), the form schema (lines 25-30), the webhook/save logic, and the `useForm`/`zod` imports.
-
-### 7. Keep lead saving for analytics
-
-Move the lead context utilities (`getLeadContext`, `saveLeadToBackend`) to a shared util or keep them in Index.tsx — they're not needed if we're not capturing leads on this page anymore. The booking calendar handles contact capture directly in GoHighLevel.
-
-## Files to modify/create
-- `src/pages/Booking.tsx` — new page with calendar iframe
-- `src/App.tsx` — add `/book` route
-- `src/pages/Index.tsx` — remove form, simplify hero, update all CTAs to `/book`
-
-No database changes needed.
+## Files modified
+- `src/pages/Index.tsx` — add inline booking section, update all CTA hrefs
+- `src/App.tsx` — remove `/book` route
+- `src/pages/Booking.tsx` — delete
 
