@@ -22,49 +22,31 @@ const ThankYou = () => {
             You're Booked!
           </h1>
           <p className="text-lg text-muted-foreground">
-            Here's how to make sure you're all set.
+            Quick next steps:
           </p>
         </div>
 
-        <div className="bg-card border border-border rounded-xl p-5 md:p-7 text-left space-y-4">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-muted-foreground text-center">What To Do Now</h2>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3 border-b border-border pb-4">
-              <CalendarPlus className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">Add it to your calendar</p>
-                <p className="text-sm text-muted-foreground">
-                  Check your email for a confirmation and tap "Add to Calendar" so you don't forget your slot.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 border-b border-border pb-4">
-              <MessageSquare className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">Keep an eye on your messages</p>
-                <p className="text-sm text-muted-foreground">
-                  You'll receive a confirmation with your appointment details — check your texts and email.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">Your consultation is 15 minutes</p>
-                <p className="text-sm text-muted-foreground">
-                  No pressure, no obligation. We'll assess your skin, answer questions, and apply your <strong className="text-primary">£100 discount</strong>.
-                </p>
-              </div>
-            </div>
+        <div className="bg-card border border-border rounded-xl p-5 md:p-7 text-left space-y-5">
+          <div className="flex items-center gap-3 border-b border-border pb-5">
+            <CalendarPlus className="w-5 h-5 text-primary shrink-0" />
+            <p className="text-sm font-semibold text-foreground">Add your slot to calendar</p>
+          </div>
+          <div className="flex items-center gap-3 border-b border-border pb-5">
+            <MessageSquare className="w-5 h-5 text-primary shrink-0" />
+            <p className="text-sm font-semibold text-foreground">Check text/email for confirmation</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <Clock className="w-5 h-5 text-primary shrink-0" />
+            <p className="text-sm font-semibold text-foreground">15-min consultation · £100 discount applied</p>
           </div>
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Slots are limited — if you need to reschedule, please let us know as soon as possible so we can offer your spot to someone else.
+          Need to reschedule? Please tell us ASAP so your slot can be offered to someone else.
         </p>
 
         <p className="text-xs text-muted-foreground">
-          Laser Location · Bury, Manchester · Trusted by 1,000+ clients
+          Laser Location · Bury, Manchester
         </p>
       </div>
     </div>
