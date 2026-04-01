@@ -630,21 +630,8 @@ const Index = () => {
 
       {/* Booking Calendar */}
       <section id="book" className="section-padding-compact bg-secondary scroll-mt-24">
-        <div className="content-container max-w-2xl text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Book Now
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-3">
-            Book Your Free Consultation
-          </h2>
-          <p className="text-muted-foreground mb-2">
-            Choose a time that works for you. No commitment, no pressure.
-          </p>
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-6">
-            <span className="text-sm font-semibold tracking-widest text-primary">VOUCHER: SPRING100</span>
-          </div>
-
-          <iframe
+         <div className="content-container max-w-2xl text-center">
+           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
             style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
             id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
