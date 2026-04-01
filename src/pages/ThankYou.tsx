@@ -26,9 +26,9 @@ const ThankYou = () => {
           </p>
         </div>
 
-        <div className="bg-card border border-border rounded-xl p-6 text-left space-y-4">
+        <div className="bg-card border border-border rounded-xl p-6 md:p-8 text-left space-y-5">
           <h2 className="font-semibold text-foreground text-center">What To Do Now</h2>
-          <div className="space-y-3">
+          <div className="space-y-5">
             <div className="flex items-start gap-3">
               <CalendarPlus className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
