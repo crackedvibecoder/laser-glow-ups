@@ -590,9 +590,9 @@ const Index = () => {
       {/* Reviews Widget */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Real Results
-          </p>
+           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+             What Our Clients Say
+           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
             Trusted by 1,000+ Clients in Manchester
           </h2>
