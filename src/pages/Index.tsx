@@ -309,7 +309,8 @@ const Index = () => {
               Bury, Manchester
             </p>
              <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
-               Ditch the razor for good. 6 painless sessions, all skin types welcome.
+               Ditch the razor for good.<br />
+               60-minute sessions, all skin types welcome.
              </p>
 
             <a
