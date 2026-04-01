@@ -1,22 +1,41 @@
 
+# Thank-You Page Simplification (Mobile-First)
 
-# Fix Thank-You Page — Reduce Top Weight, Tighten Mobile Layout
+## Goal
+Make `/thank-you` feel lighter and more scannable by reducing copy volume (not enlarging elements).
 
-## Problem
-The hero area (icon + heading + subtitle) consumes nearly half the 390px mobile viewport before users see any actionable content. The "What To Do Now" heading is also oversized.
+## What to change
 
-## Changes in `src/pages/ThankYou.tsx`
+1. **Remove redundant heading layer**
+   - Keep **“You’re Booked!”**
+   - Shorten subtitle to one line: **“Quick next steps:”**
+   - Remove the separate **“What To Do Now”** label (it adds visual noise)
 
-1. **Shrink icon circle**: `w-20 h-20` → `w-14 h-14`, icon `w-10 h-10` → `w-7 h-7` (scale up on desktop with `md:` variants)
-2. **Reduce top padding**: `py-16` → `py-8` on mobile, `md:py-16` on desktop. Switch `items-center` to `items-start` on mobile so content starts near the top
-3. **Tighten hero spacing**: outer `space-y-10` → `space-y-6` on mobile (`md:space-y-8`), heading gap `space-y-3` → `space-y-2`
-4. **Downsize "What To Do Now"**: from `font-semibold text-foreground` to `text-sm font-medium uppercase tracking-wide text-muted-foreground` — makes it a subtle section label rather than a competing heading
-5. **Slightly reduce card internal spacing**: item spacing `space-y-5` → `space-y-4`, divider padding `pb-5` → `pb-4`, card padding stays `p-6 md:p-8` → `p-5 md:p-7`
-6. **Keep icon sizes at `w-5 h-5`** for the step icons (they were bumped to `w-6 h-6` last pass — revert)
-7. **Step titles stay `text-sm font-semibold`** (revert from `text-base`) — the dividers already provide enough visual separation
+2. **Convert each step to one concise line**
+   - Keep the 3 icons, but remove paragraph text under each step
+   - Use short, action-led lines:
+     - **Add your slot to calendar**
+     - **Check text/email for confirmation**
+     - **15-min consultation · £100 discount applied**
+   - This cuts the biggest source of text density
 
-Net effect: the card with actionable steps is visible above the fold on mobile without scrolling.
+3. **Shorten the urgency copy**
+   - Replace long sentence with:
+   - **“Need to reschedule? Please tell us ASAP so your slot can be offered to someone else.”**
 
-## File modified
-- `src/pages/ThankYou.tsx` — class adjustments only
+4. **Tighten the footer trust line**
+   - Keep one short trust line only:
+   - **“Laser Location · Bury, Manchester”**
+   - Remove extra qualifier text to reduce bottom clutter
 
+5. **Spacing tuned for scan speed**
+   - Keep current compact top layout
+   - Slightly increase row separation inside the card so each action reads as a distinct checklist item
+
+## Technical details
+- Update text content and classNames only in `src/pages/ThankYou.tsx`
+- No routing, tracking, backend, or data changes
+- Keep `fbq("track", "Schedule")` exactly as is
+
+## File to update
+- `src/pages/ThankYou.tsx`
