@@ -10,7 +10,7 @@ const ThankYou = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-16">
-      <div className="max-w-lg w-full text-center space-y-8">
+      <div className="max-w-lg w-full text-center space-y-10">
         <div className="flex justify-center">
           <div className="w-20 h-20 rounded-full bg-primary/15 flex items-center justify-center">
             <CheckCircle className="w-10 h-10 text-primary" />
