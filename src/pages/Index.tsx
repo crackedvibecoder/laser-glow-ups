@@ -523,6 +523,12 @@ const Index = () => {
               <source src="/videos/first-visit.mp4" type="video/mp4" />
             </video>
           </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
+          </div>
         </div>
       </section>
 
