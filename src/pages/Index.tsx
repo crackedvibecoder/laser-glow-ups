@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Check, Star, Clock, Shield, Users, Sparkles } from "lucide-react";
+import { Check, Star, Clock, Shield, Users, Sparkles, Zap } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
@@ -309,7 +309,8 @@ const Index = () => {
               Bury, Manchester
             </p>
              <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
-               Ditch the razor for good. 6 painless sessions, all skin types welcome.
+               Ditch the razor for good.<br />
+               60-minute sessions, all skin types welcome.
              </p>
 
             <a
@@ -322,44 +323,19 @@ const Index = () => {
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center">
               <span className="flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-primary" /> Medical-Grade
-              </span>
-              <span className="flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
               </span>
               <span className="flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-primary" /> 5-Star Rated
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-primary" /> All Skin Tones
+                <Zap className="w-4 h-4 text-primary" /> 8,500+ Sessions
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Strip */}
-      <section className="py-6 border-y border-border bg-background">
-        <div className="content-container">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
-            {[
-              { number: "1,000+", label: "Happy Clients" },
-              { number: "8,500+", label: "Sessions Completed" },
-              { number: "5★", label: "Average Rating" },
-              { number: "6+", label: "Years Experience" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-serif text-gold-metallic font-semibold">
-                  {stat.number}
-                </p>
-                <p className="text-xs text-muted-foreground tracking-wide uppercase">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Pain Points */}
       <section className="section-padding-compact bg-background">
