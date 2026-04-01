@@ -551,7 +551,7 @@ const Index = () => {
             </div>
 
             <a
-              href="/book"
+              href="#book"
               className="btn-gold-metallic w-full !block !text-center"
             >
               Claim Your £100 Discount →
