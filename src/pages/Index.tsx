@@ -1,9 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Check, Star, Clock, Shield, Users, Sparkles, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { useState, useEffect, useCallback } from "react";
+import { Check, Star, Clock, Shield, Users, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
@@ -21,66 +17,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-
-const leadSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(100),
-  phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
-});
-
-type LeadFormData = z.infer<typeof leadSchema>;
-
-type LeadInsertPayload = {
-  full_name: string;
-  email?: string;
-  phone: string;
-  source: "website" | "meta";
-  page_url: string;
-  referrer: string;
-  utm_source: string | null;
-  utm_medium: string | null;
-  utm_campaign: string | null;
-  raw_payload: Record<string, unknown>;
-};
-
-const getLeadContext = () => {
-  if (typeof window === "undefined") {
-    return {
-      pageUrl: "",
-      referrer: "",
-      utmSource: null,
-      utmMedium: null,
-      utmCampaign: null,
-    };
-  }
-
-  const params = new URLSearchParams(window.location.search);
-
-  return {
-    pageUrl: window.location.href,
-    referrer: document.referrer || "",
-    utmSource: params.get("utm_source"),
-    utmMedium: params.get("utm_medium"),
-    utmCampaign: params.get("utm_campaign"),
-  };
-};
-
-const saveLeadToBackend = async (payload: LeadInsertPayload) => {
-  const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/leads`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Lead save failed with status ${response.status}`);
-  }
-};
-
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const CountdownTimer = () => {
@@ -157,7 +93,6 @@ const ExitIntentPopup = () => {
   useEffect(() => {
     if (sessionStorage.getItem("exit_popup_shown")) return;
 
-    // Desktop: mouse leaves viewport from top
     const handleMouseOut = (e: MouseEvent) => {
       if (e.clientY <= 0 && !sessionStorage.getItem("exit_popup_shown")) {
         sessionStorage.setItem("exit_popup_shown", "1");
@@ -165,7 +100,6 @@ const ExitIntentPopup = () => {
       }
     };
 
-    // Mobile: 60% scroll + 15s on page
     let scrollTriggered = false;
     const startTime = Date.now();
     const handleScroll = () => {
@@ -186,11 +120,6 @@ const ExitIntentPopup = () => {
     };
   }, []);
 
-  const scrollToClaim = () => {
-    setOpen(false);
-    document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30 shadow-2xl">
@@ -208,9 +137,9 @@ const ExitIntentPopup = () => {
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
           ⏳ Limited spots available this week
         </p>
-        <button onClick={scrollToClaim} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider">
+        <a href="/book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
           Claim My £100 Discount →
-        </button>
+        </a>
         <button
           onClick={() => setOpen(false)}
           className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors mt-1 underline underline-offset-2"
@@ -222,137 +151,6 @@ const ExitIntentPopup = () => {
         </p>
       </DialogContent>
     </Dialog>
-  );
-};
-
-/* ──────────────────── Lead Capture Form ──────────────────── */
-const LeadCaptureForm = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
-  const [submitted, setSubmitted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LeadFormData>({
-    resolver: zodResolver(leadSchema),
-  });
-
-  useEffect(() => {
-    if (submitted) {
-      const script = document.createElement("script");
-      script.src = "https://link.msgsndr.com/js/form_embed.js";
-      script.type = "text/javascript";
-      script.async = true;
-      document.body.appendChild(script);
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
-  }, [submitted]);
-
-  const onSubmit = async (data: LeadFormData) => {
-    const { pageUrl, referrer, utmSource, utmMedium, utmCampaign } = getLeadContext();
-
-    try {
-      await saveLeadToBackend({
-        full_name: data.name,
-        phone: data.phone,
-        source: "website",
-        page_url: pageUrl,
-        referrer,
-        utm_source: utmSource,
-        utm_medium: utmMedium,
-        utm_campaign: utmCampaign,
-        raw_payload: {
-          name: data.name,
-          phone: data.phone,
-          submitted_from: "website_form",
-        },
-      });
-    } catch (err) {
-      console.error("Lead save error:", err);
-    }
-
-    try {
-      const formBody = new URLSearchParams({
-        name: data.name,
-        phone: data.phone,
-      });
-      await fetch(
-        "https://services.leadconnectorhq.com/hooks/PWKfLNPWUuSeU4ukiccO/webhook-trigger/3hSiNxkqCXRF8UO67ADh",
-        {
-          method: "POST",
-          body: formBody,
-          mode: "no-cors",
-        }
-      );
-    } catch (err) {
-      console.error("Webhook error:", err);
-    }
-
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="animate-fade-up">
-        <div className="text-center mb-3">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 mb-2">
-            <Check className="w-6 h-6 text-primary" />
-          </div>
-          <h3 className="text-xl font-serif mb-1">You're In!</h3>
-          <p className="text-muted-foreground text-sm mb-2">
-            Your Spring Special voucher code is:
-          </p>
-          <div className="inline-block px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 mb-2">
-            <span className="text-lg font-semibold tracking-widest text-primary">SPRING100</span>
-          </div>
-          <p className="text-sm text-muted-foreground mb-0">
-            Book your free consultation below:
-          </p>
-        </div>
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
-          style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
-          id="WKJHfaDYyUDdQrbeGrlS_1773178006930"
-          title="Book Your Consultation"
-        />
-      </div>
-    );
-  }
-
-  const isDark = variant === "dark";
-  const fields = [
-    { name: "name" as const, placeholder: "Your name", type: "text" },
-    { name: "phone" as const, placeholder: "Phone number", type: "tel" },
-  ];
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      {fields.map((field) => (
-        <div key={field.name}>
-          <Input
-            type={field.type}
-            placeholder={field.placeholder}
-            {...register(field.name)}
-            className={`h-12 rounded-lg text-base ${isDark ? "bg-foreground/5 border-foreground/20 placeholder:text-foreground/40" : "bg-background border-border"}`}
-          />
-          {errors[field.name] && (
-            <p className="text-destructive text-sm mt-1">{errors[field.name]?.message}</p>
-          )}
-        </div>
-      ))}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="btn-gold-metallic w-full !py-4 !text-base disabled:opacity-50"
-      >
-        {isSubmitting ? "Submitting..." : "Claim Your £100 Discount →"}
-      </button>
-      <p className="text-xs text-center text-muted-foreground">
-        No payment required. No obligation. We'll be in touch within 24 hours.
-      </p>
-    </form>
   );
 };
 
@@ -442,12 +240,8 @@ const StickyDesktopCTA = () => {
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
-          href="#claim"
+          href="/book"
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-          }}
         >
           Book Now →
         </a>
@@ -459,11 +253,6 @@ const StickyDesktopCTA = () => {
 /* ──────────────────── Main Page ──────────────────── */
 const Index = () => {
   useSocialProofToasts();
-
-  const scrollToClaim = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById("claim")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -494,67 +283,46 @@ const Index = () => {
         className="relative py-16 md:py-24"
         style={{ backgroundColor: "hsl(var(--hero-bg, 36 30% 92%))" }}
       >
-        <div className="content-container">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left - Copy */}
-            <div className="animate-fade-up text-center lg:text-left">
-              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-4">
-                Medical-Grade Laser Hair Removal
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
-                Full-Body Laser Hair Removal — Save £100{" "}
-                <span className="text-script-accent text-primary text-[1.15em]">
-                  This Spring
-                </span>
-              </h1>
-              <p className="text-sm text-muted-foreground -mt-3 mb-4">
-                Bury, Manchester
-              </p>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
-                Ditch the razor for good. 6 painless sessions, all skin types
-                welcome — trusted by 1,000+ clients in Manchester.
-              </p>
+        <div className="content-container max-w-3xl text-center">
+          <div className="animate-fade-up">
+            <p className="text-xs font-medium tracking-widest uppercase text-primary mb-4">
+              Medical-Grade Laser Hair Removal
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-4">
+              Full-Body Laser Hair Removal — Save £100{" "}
+              <span className="text-script-accent text-primary text-[1.15em]">
+                This Spring
+              </span>
+            </h1>
+            <p className="text-sm text-muted-foreground mb-6">
+              Bury, Manchester
+            </p>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg mx-auto">
+              Ditch the razor for good. 6 painless sessions, all skin types
+              welcome — trusted by 1,000+ clients in Manchester.
+            </p>
 
+            <a
+              href="/book"
+              className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-8"
+            >
+              Claim Your £100 Discount →
+            </a>
 
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center lg:justify-start">
-                <span className="flex items-center gap-1.5">
-                  <Shield className="w-4 h-4 text-primary" /> Medical-Grade
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Star className="w-4 h-4 text-primary" /> 5-Star Rated
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-primary" /> All Skin Tones
-                </span>
-              </div>
-            </div>
-
-            {/* Right - Lead Capture Form */}
-            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
-              <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
-                <div className="text-center mb-5">
-                  <div className="inline-flex items-baseline gap-3 px-5 py-2 rounded-full bg-background border border-border mb-3">
-                    <span className="text-base text-muted-foreground line-through">£895</span>
-                    <span className="text-2xl font-serif text-gold-metallic font-semibold">£795</span>
-                    <span className="text-xs text-muted-foreground">for 6 sessions</span>
-                  </div>
-                  <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-3">
-                    <span className="text-sm font-semibold tracking-widest text-primary">YOUR £100 VOUCHER: SPRING100</span>
-                  </div>
-                  <h2 className="text-2xl font-serif mb-2">Claim Your £100 Voucher</h2>
-                  <p className="text-muted-foreground text-sm">
-                    Free consultation · No payment required
-                  </p>
-                  <p className="text-sm text-primary font-medium mt-2">
-                    ⚡ Only 4 consultation slots left this week
-                  </p>
-                </div>
-                <LeadCaptureForm />
-              </div>
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center">
+              <span className="flex items-center gap-1.5">
+                <Shield className="w-4 h-4 text-primary" /> Medical-Grade
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 text-primary" /> 5-Star Rated
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-primary" /> All Skin Tones
+              </span>
             </div>
           </div>
         </div>
@@ -638,7 +406,7 @@ const Index = () => {
           </div>
 
           <div className="mt-12">
-            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
+            <a href="/book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
@@ -676,7 +444,7 @@ const Index = () => {
           </div>
 
           <div className="mt-10">
-            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
+            <a href="/book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
@@ -721,7 +489,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Your First Visit - Video (Lazy Loaded) */}
+      {/* Your First Visit - Video */}
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
@@ -783,9 +551,8 @@ const Index = () => {
             </div>
 
             <a
-              href="#claim"
+              href="/book"
               className="btn-gold-metallic w-full !block !text-center"
-              onClick={scrollToClaim}
             >
               Claim Your £100 Discount →
             </a>
@@ -807,7 +574,7 @@ const Index = () => {
             Trusted by 1,000+ Clients in Manchester
           </h2>
 
-          {/* Testimonial Video (Lazy Loaded) */}
+          {/* Testimonial Video */}
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
             <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
@@ -831,7 +598,7 @@ const Index = () => {
 
           {/* Post-reviews CTA */}
           <div className="mt-12">
-            <a href="#claim" className="btn-gold-metallic" onClick={scrollToClaim}>
+            <a href="/book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
@@ -901,7 +668,7 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section id="claim" className="section-padding bg-secondary">
+      <section className="section-padding bg-secondary">
         <div className="content-container max-w-xl text-center">
           <Sparkles className="w-8 h-8 text-primary mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
@@ -914,9 +681,12 @@ const Index = () => {
             Book your free, no-obligation consultation and claim your £100 Spring Discount.
           </p>
 
-          <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
-            <LeadCaptureForm />
-          </div>
+          <a
+            href="/book"
+            className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
+          >
+            Claim Your £100 Discount →
+          </a>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
@@ -960,9 +730,8 @@ const Index = () => {
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3">
         <a
-          href="#claim"
+          href="/book"
           className="btn-gold-metallic w-full !block !text-center !py-3.5"
-          onClick={scrollToClaim}
         >
           Claim £100 Off — Book Free Consultation →
         </a>
