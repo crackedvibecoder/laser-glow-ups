@@ -323,16 +323,13 @@ const Index = () => {
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center">
               <span className="flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-primary" /> Medical-Grade
-              </span>
-              <span className="flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
               </span>
               <span className="flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-primary" /> 5-Star Rated
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-primary" /> All Skin Tones
+                <Zap className="w-4 h-4 text-primary" /> 8,500+ Sessions
               </span>
             </div>
           </div>
