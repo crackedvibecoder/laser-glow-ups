@@ -497,6 +497,13 @@ const Index = () => {
             ))}
           </div>
         </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* Your First Visit - Video */}
