@@ -406,7 +406,7 @@ const Index = () => {
           </div>
 
           <div className="mt-12">
-            <a href="/book" className="btn-gold-metallic">
+            <a href="#book" className="btn-gold-metallic">
               Claim Your £100 Discount →
             </a>
           </div>
