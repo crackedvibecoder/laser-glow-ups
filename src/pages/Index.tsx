@@ -303,7 +303,7 @@ const Index = () => {
             </p>
 
             <a
-              href="/book"
+              href="#book"
               className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-8"
             >
               Claim Your £100 Discount →
