@@ -496,7 +496,6 @@ const Index = () => {
               </div>
             ))}
           </div>
-        </div>
 
           <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">
