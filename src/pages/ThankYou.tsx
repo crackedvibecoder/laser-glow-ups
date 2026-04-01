@@ -38,10 +38,10 @@ const ThankYou = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3">
-              <MessageSquare className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+            <div className="flex items-start gap-3 border-b border-border pb-5">
+              <MessageSquare className="w-6 h-6 text-primary mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium text-foreground">Keep an eye on your messages</p>
+                <p className="text-base font-semibold text-foreground">Keep an eye on your messages</p>
                 <p className="text-sm text-muted-foreground">
                   You'll receive a confirmation with your appointment details — check your texts and email.
                 </p>
