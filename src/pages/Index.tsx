@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Check, Star, Clock, Shield, Users, Sparkles } from "lucide-react";
+import { Check, Star, Clock, Shield, Users, Sparkles, Zap } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
