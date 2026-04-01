@@ -48,9 +48,9 @@ const ThankYou = () => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+              <Clock className="w-6 h-6 text-primary mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium text-foreground">Your consultation is 15 minutes</p>
+                <p className="text-base font-semibold text-foreground">Your consultation is 15 minutes</p>
                 <p className="text-sm text-muted-foreground">
                   No pressure, no obligation. We'll assess your skin, answer questions, and apply your <strong className="text-primary">£100 discount</strong>.
                 </p>
