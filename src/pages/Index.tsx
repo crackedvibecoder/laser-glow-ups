@@ -308,10 +308,9 @@ const Index = () => {
             <p className="text-sm text-muted-foreground mb-6">
               Bury, Manchester
             </p>
-            <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
-              Ditch the razor for good. 6 painless sessions, all skin types
-              welcome — trusted by 1,000+ clients in Manchester.
-            </p>
+             <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
+               Ditch the razor for good. 6 painless sessions, all skin types welcome.
+             </p>
 
             <a
               href="#book"
