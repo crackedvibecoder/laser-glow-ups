@@ -137,9 +137,9 @@ const ExitIntentPopup = () => {
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
           ⏳ Limited spots available this week
         </p>
-        <a href="#book" className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
-          Claim My £100 Discount →
-        </a>
+         <a href="#book" onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
+           Claim My £100 Discount →
+         </a>
         <button
           onClick={() => setOpen(false)}
           className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors mt-1 underline underline-offset-2"
@@ -308,10 +308,9 @@ const Index = () => {
             <p className="text-sm text-muted-foreground mb-6">
               Bury, Manchester
             </p>
-            <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
-              Ditch the razor for good. 6 painless sessions, all skin types
-              welcome — trusted by 1,000+ clients in Manchester.
-            </p>
+             <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
+               Ditch the razor for good. 6 painless sessions, all skin types welcome.
+             </p>
 
             <a
               href="#book"
@@ -497,6 +496,12 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -516,6 +521,12 @@ const Index = () => {
             <video autoPlay muted playsInline controls className="w-full">
               <source src="/videos/first-visit.mp4" type="video/mp4" />
             </video>
+          </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
           </div>
         </div>
       </section>
@@ -578,9 +589,9 @@ const Index = () => {
       {/* Reviews Widget */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Real Results
-          </p>
+           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+             What Our Clients Say
+           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
             Trusted by 1,000+ Clients in Manchester
           </h2>
@@ -618,21 +629,8 @@ const Index = () => {
 
       {/* Booking Calendar */}
       <section id="book" className="section-padding-compact bg-secondary scroll-mt-24">
-        <div className="content-container max-w-2xl text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
-            Book Now
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-3">
-            Book Your Free Consultation
-          </h2>
-          <p className="text-muted-foreground mb-2">
-            Choose a time that works for you. No commitment, no pressure.
-          </p>
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/25 mb-6">
-            <span className="text-sm font-semibold tracking-widest text-primary">VOUCHER: SPRING100</span>
-          </div>
-
-          <iframe
+         <div className="content-container max-w-2xl text-center">
+           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
             style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
             id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
