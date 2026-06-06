@@ -6,6 +6,7 @@ import { Check, Star, Clock, Shield, Users, Sparkles, X, GraduationCap, Award, B
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
+import { sendLeadToRouter } from "@/lib/leadRouter";
 import {
   Accordion,
   AccordionContent,
@@ -215,28 +216,16 @@ const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" })
   });
 
   const onSubmit = async (data: LeadFormData) => {
-    const { pageUrl, referrer, utmSource, utmMedium, utmCampaign } = getLeadContext();
-
     try {
-      await saveLeadToBackend({
-        full_name: data.name,
+      await sendLeadToRouter({
+        name: data.name,
         email: data.email,
         phone: data.phone,
-        source: "website",
-        page_url: pageUrl,
-        referrer,
-        utm_source: utmSource,
-        utm_medium: utmMedium,
-        utm_campaign: utmCampaign,
-        raw_payload: {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          submitted_from: "training_enquiry",
-        },
+        formName: "training_enquiry",
+        message: "Training enquiry from website",
       });
     } catch (err) {
-      console.error("Lead save error:", err);
+      console.error("Lead router error:", err);
     }
 
     // Fire Meta Pixel lead event
