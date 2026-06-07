@@ -206,6 +206,8 @@ const ExitIntentPopup = () => {
 /* ──────────────────── Lead Capture Form ──────────────────── */
 const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [fallback, setFallback] = useState(false);
+  const hpRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -216,19 +218,27 @@ const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" })
   });
 
   const onSubmit = async (data: LeadFormData) => {
+    const hp = hpRef.current?.value ?? "";
+    // Honeypot: silently treat as success without sending
+    if (hp) {
+      setSubmitted(true);
+      return;
+    }
+
     try {
       await sendLeadToRouter({
         name: data.name,
         email: data.email,
         phone: data.phone,
-        formName: "training_enquiry",
-        message: "Training enquiry from website",
+        formName: "Website contact form",
+        message: `Training enquiry from website. Name: ${data.name}. Email: ${data.email}. Phone: ${data.phone}.`,
+        _hp: hp,
       });
     } catch (err) {
       console.error("Lead router error:", err);
+      setFallback(true);
     }
 
-    // Fire Meta Pixel lead event
     try {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead");
@@ -244,9 +254,13 @@ const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" })
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 mb-3">
           <Check className="w-6 h-6 text-primary" />
         </div>
-        <h3 className="text-xl font-serif mb-2">Enquiry Received!</h3>
+        <h3 className="text-xl font-serif mb-2">
+          {fallback ? "Enquiry Received" : "Enquiry Received!"}
+        </h3>
         <p className="text-muted-foreground text-sm">
-          Thank you for your interest. We'll be in touch within 24 hours to discuss your training pathway.
+          {fallback
+            ? "Thanks, your enquiry has been received. We'll be in touch shortly."
+            : "Thank you for your interest. We'll be in touch within 24 hours to discuss your training pathway."}
         </p>
       </div>
     );
@@ -261,6 +275,16 @@ const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {/* Honeypot — must stay empty for real users */}
+      <input
+        ref={hpRef}
+        type="text"
+        name="_hp"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }}
+      />
       {fields.map((field) => (
         <div key={field.name}>
           <Input
