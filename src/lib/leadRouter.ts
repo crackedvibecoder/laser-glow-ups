@@ -37,7 +37,7 @@ const getUtmContext = () => {
 };
 
 export const sendLeadToRouter = async (payload: LeadRouterPayload) => {
-  const { formName, message, name, email, phone, ...extras } = payload;
+  const { formName, message, name, email, phone, _hp, ...extras } = payload as LeadRouterPayload & { _hp?: string };
   const ctx = getUtmContext();
 
   const body = {
@@ -45,7 +45,7 @@ export const sendLeadToRouter = async (payload: LeadRouterPayload) => {
     name,
     email,
     phone,
-    source: "lovable-website",
+    source: "website",
     page: ctx.page,
     formName,
     message: message ?? "",
@@ -54,7 +54,7 @@ export const sendLeadToRouter = async (payload: LeadRouterPayload) => {
     utm_campaign: ctx.utm_campaign,
     utm_content: ctx.utm_content,
     utm_term: ctx.utm_term,
-    _hp: "",
+    _hp: typeof _hp === "string" ? _hp : "",
     ...extras,
   };
 
