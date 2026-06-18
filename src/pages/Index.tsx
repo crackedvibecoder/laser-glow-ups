@@ -41,7 +41,7 @@ const CountdownTimer = () => {
 
   return (
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
-      <span>Spring Special — Save £100</span>
+      <span>Summer Special — Save £100</span>
       <span className="hidden md:inline">·</span>
       <span>
         Offer ends in{" "}
@@ -128,7 +128,7 @@ const ExitIntentPopup = () => {
             <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£100 OFF</span>
           </div>
           <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
-            Your Spring Discount Is Still Waiting
+            Your Summer Discount Is Still Waiting
           </DialogTitle>
           <DialogDescription className="text-muted-foreground text-lg">
             Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
@@ -235,7 +235,7 @@ const StickyDesktopCTA = () => {
     >
       <div className="content-container flex items-center justify-between py-2.5">
         <p className="text-sm text-[hsl(40,20%,85%)]">
-          <span className="font-serif">Spring Special</span> — Full-body laser hair removal{" "}
+          <span className="font-serif">Summer Special</span> — Full-body laser hair removal{" "}
           <strong className="text-primary">£795</strong>{" "}
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
@@ -302,7 +302,7 @@ const Index = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-4">
               Full-Body Laser Hair Removal — Save £100{" "}
               <span className="text-script-accent text-primary text-[1.15em]">
-                This Spring
+                This Summer
               </span>
             </h1>
             <p className="text-sm text-muted-foreground mb-6">
@@ -514,7 +514,7 @@ const Index = () => {
             Limited Time
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
-            Spring 2026 Special
+            Summer 2026 Special
           </h2>
 
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
@@ -607,7 +607,7 @@ const Index = () => {
       <section id="book" className="section-padding-compact bg-secondary scroll-mt-24">
          <div className="content-container max-w-2xl text-center">
            <iframe
-            src="https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH"
+            src={`https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH${typeof window !== "undefined" ? window.location.search : ""}`}
             style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
             id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
             title="Book Your Consultation"
@@ -657,7 +657,7 @@ const Index = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £795 (or £695 with the Spring Discount) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £795 with the £100 summer discount (normally £895) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
@@ -692,7 +692,7 @@ const Index = () => {
             </span>
           </h2>
           <p className="text-muted-foreground mb-8">
-            Book your free, no-obligation consultation and claim your £100 Spring Discount.
+            Book your free, no-obligation consultation and claim your £100 Summer Discount.
           </p>
 
           <a
@@ -734,7 +734,7 @@ const Index = () => {
             </a>
           </p>
           <p>
-            Spring 2026 offer subject to availability. Treatment suitability
+            Summer 2026 offer subject to availability. Treatment suitability
             assessed during consultation.
           </p>
           <PrivacyPolicyPopup />
