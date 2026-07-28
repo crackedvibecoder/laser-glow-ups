@@ -286,8 +286,7 @@ const Index = () => {
 
       {/* Urgency Bar with Countdown */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
-        <div className="text-base font-medium text-foreground flex items-center justify-center gap-2 leading-tight">
-          <Clock className="w-5 h-5 text-primary shrink-0" />
+        <div className="text-base font-medium text-foreground flex items-center justify-center leading-tight">
           <CountdownTimer />
         </div>
       </div>
