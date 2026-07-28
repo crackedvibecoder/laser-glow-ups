@@ -86,88 +86,89 @@ export function ProspectusDownloadCard() {
   };
 
   return (
-    <div className="bg-card rounded-2xl shadow-xl border border-border overflow-hidden">
-      {/* Gold top hairline */}
-      <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
+    <div className="relative bg-[hsl(40_30%_96%)] rounded-2xl shadow-2xl overflow-hidden p-8 sm:p-10">
+      {/* Gold accent line */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[hsl(43_60%_70%)] to-transparent" />
 
-      <div className="p-6 md:p-8 text-center">
-        <p className="text-[11px] md:text-xs font-semibold tracking-[0.25em] uppercase text-primary mb-4">
-          Cosmetic Education Academy
-        </p>
+      {/* Step 1 — The Hook */}
+      {view === "intro" && (
+        <div className="text-center">
+          <p className="text-xs uppercase tracking-[0.25em] text-[hsl(42_50%_50%)] font-medium mb-4">
+            Cosmetic Education Academy
+          </p>
 
-        <img
-          src={prospectusMockup}
-          alt="CEA course prospectus cover"
-          className="mx-auto h-36 md:h-44 w-auto object-contain mb-5"
-          style={{ filter: "drop-shadow(0 12px 18px rgba(0,0,0,0.12))" }}
-        />
+          <img
+            src={prospectusMockup}
+            alt="CEA Course Prospectus"
+            className="mx-auto h-[140px] sm:h-[180px] w-auto object-contain mb-5"
+            style={{ filter: "drop-shadow(0 12px 18px rgba(0,0,0,0.12))" }}
+          />
 
-        <h2 className="text-2xl md:text-3xl font-serif leading-tight mb-1">
-          Get the <strong className="font-bold">FREE</strong> Course Guide
-        </h2>
-        <p className="text-lg md:text-xl font-serif text-foreground/80 mb-4">
-          to Find Your Perfect Training Pathway
-        </p>
+          <h2
+            className="font-serif text-foreground leading-[1.3] max-w-[300px] sm:max-w-[380px] mx-auto mb-3"
+            style={{ textWrap: "balance" as any }}
+          >
+            <span className="block text-[1.4rem] sm:text-[1.7rem] font-normal">
+              Get the <span className="uppercase font-semibold tracking-wide">FREE</span> Course Guide
+            </span>
+            <span className="block text-base sm:text-lg font-sans text-muted-foreground font-normal mt-1">
+              to Find Your Perfect Training Pathway
+            </span>
+          </h2>
 
-        <div className="gold-divider mb-4" />
+          <div className="w-16 h-px mx-auto bg-gradient-to-r from-transparent via-[hsl(43_60%_70%)] to-transparent mb-3" />
 
-        <p className="text-sm md:text-base text-muted-foreground max-w-sm mx-auto mb-3">
-          Courses, pricing, entry requirements and career pathways — everything you need before you commit.
-        </p>
-        <p className="text-sm font-medium text-primary mb-6">
-          VTCT-accredited courses · Trusted by 500+ students
-        </p>
+          <p className="text-sm text-muted-foreground max-w-[320px] mx-auto leading-relaxed mb-2">
+            Courses, pricing, entry requirements and career pathways — everything you need before you commit.
+          </p>
 
-        {view === "success" && (
-          <div className="space-y-4 py-2">
-            <div className="mx-auto w-12 h-12 rounded-full border-2 border-primary/40 flex items-center justify-center">
-              <Check className="h-6 w-6 text-primary" />
-            </div>
-            <p className="text-foreground font-medium">Your prospectus is ready</p>
-            <a
-              href={PROSPECTUS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold-metallic inline-flex items-center gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download Prospectus
-            </a>
-            <p className="text-xs text-muted-foreground">
-              We've also sent a copy to your email.
-            </p>
-          </div>
-        )}
+          <p className="text-xs text-[hsl(42_50%_50%)] font-medium tracking-wide mb-6">
+            VTCT-accredited courses · Trusted by 500+ students
+          </p>
 
-        {view === "intro" && (
-          <div className="space-y-4">
-            <button
-              type="button"
-              onClick={() => setView("form")}
-              className="btn-gold-metallic w-full !py-4 !text-base"
-            >
-              Send Me the Guide
-            </button>
-            <button
-              type="button"
-              onClick={scrollToEnquiry}
-              className="block w-full text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
-            >
-              No thanks, I'll find my own way
-            </button>
-          </div>
-        )}
+          <button
+            type="button"
+            onClick={() => setView("form")}
+            className="w-full max-w-sm mx-auto btn-gold-metallic text-base font-semibold"
+          >
+            Send Me the Guide
+          </button>
 
-        {view === "form" && (
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 text-left">
-            <button
-              type="button"
-              onClick={() => setView("intro")}
-              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-1"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" /> Back
-            </button>
+          <button
+            type="button"
+            onClick={scrollToEnquiry}
+            className="w-full mt-5 text-center text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-widest"
+          >
+            No thanks, I'll find my own way
+          </button>
+        </div>
+      )}
 
+      {/* Step 2 — The Form */}
+      {view === "form" && (
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={() => setView("intro")}
+            className="absolute top-4 left-4 p-2 text-muted-foreground hover:text-foreground transition-colors z-10"
+            aria-label="Back"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+
+          <p className="text-xs uppercase tracking-[0.25em] text-[hsl(42_50%_50%)] font-medium mb-3">
+            Almost there
+          </p>
+
+          <h3 className="font-serif text-xl sm:text-2xl font-normal text-foreground mb-1">
+            Where should we send it?
+          </h3>
+
+          <p className="text-sm text-muted-foreground mb-6">
+            Enter your details and we'll send the guide straight to your inbox.
+          </p>
+
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 max-w-sm mx-auto">
             {/* Honeypot */}
             <input
               ref={hpRef}
@@ -182,61 +183,92 @@ export function ProspectusDownloadCard() {
             <div>
               <Input
                 {...form.register("firstName")}
-                placeholder="First name"
-                className="h-12 rounded-lg text-base bg-background border-border"
+                placeholder="First Name"
+                className="h-11 sm:h-12 bg-white border-[hsl(36_25%_80%)] focus:border-[hsl(42_55%_55%)] focus:ring-1 focus:ring-[hsl(42_55%_55%)] placeholder:text-[hsl(30_8%_55%)] text-foreground rounded-sm font-medium"
               />
               {form.formState.errors.firstName && (
-                <p className="text-destructive text-sm mt-1">{form.formState.errors.firstName.message}</p>
+                <p className="text-xs text-destructive mt-1.5 text-left">
+                  {form.formState.errors.firstName.message}
+                </p>
               )}
             </div>
             <div>
               <Input
                 {...form.register("email")}
                 type="email"
-                placeholder="Email address"
-                className="h-12 rounded-lg text-base bg-background border-border"
+                placeholder="Email Address"
+                className="h-11 sm:h-12 bg-white border-[hsl(36_25%_80%)] focus:border-[hsl(42_55%_55%)] focus:ring-1 focus:ring-[hsl(42_55%_55%)] placeholder:text-[hsl(30_8%_55%)] text-foreground rounded-sm font-medium"
               />
               {form.formState.errors.email && (
-                <p className="text-destructive text-sm mt-1">{form.formState.errors.email.message}</p>
+                <p className="text-xs text-destructive mt-1.5 text-left">
+                  {form.formState.errors.email.message}
+                </p>
               )}
             </div>
             <div>
               <Input
                 {...form.register("phone")}
                 type="tel"
-                placeholder="Phone number"
-                className="h-12 rounded-lg text-base bg-background border-border"
+                placeholder="Phone Number"
+                className="h-11 sm:h-12 bg-white border-[hsl(36_25%_80%)] focus:border-[hsl(42_55%_55%)] focus:ring-1 focus:ring-[hsl(42_55%_55%)] placeholder:text-[hsl(30_8%_55%)] text-foreground rounded-sm font-medium"
               />
               {form.formState.errors.phone && (
-                <p className="text-destructive text-sm mt-1">{form.formState.errors.phone.message}</p>
+                <p className="text-xs text-destructive mt-1.5 text-left">
+                  {form.formState.errors.phone.message}
+                </p>
               )}
+            </div>
+
+            <div className="flex items-start gap-3 text-left">
+              <Checkbox
+                id="prospectus-consent"
+                checked={form.watch("consent")}
+                onCheckedChange={(c) => form.setValue("consent", c as boolean)}
+                className="mt-0.5 border-[hsl(36_25%_75%)] data-[state=checked]:bg-[hsl(42_50%_55%)] data-[state=checked]:border-[hsl(42_50%_55%)]"
+              />
+              <label
+                htmlFor="prospectus-consent"
+                className="text-xs text-muted-foreground leading-relaxed cursor-pointer"
+              >
+                I agree to receive marketing emails about courses and training. Unsubscribe anytime.
+              </label>
             </div>
 
             <button
               type="submit"
               disabled={form.formState.isSubmitting}
-              className="btn-gold-metallic w-full !py-4 !text-base disabled:opacity-50 mt-2"
+              className="w-full btn-gold-metallic mt-2 text-base font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {form.formState.isSubmitting ? "Sending..." : "Send Me the Guide"}
+              {form.formState.isSubmitting ? "Sending..." : "Get Your Free Guide"}
             </button>
-
-            <div className="flex items-start gap-2 pt-1">
-              <Checkbox
-                id="prospectus-consent"
-                checked={form.watch("consent")}
-                onCheckedChange={(c) => form.setValue("consent", c as boolean)}
-                className="mt-0.5"
-              />
-              <label
-                htmlFor="prospectus-consent"
-                className="text-[11px] text-muted-foreground leading-relaxed cursor-pointer"
-              >
-                I agree to receive marketing emails about courses and training news. Unsubscribe anytime.
-              </label>
-            </div>
           </form>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Step 3 — Success */}
+      {view === "success" && (
+        <div className="text-center py-6">
+          <p className="text-xs uppercase tracking-[0.25em] text-[hsl(42_50%_50%)] font-medium mb-4">
+            You're In
+          </p>
+          <h3 className="font-serif text-2xl sm:text-3xl font-normal mb-6 text-foreground">
+            Your Guide is Ready
+          </h3>
+          <div className="mx-auto w-14 h-14 rounded-full border-2 border-[hsl(43_60%_70%)] flex items-center justify-center mb-6">
+            <Check className="h-7 w-7 text-[hsl(43_55%_55%)]" strokeWidth={2.5} />
+          </div>
+          <a
+            href={PROSPECTUS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold-metallic inline-flex items-center gap-2 mb-4"
+          >
+            <Download className="w-4 h-4" />
+            Download Now
+          </a>
+          <p className="text-xs text-muted-foreground tracking-wide">Also sent to your inbox</p>
+        </div>
+      )}
     </div>
   );
 }

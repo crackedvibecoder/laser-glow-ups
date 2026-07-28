@@ -1,49 +1,28 @@
-## Two-step prospectus card to match reference
+## Port the exact two-step design from the main site
 
-Restyle `ProspectusDownloadCard.tsx` so the initial view mirrors the uploaded reference exactly — no form fields visible until the user commits.
+Rewrite `src/components/training/ProspectusDownloadCard.tsx` using the step markup from `ProspectusPopup.tsx` in the "Laser Location Site" project so both step 1 (hook) and step 2 (form) visually match the reference exactly.
 
-### Step 1 — Intro state (default)
+### What changes
 
-Shown on first load. Centered stack, no visible form:
+Replace the current card body with the two-step markup from the source component, adapted for inline (non-dialog) use:
 
-1. Gold eyebrow: **COSMETIC EDUCATION ACADEMY**
-2. Prospectus mockup (unchanged image + soft shadow)
-3. Serif headline: **Get the FREE Course Guide**
-4. Serif sub-headline: **to Find Your Perfect Training Pathway**
-5. Short gold divider
-6. Body copy: **Courses, pricing, entry requirements and career pathways — everything you need before you commit.**
-7. Gold trust line: **VTCT-accredited courses · Trusted by 500+ students**
-8. Full-width gold pill CTA: **SEND ME THE GUIDE** — pressing this reveals the form (step 2), does NOT submit
-9. Tertiary text button below: **NO THANKS, I'LL FIND MY OWN WAY** — uppercase, tracked, muted foreground, no border. On click, smooth-scrolls to the enquiry form further down the page (`#enquiry` or the existing lead form anchor).
+- **Container**: `bg-[hsl(40_30%_96%)] p-8 sm:p-10` with the gold gradient hairline at top and rounded corners. No Dialog wrapper — it's inline.
+- **Step 1 (intro)**: exact source markup — eyebrow "COSMETIC EDUCATION ACADEMY", mockup image, serif headline "Get the FREE Course Guide" / "to Find Your Perfect Training Pathway", short gold divider, body copy, gold trust line, full-width `btn-gold-metallic` "Send Me the Guide", tertiary "NO THANKS, I'LL FIND MY OWN WAY" link (scrolls to `#enquire` instead of closing a dialog).
+- **Step 2 (form)**: exact source markup — Back arrow (top-left of card), "ALMOST THERE" eyebrow, serif "Where should we send it?" heading, sub-copy, First Name / Email Address / Phone Number inputs styled with the source's white bg + gold focus ring + rounded-sm classes, consent checkbox with gold checked state, full-width `btn-gold-metallic` "Get Your Free Guide" (label "Sending..." while submitting).
+- **Step 3 (success)**: keep the current success view (checkmark, Download Prospectus button, "sent to your email" line, PDF auto-open, `localStorage`).
 
-### Step 2 — Form state (after CTA click)
+### What stays
 
-Same card, replaces steps 8–9 with:
-
-- First name, Email, Phone inputs (existing validation, honeypot, router wiring untouched)
-- Full-width gold pill CTA: **SEND ME THE GUIDE** (now actually submits; shows "Sending…" during submit)
-- Small consent line under the button (existing copy)
-- Small **← Back** link above the fields so users can collapse back to the intro state
-
-Header block (eyebrow → trust line) stays visible above the form so the card still reads like the reference; only the CTA area swaps.
-
-### Step 3 — Success state
-
-Unchanged from current behaviour: checkmark, "Your prospectus is ready", gold Download button, "sent to your email" line, auto-open PDF, `localStorage` set. Returning visitors still skip straight here.
-
-### State machine
-
-Local `view` state: `"intro" | "form" | "success"`.
-- `intro` → click CTA → `form`
-- `form` → submit success (or router failure) → `success`
-- `localStorage.prospectus_downloaded === "true"` on mount → `success`
+- Local `view: "intro" | "form" | "success"` state machine.
+- Existing `sendLeadToRouter` call with `lead_type: "prospectus_lead"`, honeypot, and success/finish logic (auto-open PDF, set `localStorage`, fbq Lead track).
+- `scrollToEnquiry` behaviour for the "No thanks" link (source uses `handleClose`; ours scrolls to `#enquire`).
+- PDF URL constant.
 
 ### Files touched
 
-- `src/components/training/ProspectusDownloadCard.tsx` — add view state, split intro vs form CTA, add "No thanks" scroll-to-enquiry link, keep all existing router/validation/success logic.
+- `src/components/training/ProspectusDownloadCard.tsx` — replace body with ported markup from the source `ProspectusPopup.tsx`, keeping our router/state/scroll wiring.
 
 ### Out of scope
 
-- No changes to `Training.tsx` layout, order, or any other section.
-- No changes to `leadRouter.ts`, success behaviour, or PDF URL.
-- No new assets or tokens.
+- No changes to `Training.tsx`, `leadRouter.ts`, or any other file.
+- No new assets — mockup image already copied over.
