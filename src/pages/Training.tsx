@@ -491,7 +491,7 @@ const Training = () => {
         <div className="content-container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Copy */}
-            <div className="animate-fade-up">
+            <div className="animate-fade-up order-2 lg:order-1">
               <p className="text-base font-medium tracking-widest uppercase text-primary mb-4">
                 Professional Training · Bury, Greater Manchester
               </p>
@@ -526,10 +526,11 @@ const Training = () => {
             </div>
 
             {/* Right - Prospectus Lead Magnet */}
-            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
+            <div className="animate-fade-up order-1 lg:order-2" style={{ animationDelay: "0.15s" }}>
               <ProspectusDownloadCard />
             </div>
           </div>
+
         </div>
       </section>
 
