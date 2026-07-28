@@ -302,6 +302,17 @@ const Index = () => {
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
               </p>
+
+              {/* Mobile-only image: between eyebrow and heading */}
+              <div className="md:hidden mb-5">
+                <img
+                  src={legLaser}
+                  alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
+                  className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-lg"
+                  loading="eager"
+                />
+              </div>
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
                 Full-Body Laser Hair Removal{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
@@ -329,12 +340,12 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Hero image — follows text on mobile, sits right on desktop */}
-            <div className="w-full md:w-1/2">
+            {/* Desktop-only image — sits right on desktop */}
+            <div className="hidden md:block w-full md:w-1/2">
               <img
                 src={legLaser}
                 alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                className="w-full h-48 sm:h-56 md:h-80 object-cover rounded-2xl shadow-lg"
+                className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 loading="eager"
               />
             </div>

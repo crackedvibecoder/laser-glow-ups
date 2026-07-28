@@ -1,35 +1,28 @@
-## Hero refinements — Laser Location offer page
+## Plan: Reorder hero section layout
 
-### Goal
-Swap the hero image to the leg-laser shot, tighten the text hierarchy, and make the £100 saving more immediately obvious without breaking the editorial aesthetic.
+### Current state
+The hero currently stacks as:
+1. Eyebrow ("Medical-Grade Laser Hair Removal")
+2. Main heading
+3. SAVE £100 badge + price
+4. CTA + location
+5. Image (last)
 
-### Changes
+### Change
+Reorder the hero so the image sits **between the eyebrow and the main heading**:
+1. Eyebrow ("Medical-Grade Laser Hair Removal")
+2. Hero image (`leg-laser.jpg`)
+3. Main heading ("Full-Body Laser Hair Removal This Summer")
+4. SAVE £100 badge + "Was £895 — now £795"
+5. CTA ("Claim Your £100 Discount →")
+6. Location ("Bury, Manchester")
 
-1. **Replace hero image**
-   - Swap `src/assets/practitioner-treatment.jpg` for `src/assets/leg-laser.jpg` in the hero section.
-   - Keep the same rounded-2xl, object-cover styling and mobile/desktop heights.
+### Implementation
+- Update `src/pages/Index.tsx` hero section only.
+- Keep all existing text, styling, classes, and the `leg-laser.jpg` image unchanged.
+- Keep the image compact on mobile (`h-48 sm:h-56 md:h-80`) so the CTA still lands above the fold on a 394px-wide viewport.
+- On desktop, maintain the side-by-side split: text column left, image column right — but within the text column the internal order becomes eyebrow → image → heading → offer → CTA.
 
-2. **Reorder hero text**
-   - Keep the eyebrow `"Medical-Grade Laser Hair Removal"` at the very top of the text block (it frames the offer).
-   - Move `"Bury, Manchester"` to sit **below** the CTA button, so the headline → CTA flow is uninterrupted.
-
-3. **Emphasise the £100 saving**
-   - Add a small, high-contrast badge/pill directly under the headline (or just above the CTA) reading `"Save £100"`.
-   - Use the existing primary gold token (`bg-primary`, `text-primary-foreground`) so it feels on-brand, not like a new colour.
-   - Optionally add a tiny price line `"Was £895 — now £795"` under the badge for extra clarity.
-
-4. **Preserve mobile "above the fold"**
-   - Keep the current compact padding (`py-10 md:py-16`).
-   - If the badge pushes the CTA down, slightly reduce headline margin or badge spacing so the CTA still appears on a typical mobile viewport.
-
-5. **Verify**
-   - Run a build check.
-   - Capture mobile (394×840) and desktop screenshots to confirm the CTA remains visible, image renders correctly, and hierarchy feels balanced.
-
-### What won't change
-- No design-system colours, fonts, or button styles.
-- No changes to the booking calendar, sticky bar, exit-intent popup, or other sections.
-- The CTA button text stays exactly `"Claim Your £100 Discount"`.
-
-### Recommendation
-The leg-laser image is a stronger close-up treatment shot and will feel less generic than the current practitioner-treatment image. Moving the location below the CTA keeps the offer/action front-and-centre. The gold "Save £100" badge gives the discount the visual weight it deserves without cluttering the headline.
+### Verification
+- Run build.
+- Capture mobile (394×840) and desktop screenshots to confirm the new order and that the CTA remains above the fold on mobile.
