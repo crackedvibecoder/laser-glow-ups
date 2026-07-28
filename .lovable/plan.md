@@ -1,19 +1,45 @@
-Plan: Simplify the Laser Location hero section
+## Goal
+Re-introduce imagery into the simplified hero section so it feels less text-heavy and has clearer visual hierarchy, without pushing the CTA below the fold on mobile.
 
-Current state
-- Hero contains: eyebrow ("Medical-Grade Laser Hair Removal"), main heading with "This Summer", location line, a sub-paragraph ("Ditch the razor for good..."), the CTA button, and a row of three trust badges.
-- Vertical padding is `py-16 md:py-24`, which pushes the CTA below the fold on many mobile screens.
+## Current state
+- `src/pages/Index.tsx` hero currently contains only: eyebrow, H1, location line, and CTA button.
+- Local assets exist in `src/assets/`; `practitioner-treatment.jpg` is a strong, on-brand, editorial-style treatment-room shot.
+- No storage buckets exist in this project, but the required images are already in the repo.
 
-Changes to make
-1. Remove the sub-paragraph: "Ditch the razor for good. 60-minute sessions, all skin types welcome." (This copy can be reused later in the funnel if needed.)
-2. Keep the eyebrow text, main heading, "Bury, Manchester" location line, and the "Claim Your £100 Discount →" CTA exactly as-is.
-3. Tighten vertical padding so the heading + CTA fit comfortably within one mobile viewport — reduce hero padding from `py-16 md:py-24` to `py-10 md:py-16` (or equivalent).
-4. Remove the trust-badge row from the hero to keep the focus on heading + CTA only. (The social proof still appears elsewhere in the funnel.)
-5. Keep the existing background color, typography, button styling, and the urgency bar above the hero unchanged.
-6. No image added — text-only as agreed.
+## Proposed changes
 
-Result
-- A cleaner, less cluttered hero that shows the key message and CTA above the fold on mobile.
-- No changes to offer pricing, booking calendar, form logic, or other sections.
+### 1. Hero layout update
+- Switch the hero from a single centred text column to a mobile-first stacked layout:
+  - **Mobile**: image first, then text + CTA, all above the fold.
+  - **Desktop**: text-left / image-right split (or centred stacked if split feels too busy).
+- Import and use `practitioner-treatment.jpg` as the hero image.
+- Add descriptive `alt` text: "Laser hair removal treatment at Laser Location, Bury, Manchester."
 
-Approve to implement.
+### 2. Preserve copy and CTA
+- Keep the existing eyebrow, H1, "This Summer" accent, location line, and "Claim Your £100 Discount →" button exactly as they are.
+- Do not re-add the removed sub-paragraph or trust badges to the hero.
+
+### 3. Mobile above-the-fold guardrails
+- Use a compact image height (e.g. `h-48` / `max-h-[40vh]`) so the CTA remains visible on ~394×840 mobile viewports.
+- Keep reduced vertical padding (`py-10 md:py-16`) from the previous simplification.
+- Verify with a Playwright mobile screenshot after implementation.
+
+### 4. Styling constraints
+- Use the existing design tokens (primary, muted-foreground, font-serif, btn-gold-metallic).
+- No hardcoded colours; no changes to the overall design system.
+- Image rounded corners and subtle shadow to match premium editorial aesthetic.
+
+## Files to modify
+- `src/pages/Index.tsx` — hero section layout and image import.
+
+## Verification
+- Build passes.
+- Playwright screenshot at 394×840 confirms headline + CTA are visible without scrolling.
+- Desktop screenshot confirms the split layout is balanced and not cluttered.
+
+## Open decision
+If you prefer a different image, the other available local assets are:
+- `arm-laser.jpg` — clinical arm treatment close-up.
+- `leg-laser.jpg` — clinical leg treatment close-up.
+
+My recommendation is `practitioner-treatment.jpg` because it shows the professional setting and the practitioner, which feels more premium and trustworthy as a hero image.
