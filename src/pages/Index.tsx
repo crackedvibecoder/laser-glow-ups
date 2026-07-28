@@ -291,7 +291,7 @@ const Index = () => {
       {/* Hero Section */}
       <section
         data-hero
-        className="relative py-16 md:py-24"
+        className="relative py-10 md:py-16"
         style={{ backgroundColor: "hsl(var(--hero-bg, 36 30% 92%))" }}
       >
         <div className="content-container max-w-3xl text-center">
@@ -305,33 +305,16 @@ const Index = () => {
                 This Summer
               </span>
             </h1>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-sm text-muted-foreground mb-8">
               Bury, Manchester
             </p>
-             <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-lg mx-auto">
-               Ditch the razor for good.<br />
-               60-minute sessions, all skin types welcome.
-             </p>
 
             <a
               href="#book"
-              className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-8"
+              className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
             >
               Claim Your £100 Discount →
             </a>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 text-sm text-muted-foreground justify-center">
-              <span className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-primary" /> 1,000+ Clients
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Star className="w-4 h-4 text-primary" /> 5-Star Rated
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Zap className="w-4 h-4 text-primary" /> 8,500+ Sessions
-              </span>
-            </div>
           </div>
         </div>
       </section>
