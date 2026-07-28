@@ -315,14 +315,14 @@ const Index = () => {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
                 <span className="block md:hidden">
-                  Full-Body Laser Hair
-                  <br />
-                  Removal —{" "}
-                  <span className="inline-block whitespace-nowrap bg-white/70 px-2 py-1 rounded-lg">
-                    Save&nbsp;£100
+                  <span className="block">Full-Body Laser Hair</span>
+                  <span className="block whitespace-nowrap">
+                    Removal —{" "}
+                    <span className="inline-block bg-white/70 px-2 py-1 rounded-lg">
+                      Save&nbsp;£100
+                    </span>
                   </span>
-                  <br />
-                  <span className="text-script-accent text-primary text-[1.15em]">
+                  <span className="block text-script-accent text-primary text-[1.15em]">
                     This Summer
                   </span>
                 </span>
