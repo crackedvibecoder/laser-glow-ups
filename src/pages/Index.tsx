@@ -123,7 +123,7 @@ const ExitIntentPopup = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30 shadow-2xl">
-        <DialogHeader className="space-y-5">
+        <DialogHeader className="space-y-5 text-center sm:text-center items-center">
           <div className="mx-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary/15">
             <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£100 OFF</span>
           </div>
