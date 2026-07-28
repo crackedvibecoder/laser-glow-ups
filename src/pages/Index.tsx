@@ -283,8 +283,8 @@ const Index = () => {
 
       {/* Urgency Bar with Countdown */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
-        <div className="text-base font-medium text-foreground flex items-center justify-center gap-2">
-          <Clock className="w-4 h-4 text-primary shrink-0" />
+        <div className="text-base font-medium text-foreground flex items-center justify-center gap-2 leading-tight">
+          <Clock className="w-5 h-5 text-primary shrink-0" />
           <CountdownTimer />
         </div>
       </div>
@@ -411,7 +411,7 @@ const Index = () => {
                 }`}
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
-                <h3 className="text-xl font-serif mb-3">{item.title}</h3>
+                <h3 className="text-xl font-semibold tracking-tight mb-3">{item.title}</h3>
                 <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
@@ -442,14 +442,14 @@ const Index = () => {
             <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
               <img src={chinBeforeAfter} alt="Chin laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
-                <p className="font-serif text-lg">Chin & Upper Lip</p>
+                <p className="text-lg font-semibold">Chin & Upper Lip</p>
                 <p className="text-base text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
               <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
-                <p className="font-serif text-lg">Bikini Line</p>
+                <p className="text-lg font-semibold">Bikini Line</p>
                 <p className="text-base text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
@@ -493,7 +493,7 @@ const Index = () => {
                 <span className="text-5xl font-serif text-gold-metallic font-semibold block mb-4">
                   {item.step}
                 </span>
-                <h3 className="text-xl font-serif mb-3">{item.title}</h3>
+                <h3 className="text-xl font-semibold tracking-tight mb-3">{item.title}</h3>
                 <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
@@ -630,7 +630,7 @@ const Index = () => {
       </section>
 
       {/* Booking Calendar */}
-      <section id="book" className="section-padding-compact bg-secondary scroll-mt-24">
+      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4">
          <div className="content-container max-w-2xl text-center">
            <iframe
             src={`https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH${typeof window !== "undefined" ? window.location.search : ""}`}
@@ -639,7 +639,7 @@ const Index = () => {
             title="Book Your Consultation"
           />
 
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-base text-muted-foreground mt-4">
             No payment required · Free consultation · All skin types welcome
           </p>
         </div>
