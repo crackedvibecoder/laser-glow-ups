@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Download, Check } from "lucide-react";
+import { Download, Check, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { sendLeadToRouter } from "@/lib/leadRouter";
@@ -21,9 +21,10 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
+type View = "intro" | "form" | "success";
 
 export function ProspectusDownloadCard() {
-  const [submitted, setSubmitted] = useState(false);
+  const [view, setView] = useState<View>("intro");
   const hpRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<FormData>({
@@ -33,7 +34,7 @@ export function ProspectusDownloadCard() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY) === "true") {
-      setSubmitted(true);
+      setView("success");
     }
   }, []);
 
@@ -46,18 +47,17 @@ export function ProspectusDownloadCard() {
 
     if (typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, "true");
-      // Auto-open the PDF; the visible Download button is the fallback if blocked.
       try {
         window.open(PROSPECTUS_URL, "_blank", "noopener,noreferrer");
       } catch {}
     }
-    setSubmitted(true);
+    setView("success");
   };
 
   const onSubmit = async (data: FormData) => {
     const hp = hpRef.current?.value ?? "";
     if (hp) {
-      setSubmitted(true);
+      setView("success");
       return;
     }
 
@@ -73,11 +73,16 @@ export function ProspectusDownloadCard() {
         _hp: hp,
       });
     } catch (err) {
-      // Router failure — still deliver the PDF so the user isn't stuck.
       console.error("Prospectus lead error:", err);
     }
 
     finish();
+  };
+
+  const scrollToEnquiry = () => {
+    if (typeof window === "undefined") return;
+    const el = document.getElementById("enquire");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -113,7 +118,7 @@ export function ProspectusDownloadCard() {
           VTCT-accredited courses · Trusted by 500+ students
         </p>
 
-        {submitted ? (
+        {view === "success" && (
           <div className="space-y-4 py-2">
             <div className="mx-auto w-12 h-12 rounded-full border-2 border-primary/40 flex items-center justify-center">
               <Check className="h-6 w-6 text-primary" />
@@ -132,8 +137,37 @@ export function ProspectusDownloadCard() {
               We've also sent a copy to your email.
             </p>
           </div>
-        ) : (
+        )}
+
+        {view === "intro" && (
+          <div className="space-y-4">
+            <button
+              type="button"
+              onClick={() => setView("form")}
+              className="btn-gold-metallic w-full !py-4 !text-base"
+            >
+              Send Me the Guide
+            </button>
+            <button
+              type="button"
+              onClick={scrollToEnquiry}
+              className="block w-full text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+            >
+              No thanks, I'll find my own way
+            </button>
+          </div>
+        )}
+
+        {view === "form" && (
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 text-left">
+            <button
+              type="button"
+              onClick={() => setView("intro")}
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-1"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" /> Back
+            </button>
+
             {/* Honeypot */}
             <input
               ref={hpRef}
