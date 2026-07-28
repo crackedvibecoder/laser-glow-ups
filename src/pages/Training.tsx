@@ -504,25 +504,17 @@ const Training = () => {
               <p className="text-lg text-muted-foreground max-w-lg mb-4">
                 VTCT-accredited laser, skin, and aesthetics qualifications. Comprehensive training from practitioners who treat clients daily.
               </p>
-              <p className="text-base text-muted-foreground max-w-lg mb-6">
-                Courses, pricing, entry requirements &amp; career pathways — everything you need before you enrol.
-              </p>
 
               {/* Trust Badges */}
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-base text-muted-foreground">
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-base text-muted-foreground mt-6">
                 <span className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-primary" /> VTCT Accredited
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Shield className="w-4 h-4 text-primary" /> Insurance-Ready
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Users className="w-4 h-4 text-primary" /> 1,000+ Clients Treated
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <GraduationCap className="w-4 h-4 text-primary" /> Small Class Sizes
-                </span>
               </div>
+
             </div>
 
             {/* Right - Prospectus Lead Magnet */}
