@@ -600,7 +600,7 @@ const Index = () => {
 
           {/* Testimonial Video */}
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
+            <p className="text-base font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
             <video autoPlay muted playsInline controls className="w-full">
