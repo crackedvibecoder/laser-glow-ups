@@ -1,40 +1,22 @@
-## Plan: correct the hero headline and simplify the offer emphasis
+## Plan: Fix hero heading line breaks so "Save £100" stays on one line
 
-### What I’ll change
-1. **Restore the headline wording/order exactly like the screenshot**
-   - The H1 will read as one continuous message:
-     `Full-Body Laser Hair Removal — Save £100 This Summer`
-   - Only `This Summer` will use the gold script accent.
-   - `Save £100` stays part of the main headline, not a separate gold pill.
-
-2. **Add a subtle non-gold highlight behind `Save £100`**
-   - Use a soft white/blush background behind only `Save £100`.
-   - Keep it understated so it does not compete with the gold CTA button.
-
-3. **Remove the extra elements I added**
-   - Remove the standalone gold `SAVE £100` pill.
-   - Remove the `Was £895 — now £795` price line.
-
-4. **Medical-grade text placement**
-   - Move `Medical-Grade Laser Hair Removal` back below the image and above the main heading.
-   - My take: this is cleaner. The image grabs attention first, then the eyebrow frames what the headline is about, then the headline lands. Above the image, the eyebrow can feel like it’s floating and competing with the visual.
-
-5. **Keep everything else unchanged**
-   - Same leg-laser image.
-   - Same CTA text: `Claim Your £100 Discount`.
-   - Same layout, booking section, routing, and form logic.
-
-### Mobile order after the change
-```text
-[leg-laser image]
-Medical-Grade Laser Hair Removal
-Full-Body Laser Hair Removal — Save £100 This Summer
-[Claim Your £100 Discount]
-Bury, Manchester
+### Current state
+The hero `h1` in `src/pages/Index.tsx` is wrapping on mobile in the wrong places, splitting the line as:
 ```
-
-### Desktop result
-```text
-Left:  eyebrow below image, headline exactly like screenshot, subtle Save £100 highlight, gold script This Summer, CTA, location
-Right: leg-laser image
+Full-Body Laser Hair
+Removal — Save
+£100 This Summer
 ```
+The user only wants to guarantee that `Save £100` never breaks across lines.
+
+### Change
+1. In `src/pages/Index.tsx`, wrap the highlighted `Save £100` span with `whitespace-nowrap` and make it an inline-block so the white/blush background still renders correctly.
+2. Use a non-breaking space between `Save` and `£100` (`Save&nbsp;£100`) as a fallback.
+3. Keep the existing wording, gold script accent on `This Summer`, image placement, CTA text, and all styling untouched.
+
+### Verification
+- Run the build to confirm no TypeScript/Tailwind errors.
+- Capture mobile and desktop screenshots of the hero to confirm `Save £100` appears on a single line and the overall fold still looks correct.
+
+### Files to edit
+- `src/pages/Index.tsx` (hero `h1` only)
