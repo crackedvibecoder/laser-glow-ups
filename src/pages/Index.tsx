@@ -374,7 +374,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             The Endless Hair Removal Cycle
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             Temporary fixes cost time, money, and confidence. There's a permanent solution.
           </p>
 
