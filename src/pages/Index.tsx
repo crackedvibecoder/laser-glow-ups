@@ -366,7 +366,7 @@ const Index = () => {
       {/* Pain Points */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Sound Familiar?
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
