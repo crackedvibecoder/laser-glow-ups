@@ -494,7 +494,7 @@ const Index = () => {
                   {item.step}
                 </span>
                 <h3 className="text-xl font-serif mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
