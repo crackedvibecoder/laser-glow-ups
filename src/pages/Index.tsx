@@ -744,7 +744,7 @@ const Index = () => {
 
       {/* Footer / Legal */}
       <footer className="py-8 bg-background border-t border-border">
-        <div className="content-container text-center text-xs text-muted-foreground space-y-4">
+        <div className="content-container text-center text-sm text-muted-foreground space-y-4">
           <p>
             © {new Date().getFullYear()} Laser Location. All rights reserved.
           </p>
