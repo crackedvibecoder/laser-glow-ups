@@ -94,10 +94,13 @@ const CountdownTimer = () => {
   return (
     <span>
       <Clock className="inline-block w-4 h-4 text-primary mr-1.5 -mt-0.5 align-middle" />
-      Limited spots — next cohort starts in{" "}
-      <strong className="text-primary">
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
-      </strong>
+      Limited spots —{" "}
+      <span className="inline-block whitespace-nowrap">
+        next cohort starts in{" "}
+        <strong className="text-primary whitespace-nowrap">
+          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
+        </strong>
+      </span>
     </span>
   );
 };
