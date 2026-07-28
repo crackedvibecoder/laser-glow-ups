@@ -510,7 +510,7 @@ const Index = () => {
       {/* Your First Visit - Video */}
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             What to Expect
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
