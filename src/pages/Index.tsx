@@ -42,7 +42,10 @@ const CountdownTimer = () => {
 
   return (
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
-      <span>Summer Special — Save £100</span>
+      <span className="inline-flex items-center gap-2">
+        <Clock className="w-5 h-5 text-primary shrink-0" />
+        Summer Special — Save £100
+      </span>
       <span className="hidden md:inline">·</span>
       <span>
         Offer ends in{" "}
