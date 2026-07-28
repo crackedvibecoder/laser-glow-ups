@@ -1,42 +1,45 @@
-## Training page optimisations
+## Training page polish — round 2
 
-Bring `/training` in line with readability improvements on the offer page, plus a hero cleanup. Copy, offer, forms, and calendar untouched.
+Three fixes, all mirroring what we already shipped on the offer page. No copy, offer, form, or layout changes.
 
-### 1. Gold numbers (`src/index.css`)
-Simplify `.text-gold-metallic`:
-- Keep the gold gradient exactly as-is.
-- Remove one of the two drop-shadows so only a **single faint dark-brown shadow** remains for edge definition.
-- No `-webkit-text-stroke`.
+### 1. Urgency bar — stop the awkward wrap
+In `src/pages/Training.tsx`, the bar renders `"Limited spots — next cohort starts in {days}d {hours}h {minutes}m"` as a single string, so on mobile the countdown breaks across two lines and can leave "58m" stranded on its own line.
 
-This applies site-wide (Index, Training, Thank You).
+Fix:
+- Wrap the countdown block (`{days}d {hours}h {minutes}m`) in `whitespace-nowrap` so the numbers always stay together on one line.
+- Also wrap the "next cohort starts in" phrase + countdown together in an inline block so the line breaks in a natural place (between "spots —" and "next cohort starts in 3d 5h 58m") rather than mid-countdown.
+- Keep the inline `Clock` icon, `text-base` size, and current colors.
 
-### 2. Training hero cleanup (`src/pages/Training.tsx`)
-- **Move the 4 trust badges** (VTCT Accredited · Insurance-Ready · 1,000+ Clients Treated · Small Class Sizes) out of the left copy column and **place them below the enquiry form** in the right column, keeping the same badge styling.
-- Hero copy column becomes: eyebrow + H1 + short sub-paragraph only — much lighter.
-- No layout/grid change to the two-column hero.
+### 2. Gold numbers — truly "shadow only"
+Current `.text-gold-metallic` in `src/index.css` already dropped the stroke, but the `drop-shadow(0 0 0.5px …)` renders as a symmetric halo on every edge, which reads visually as a thin outline — that's what still looks like "both".
 
-### 3. Remove the "Social Proof Strip" section
-Delete the white stat strip section (`1,000+ · 6+ · 5★ · VTCT`) that sits directly under the hero. User doesn't like its design and the same stats are already covered by the trainer section + badges.
+Fix:
+- Replace the omnidirectional halo with a single **directional** drop-shadow: `drop-shadow(0 1px 0 hsl(30 25% 18% / 0.35))`. That's a soft shadow *underneath* the glyph only, no halo, no outline appearance.
+- Everything else in the gradient stays exactly as-is. Applies site-wide (Index, Training, Thank You), same as before.
 
-### 4. Urgency bar — fix clock alignment
-Move a single `Clock` icon **inside** the first `<span>` of `CountdownTimer` so it flows inline. Remove the two outer `Clock` elements that currently sit outside the multi-line text. Bump bar text `text-sm` → `text-base`.
+### 3. Body copy readability across the training page
+The offer page got a clarity pass (small serif titles → Inter `font-semibold`, body bumps to `text-base`/`text-lg`). Some spots on `/training` still lag. In `src/pages/Training.tsx`:
 
-### 5. Body copy size + font clarity bump
-Match Index optimisations:
-- Section intro paragraphs (Who It's For, Our Courses, Why Train With Us, Trainer bio): default → `text-lg`.
-- Card body descriptions (Who It's For, Course highlights, Why Train With Us, How It Works step descriptions), course subtitle, course duration line, final CTA paragraph: `text-sm` → `text-base`.
-- FAQ trigger: `text-base` → `text-lg`; FAQ answer: `text-sm` → `text-base`.
-- Footer legal paragraph: `text-xs` → `text-sm`.
-- Small card `h3` titles (Who It's For, Courses, How It Works steps, Why Train With Us tiles): swap `font-serif` → `font-semibold` (Inter) for clarity at small sizes. Section `h2`s and hero `h1` **keep** `font-serif`.
+- **Hero eyebrow** ("Professional Training · Bury…"): `text-sm` → `text-base`.
+- **Hero sub-paragraph**: already `text-lg` — keep.
+- **Trust badges under form** (VTCT / Insurance-Ready / 1,000+ / Small Class Sizes): `text-sm` → `text-base`.
+- **All section eyebrows** ("Who It's For", "Our Courses", "Your Trainer", "The Process", "The Difference", "Training FAQ"): `text-sm` → `text-base`.
+- **Course cards**: subtitle `text-base` keep; `priceNote` `text-sm` → `text-base`; card title `text-xl` keep but ensure it's `font-semibold` Inter (already is).
+- **Trainer stat labels** ("Years Specialist", "Clients Treated", etc.): `text-xs` → `text-sm`.
+- **Why Train With Us tiles**: title currently `text-base font-semibold` → bump to `text-lg font-semibold`; body already `text-base` — keep.
+- **How It Works step titles**: already `text-xl font-semibold` — keep.
+- **Form helper line** under submit ("No obligation…"): `text-xs` → `text-sm`.
+- **Sticky desktop CTA**: keep as-is (desktop only, tight bar).
+- **Privacy popup body**: `text-sm` → `text-base` for legibility.
+- **Footer legal** (line 813+): if still `text-xs`, bump to `text-sm` (already scheduled in prior pass — verify).
 
-### 6. `#enquire` anchor snap position
-Add `scroll-mt-4` on the final `#enquire` section so mobile CTA taps land closer to the form card, not above the section padding.
+Small-title serif → Inter clarity swap: already done in the previous pass across Who It's For / Courses / How It Works / Why Train With Us tiles. No further font-family changes needed — the remaining "hard to read at small sizes" issue is size, not family.
 
 ### Out of scope
-- No copy rewrites, no offer/pricing changes, no image swaps.
-- No changes to forms, lead router, exit popup, sticky CTAs, or course data.
-- No changes to hero headline wording or the two-column hero grid.
+- No copy rewrites, offer changes, image swaps, form logic, or GHL/calendar changes.
+- No hero restructure.
+- No changes to the gold gradient itself — only the shadow.
 
 ### Files touched
-- `src/index.css` — gold-number shadow simplification.
-- `src/pages/Training.tsx` — hero badge move, social-proof strip removal, urgency bar icon, typography bumps, `#enquire` scroll margin.
+- `src/index.css` — swap the halo drop-shadow for a single directional one.
+- `src/pages/Training.tsx` — urgency bar `whitespace-nowrap` fix + typography bumps listed above.
