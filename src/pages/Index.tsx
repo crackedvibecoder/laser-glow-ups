@@ -411,7 +411,7 @@ const Index = () => {
                 }`}
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
-                <h3 className="text-xl font-serif mb-3">{item.title}</h3>
+                <h3 className="text-xl font-semibold tracking-tight mb-3">{item.title}</h3>
                 <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
