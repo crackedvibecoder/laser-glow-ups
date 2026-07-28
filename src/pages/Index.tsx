@@ -428,7 +428,7 @@ const Index = () => {
       {/* Real Results - Before & After */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Real Results
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
