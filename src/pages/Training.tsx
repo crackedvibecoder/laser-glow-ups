@@ -93,6 +93,7 @@ const CountdownTimer = () => {
 
   return (
     <span>
+      <Clock className="inline-block w-4 h-4 text-primary mr-1.5 -mt-0.5 align-middle" />
       Limited spots — next cohort starts in{" "}
       <strong className="text-primary">
         {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
@@ -472,10 +473,8 @@ const Training = () => {
 
       {/* Urgency Bar */}
       <div className="bg-primary/10 border-b border-primary/20 py-2.5 px-4 text-center">
-        <p className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
-          <Clock className="w-4 h-4 text-primary" />
+        <p className="text-base font-medium text-foreground">
           <CountdownTimer />
-          <Clock className="w-4 h-4 text-primary" />
         </p>
       </div>
 
@@ -498,12 +497,25 @@ const Training = () => {
                   with Confidence
                 </span>
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+              <p className="text-lg text-muted-foreground max-w-lg">
                 VTCT-accredited laser, skin, and aesthetics qualifications. Comprehensive training from practitioners who treat clients daily.
               </p>
+            </div>
 
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+            {/* Right - Lead Capture Form */}
+            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
+              <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-serif mb-2">Enquire About Training</h2>
+                  <p className="text-muted-foreground text-base">
+                    Discuss your goals and find the <strong className="text-primary">right course</strong> for you
+                  </p>
+                </div>
+                <TrainingLeadForm />
+              </div>
+
+              {/* Trust Badges — moved below the form */}
+              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground mt-6">
                 <span className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-primary" /> VTCT Accredited
                 </span>
@@ -518,38 +530,6 @@ const Training = () => {
                 </span>
               </div>
             </div>
-
-            {/* Right - Lead Capture Form */}
-            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
-              <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-serif mb-2">Enquire About Training</h2>
-                  <p className="text-muted-foreground text-sm">
-                    Discuss your goals and find the <strong className="text-primary">right course</strong> for you
-                  </p>
-                </div>
-                <TrainingLeadForm />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Strip */}
-      <section className="py-6 border-y border-border bg-background">
-        <div className="content-container">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
-            {[
-              { number: "1,000+", label: "Clients Treated" },
-              { number: "6+", label: "Years Experience" },
-              { number: "5★", label: "Average Rating" },
-              { number: "VTCT", label: "Accredited Centre" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-serif text-gold-metallic font-semibold">{stat.number}</p>
-                <p className="text-xs text-muted-foreground tracking-wide uppercase">{stat.label}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
