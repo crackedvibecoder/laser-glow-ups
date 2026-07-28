@@ -635,7 +635,7 @@ const Index = () => {
       <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4">
          <div className="content-container max-w-2xl text-center">
            <iframe
-            src={`https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH${typeof window !== "undefined" ? window.location.search : ""}`}
+            src={buildBookingSrc()}
             style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
             id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
             title="Book Your Consultation"
