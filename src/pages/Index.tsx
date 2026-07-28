@@ -450,7 +450,7 @@ const Index = () => {
               <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
                 <p className="font-serif text-lg">Bikini Line</p>
-                <p className="text-sm text-muted-foreground">Before & after several sessions</p>
+                <p className="text-base text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
           </div>
