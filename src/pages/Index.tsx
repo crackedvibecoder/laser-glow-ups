@@ -20,7 +20,26 @@ import {
 } from "@/components/ui/dialog";
 
 /* ──────────────────── Countdown Timer ──────────────────── */
+const BOOKING_WIDGET_URL = "https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH";
+
+/**
+ * Builds the GHL booking iframe URL with funnel attribution.
+ * - Preserves any incoming UTMs / click IDs (fbclid, gclid, utm_campaign, etc.)
+ * - Defaults utm_source to "direct" and utm_medium to "funnel" when missing
+ * - Always forces utm_content=offer-funnel so bookings from this page are
+ *   identifiable in GHL even for direct/organic traffic
+ */
+const buildBookingSrc = () => {
+  const search = typeof window !== "undefined" ? window.location.search : "";
+  const params = new URLSearchParams(search);
+  if (!params.get("utm_source")) params.set("utm_source", "direct");
+  if (!params.get("utm_medium")) params.set("utm_medium", "funnel");
+  params.set("utm_content", "offer-funnel");
+  return `${BOOKING_WIDGET_URL}?${params.toString()}`;
+};
+
 const CountdownTimer = () => {
+
   const getTimeLeft = useCallback(() => {
     const now = new Date();
     const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
@@ -635,7 +654,7 @@ const Index = () => {
       <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4">
          <div className="content-container max-w-2xl text-center">
            <iframe
-            src={`https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH${typeof window !== "undefined" ? window.location.search : ""}`}
+            src={buildBookingSrc()}
             style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
             id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
             title="Book Your Consultation"
