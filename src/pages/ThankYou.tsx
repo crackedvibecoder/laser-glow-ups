@@ -29,23 +29,23 @@ const ThankYou = () => {
         <div className="bg-card border border-border rounded-xl p-5 md:p-7 text-left space-y-5">
           <div className="flex items-center gap-3 border-b border-border pb-5">
             <CalendarPlus className="w-5 h-5 text-primary shrink-0" />
-            <p className="text-sm font-semibold text-foreground">Add your slot to calendar</p>
+            <p className="text-base font-semibold text-foreground">Add your slot to calendar</p>
           </div>
           <div className="flex items-center gap-3 border-b border-border pb-5">
             <MessageSquare className="w-5 h-5 text-primary shrink-0" />
-            <p className="text-sm font-semibold text-foreground">Check text/email for confirmation</p>
+            <p className="text-base font-semibold text-foreground">Check text/email for confirmation</p>
           </div>
           <div className="flex items-center gap-3">
             <Clock className="w-5 h-5 text-primary shrink-0" />
-            <p className="text-sm font-semibold text-foreground">15-min consultation · £100 discount reserved for your treatment package</p>
+            <p className="text-base font-semibold text-foreground">15-min consultation · £100 discount reserved for your treatment package</p>
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Need to reschedule? Please tell us ASAP so your slot can be offered to someone else.
         </p>
 
-        <p className="text-xs text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Laser Location · Bury, Manchester
         </p>
       </div>

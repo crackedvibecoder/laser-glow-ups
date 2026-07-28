@@ -283,7 +283,7 @@ const Index = () => {
 
       {/* Urgency Bar with Countdown */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
-        <div className="text-sm font-medium text-foreground flex items-center justify-center gap-2">
+        <div className="text-base font-medium text-foreground flex items-center justify-center gap-2">
           <Clock className="w-4 h-4 text-primary shrink-0" />
           <CountdownTimer />
         </div>
@@ -344,7 +344,7 @@ const Index = () => {
                 Claim Your £100 Discount →
               </a>
 
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Bury, Manchester
               </p>
             </div>
@@ -366,7 +366,7 @@ const Index = () => {
       {/* Pain Points */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Sound Familiar?
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
@@ -412,7 +412,7 @@ const Index = () => {
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
                 <h3 className="text-xl font-serif mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -428,7 +428,7 @@ const Index = () => {
       {/* Real Results - Before & After */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Real Results
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
@@ -443,14 +443,14 @@ const Index = () => {
               <img src={chinBeforeAfter} alt="Chin laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
                 <p className="font-serif text-lg">Chin & Upper Lip</p>
-                <p className="text-sm text-muted-foreground">Before & after several sessions</p>
+                <p className="text-base text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
               <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
               <div className="bg-card p-4">
                 <p className="font-serif text-lg">Bikini Line</p>
-                <p className="text-sm text-muted-foreground">Before & after several sessions</p>
+                <p className="text-base text-muted-foreground">Before & after several sessions</p>
               </div>
             </div>
           </div>
@@ -466,7 +466,7 @@ const Index = () => {
       {/* How It Works */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Simple Process
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">How It Works</h2>
@@ -494,7 +494,7 @@ const Index = () => {
                   {item.step}
                 </span>
                 <h3 className="text-xl font-serif mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -510,7 +510,7 @@ const Index = () => {
       {/* Your First Visit - Video */}
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             What to Expect
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
@@ -536,7 +536,7 @@ const Index = () => {
       {/* Pricing Card */}
       <section className="bg-accent section-padding-compact">
         <div className="content-container text-center relative z-10">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Limited Time
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
@@ -567,7 +567,7 @@ const Index = () => {
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-base text-muted-foreground">
                     {item}
                   </span>
                 </div>
@@ -581,7 +581,7 @@ const Index = () => {
               Claim Your £100 Discount →
             </a>
 
-            <p className="text-xs mt-4 text-muted-foreground">
+            <p className="text-sm mt-4 text-muted-foreground">
               Save £100 when you book your free consultation this month
             </p>
           </div>
@@ -591,7 +591,7 @@ const Index = () => {
       {/* Reviews Widget */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
              What Our Clients Say
            </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
@@ -600,7 +600,7 @@ const Index = () => {
 
           {/* Testimonial Video */}
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary py-4 bg-card">
+            <p className="text-base font-medium tracking-widest uppercase text-primary py-4 bg-card">
               Hear From Our Clients
             </p>
             <video autoPlay muted playsInline controls className="w-full">
@@ -639,7 +639,7 @@ const Index = () => {
             title="Book Your Consultation"
           />
 
-          <p className="text-xs text-muted-foreground mt-4">
+          <p className="text-sm text-muted-foreground mt-4">
             No payment required · Free consultation · All skin types welcome
           </p>
         </div>
@@ -649,7 +649,7 @@ const Index = () => {
       <section className="section-padding-compact bg-background">
         <div className="content-container max-w-3xl">
           <div className="text-center mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
               Got Questions?
             </p>
             <h2 className="text-3xl md:text-4xl font-serif">Common Questions</h2>
@@ -695,10 +695,10 @@ const Index = () => {
                 value={`faq-${i}`}
                 className="border border-border rounded-lg px-6 bg-card"
               >
-                <AccordionTrigger className="text-left font-serif text-base hover:no-underline">
+                <AccordionTrigger className="text-left font-serif text-lg hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -728,7 +728,7 @@ const Index = () => {
             Claim Your £100 Discount →
           </a>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
               <Check className="w-3.5 h-3.5 text-primary" /> No payment required
             </span>
@@ -744,7 +744,7 @@ const Index = () => {
 
       {/* Footer / Legal */}
       <footer className="py-8 bg-background border-t border-border">
-        <div className="content-container text-center text-xs text-muted-foreground space-y-4">
+        <div className="content-container text-center text-sm text-muted-foreground space-y-4">
           <p>
             © {new Date().getFullYear()} Laser Location. All rights reserved.
           </p>
