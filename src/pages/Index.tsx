@@ -728,7 +728,7 @@ const Index = () => {
             Claim Your £100 Discount →
           </a>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
               <Check className="w-3.5 h-3.5 text-primary" /> No payment required
             </span>
