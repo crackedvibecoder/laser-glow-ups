@@ -315,7 +315,9 @@ const Index = () => {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
                 Full-Body Laser Hair Removal —{" "}
-                <span className="bg-white/70 px-2 py-1 rounded">Save £100</span>{" "}
+                <span className="inline-block whitespace-nowrap bg-white/70 px-2 py-1 rounded">
+                  Save&nbsp;£100
+                </span>{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
                   This Summer
                 </span>
