@@ -581,7 +581,7 @@ const Index = () => {
               Claim Your £100 Discount →
             </a>
 
-            <p className="text-xs mt-4 text-muted-foreground">
+            <p className="text-sm mt-4 text-muted-foreground">
               Save £100 when you book your free consultation this month
             </p>
           </div>
