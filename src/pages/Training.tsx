@@ -309,7 +309,7 @@ const TrainingLeadForm = ({ variant = "light" }: { variant?: "light" | "dark" })
       >
         {isSubmitting ? "Submitting..." : "Enquire About Training →"}
       </button>
-      <p className="text-xs text-center text-muted-foreground">
+      <p className="text-sm text-center text-muted-foreground">
         No obligation. We'll discuss your goals and the right course for you.
       </p>
     </form>
@@ -331,7 +331,7 @@ const PrivacyPolicyPopup = () => {
             <DialogTitle className="text-2xl font-serif">Privacy Policy</DialogTitle>
             <DialogDescription className="text-muted-foreground">Laser Location — Privacy Policy</DialogDescription>
           </DialogHeader>
-          <div className="text-sm text-muted-foreground space-y-4 leading-relaxed">
+          <div className="text-base text-muted-foreground space-y-4 leading-relaxed">
             <p><strong className="text-foreground">1. Who We Are</strong><br />Laser Location ("we", "us", "our") operates from Bury, Manchester. We are committed to protecting your personal data and respecting your privacy.</p>
             <p><strong className="text-foreground">2. Information We Collect</strong><br />When you submit a training enquiry, we collect your name, email address, and phone number. We may also collect information about your visit through cookies and analytics tools.</p>
             <p><strong className="text-foreground">3. How We Use Your Information</strong><br />We use your personal information to: contact you about your training enquiry, send course information and updates, and improve our services.</p>
@@ -491,7 +491,7 @@ const Training = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left - Copy */}
             <div className="animate-fade-up">
-              <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">
+              <p className="text-base font-medium tracking-widest uppercase text-primary mb-4">
                 Professional Training · Bury, Greater Manchester
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-6">
@@ -518,7 +518,7 @@ const Training = () => {
               </div>
 
               {/* Trust Badges — moved below the form */}
-              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground mt-6">
+              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-base text-muted-foreground mt-6">
                 <span className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-primary" /> VTCT Accredited
                 </span>
@@ -540,7 +540,7 @@ const Training = () => {
       {/* Who It's For */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Who It's For</p>
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">Who It's For</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Training for Every Stage of Your Career</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             Whether you're taking your first steps into aesthetics or looking to formalise years of experience with recognised qualifications.
@@ -574,7 +574,7 @@ const Training = () => {
       {/* Course Cards */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Our Courses</p>
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">Our Courses</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Choose Your Training Pathway</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             From foundation certificates to complete business packages — VTCT-accredited and CPD courses across laser and aesthetics.
@@ -592,7 +592,7 @@ const Training = () => {
 
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-3xl font-serif text-gold-metallic font-semibold">{course.price}</span>
-                  {course.priceNote && <span className="text-sm text-muted-foreground">{course.priceNote}</span>}
+                  {course.priceNote && <span className="text-base text-muted-foreground">{course.priceNote}</span>}
                 </div>
                 {course.priceAlt && (
                   <p className="text-base text-primary mb-4">{course.priceAlt}</p>
@@ -638,7 +638,7 @@ const Training = () => {
               />
             </div>
             <div>
-              <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Your Trainer</p>
+              <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">Your Trainer</p>
               <h2 className="text-3xl md:text-4xl font-serif mb-4">Learn from Experience</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Our training is led by Carmen Douglas, founder of Laser Location, who brings over six years of specialist experience in advanced laser and aesthetic treatments.
@@ -656,7 +656,7 @@ const Training = () => {
                 ].map((stat) => (
                   <div key={stat.label} className="p-4 rounded-xl bg-background border border-border text-center">
                     <p className="text-xl font-serif text-gold-metallic font-semibold">{stat.number}</p>
-                    <p className="text-xs text-muted-foreground tracking-wide uppercase">{stat.label}</p>
+                    <p className="text-sm text-muted-foreground tracking-wide uppercase">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -668,7 +668,7 @@ const Training = () => {
       {/* How It Works */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">The Process</p>
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">The Process</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">Your Training Journey</h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -705,7 +705,7 @@ const Training = () => {
       {/* Why Train With Us */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">The Difference</p>
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">The Difference</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Why Train With Us?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             We don't just teach techniques — we prepare you for a successful career. Our training combines rigorous theoretical knowledge with extensive practical experience.
@@ -724,7 +724,7 @@ const Training = () => {
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border text-center">
                 <item.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h3 className="text-base font-semibold mb-1">{item.title}</h3>
+                <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
                 <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
@@ -742,7 +742,7 @@ const Training = () => {
       <section className="section-padding-compact bg-accent">
         <div className="content-container max-w-3xl">
           <div className="text-center mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Training FAQ</p>
+            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">Training FAQ</p>
             <h2 className="text-3xl md:text-4xl font-serif">Common Questions</h2>
           </div>
 
