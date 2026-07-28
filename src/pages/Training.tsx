@@ -592,7 +592,7 @@ const Training = () => {
                   {course.priceNote && <span className="text-sm text-muted-foreground">{course.priceNote}</span>}
                 </div>
                 {course.priceAlt && (
-                  <p className="text-sm text-primary mb-4">{course.priceAlt}</p>
+                  <p className="text-base text-primary mb-4">{course.priceAlt}</p>
                 )}
                 {!course.priceAlt && <div className="mb-4" />}
 
@@ -604,7 +604,7 @@ const Training = () => {
                   {course.highlights.map((h) => (
                     <div key={h} className="flex items-start gap-2.5">
                       <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                      <span className="text-sm text-muted-foreground">{h}</span>
+                      <span className="text-base text-muted-foreground">{h}</span>
                     </div>
                   ))}
                 </div>
