@@ -536,7 +536,7 @@ const Index = () => {
       {/* Pricing Card */}
       <section className="bg-accent section-padding-compact">
         <div className="content-container text-center relative z-10">
-          <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
             Limited Time
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
