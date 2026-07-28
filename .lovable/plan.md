@@ -1,45 +1,35 @@
-## Goal
-Re-introduce imagery into the simplified hero section so it feels less text-heavy and has clearer visual hierarchy, without pushing the CTA below the fold on mobile.
+## Hero refinements — Laser Location offer page
 
-## Current state
-- `src/pages/Index.tsx` hero currently contains only: eyebrow, H1, location line, and CTA button.
-- Local assets exist in `src/assets/`; `practitioner-treatment.jpg` is a strong, on-brand, editorial-style treatment-room shot.
-- No storage buckets exist in this project, but the required images are already in the repo.
+### Goal
+Swap the hero image to the leg-laser shot, tighten the text hierarchy, and make the £100 saving more immediately obvious without breaking the editorial aesthetic.
 
-## Proposed changes
+### Changes
 
-### 1. Hero layout update
-- Switch the hero from a single centred text column to a mobile-first stacked layout:
-  - **Mobile**: image first, then text + CTA, all above the fold.
-  - **Desktop**: text-left / image-right split (or centred stacked if split feels too busy).
-- Import and use `practitioner-treatment.jpg` as the hero image.
-- Add descriptive `alt` text: "Laser hair removal treatment at Laser Location, Bury, Manchester."
+1. **Replace hero image**
+   - Swap `src/assets/practitioner-treatment.jpg` for `src/assets/leg-laser.jpg` in the hero section.
+   - Keep the same rounded-2xl, object-cover styling and mobile/desktop heights.
 
-### 2. Preserve copy and CTA
-- Keep the existing eyebrow, H1, "This Summer" accent, location line, and "Claim Your £100 Discount →" button exactly as they are.
-- Do not re-add the removed sub-paragraph or trust badges to the hero.
+2. **Reorder hero text**
+   - Keep the eyebrow `"Medical-Grade Laser Hair Removal"` at the very top of the text block (it frames the offer).
+   - Move `"Bury, Manchester"` to sit **below** the CTA button, so the headline → CTA flow is uninterrupted.
 
-### 3. Mobile above-the-fold guardrails
-- Use a compact image height (e.g. `h-48` / `max-h-[40vh]`) so the CTA remains visible on ~394×840 mobile viewports.
-- Keep reduced vertical padding (`py-10 md:py-16`) from the previous simplification.
-- Verify with a Playwright mobile screenshot after implementation.
+3. **Emphasise the £100 saving**
+   - Add a small, high-contrast badge/pill directly under the headline (or just above the CTA) reading `"Save £100"`.
+   - Use the existing primary gold token (`bg-primary`, `text-primary-foreground`) so it feels on-brand, not like a new colour.
+   - Optionally add a tiny price line `"Was £895 — now £795"` under the badge for extra clarity.
 
-### 4. Styling constraints
-- Use the existing design tokens (primary, muted-foreground, font-serif, btn-gold-metallic).
-- No hardcoded colours; no changes to the overall design system.
-- Image rounded corners and subtle shadow to match premium editorial aesthetic.
+4. **Preserve mobile "above the fold"**
+   - Keep the current compact padding (`py-10 md:py-16`).
+   - If the badge pushes the CTA down, slightly reduce headline margin or badge spacing so the CTA still appears on a typical mobile viewport.
 
-## Files to modify
-- `src/pages/Index.tsx` — hero section layout and image import.
+5. **Verify**
+   - Run a build check.
+   - Capture mobile (394×840) and desktop screenshots to confirm the CTA remains visible, image renders correctly, and hierarchy feels balanced.
 
-## Verification
-- Build passes.
-- Playwright screenshot at 394×840 confirms headline + CTA are visible without scrolling.
-- Desktop screenshot confirms the split layout is balanced and not cluttered.
+### What won't change
+- No design-system colours, fonts, or button styles.
+- No changes to the booking calendar, sticky bar, exit-intent popup, or other sections.
+- The CTA button text stays exactly `"Claim Your £100 Discount"`.
 
-## Open decision
-If you prefer a different image, the other available local assets are:
-- `arm-laser.jpg` — clinical arm treatment close-up.
-- `leg-laser.jpg` — clinical leg treatment close-up.
-
-My recommendation is `practitioner-treatment.jpg` because it shows the professional setting and the practitioner, which feels more premium and trustworthy as a hero image.
+### Recommendation
+The leg-laser image is a stronger close-up treatment shot and will feel less generic than the current practitioner-treatment image. Moving the location below the CTA keeps the offer/action front-and-centre. The gold "Save £100" badge gives the discount the visual weight it deserves without cluttering the headline.
