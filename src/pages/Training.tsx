@@ -539,7 +539,7 @@ const Training = () => {
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Who It's For</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Training for Every Stage of Your Career</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             Whether you're taking your first steps into aesthetics or looking to formalise years of experience with recognised qualifications.
           </p>
 
@@ -554,8 +554,8 @@ const Training = () => {
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border text-center">
                 <span className="text-3xl mb-3 block">{item.emoji}</span>
-                <h3 className="text-lg font-serif mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -573,7 +573,7 @@ const Training = () => {
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Our Courses</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Choose Your Training Pathway</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             From foundation certificates to complete business packages — VTCT-accredited and CPD courses across laser and aesthetics.
           </p>
 
@@ -584,8 +584,8 @@ const Training = () => {
                 <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/15 text-primary mb-4">
                   {course.badge}
                 </span>
-                <h3 className="text-xl font-serif mb-1">{course.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{course.subtitle}</p>
+                <h3 className="text-xl font-semibold mb-1">{course.title}</h3>
+                <p className="text-base text-muted-foreground mb-4">{course.subtitle}</p>
 
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-3xl font-serif text-gold-metallic font-semibold">{course.price}</span>
@@ -596,7 +596,7 @@ const Training = () => {
                 )}
                 {!course.priceAlt && <div className="mb-4" />}
 
-                <p className="text-sm text-muted-foreground mb-5 flex items-center gap-1.5">
+                <p className="text-base text-muted-foreground mb-5 flex items-center gap-1.5">
                   <Clock className="w-4 h-4 text-primary" /> {course.duration}
                 </p>
 
@@ -637,10 +637,10 @@ const Training = () => {
             <div>
               <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Your Trainer</p>
               <h2 className="text-3xl md:text-4xl font-serif mb-4">Learn from Experience</h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-6">
                 Our training is led by Carmen Douglas, founder of Laser Location, who brings over six years of specialist experience in advanced laser and aesthetic treatments.
               </p>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground mb-8">
                 Having treated over 1,000 clients and built a thriving clinic in Greater Manchester, Carmen understands both the technical precision required and the business realities of running a successful practice.
               </p>
 
@@ -691,8 +691,8 @@ const Training = () => {
                 className={`p-8 rounded-xl bg-card border border-border text-center relative ${index < 2 ? "how-it-works-has-connector" : ""}`}
               >
                 <span className="text-5xl font-serif text-gold-metallic font-semibold block mb-4">{item.step}</span>
-                <h3 className="text-xl font-serif mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -704,7 +704,7 @@ const Training = () => {
         <div className="content-container text-center">
           <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">The Difference</p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">Why Train With Us?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             We don't just teach techniques — we prepare you for a successful career. Our training combines rigorous theoretical knowledge with extensive practical experience.
           </p>
 
@@ -721,8 +721,8 @@ const Training = () => {
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border text-center">
                 <item.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                <h3 className="text-base font-serif mb-1">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+                <h3 className="text-base font-semibold mb-1">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -783,10 +783,10 @@ const Training = () => {
                 value={`faq-${i}`}
                 className="border border-border rounded-lg px-6 bg-card"
               >
-                <AccordionTrigger className="text-left font-serif text-base hover:no-underline">
+                <AccordionTrigger className="text-left font-serif text-lg hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -796,14 +796,14 @@ const Training = () => {
       </section>
 
       {/* Final CTA */}
-      <section id="enquire" className="section-padding bg-secondary">
+      <section id="enquire" className="section-padding bg-secondary scroll-mt-4">
         <div className="content-container max-w-xl text-center">
           <GraduationCap className="w-8 h-8 text-primary mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             Ready to Start Your Training{" "}
             <span className="text-script-accent text-primary text-[1.1em]">Journey?</span>
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8">
             Get in touch to discuss your goals and find the right qualification pathway for you.
           </p>
 
@@ -827,7 +827,7 @@ const Training = () => {
 
       {/* Footer */}
       <footer className="py-8 bg-background border-t border-border">
-        <div className="content-container text-center text-xs text-muted-foreground space-y-4">
+        <div className="content-container text-center text-sm text-muted-foreground space-y-4">
           <p>© {new Date().getFullYear()} Laser Location. All rights reserved.</p>
           <p className="max-w-2xl mx-auto">
             Laser Location collects the personal information you submit for the purpose of contacting you about your training enquiry. Your details are used only for enquiry follow-up. We do not sell your data.{" "}
