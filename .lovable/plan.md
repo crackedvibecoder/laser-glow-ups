@@ -1,45 +1,37 @@
-## Training page polish — round 2
+## Tag calendar bookings with a stable funnel identifier
 
-Three fixes, all mirroring what we already shipped on the offer page. No copy, offer, form, or layout changes.
+Right now the GHL booking iframe on `/` (offer page) only forwards whatever UTMs are already on the URL. Visitors without UTMs (direct, organic, QR, word-of-mouth) book through the same calendar ID used elsewhere and are indistinguishable in GHL.
 
-### 1. Urgency bar — stop the awkward wrap
-In `src/pages/Training.tsx`, the bar renders `"Limited spots — next cohort starts in {days}d {hours}h {minutes}m"` as a single string, so on mobile the countdown breaks across two lines and can leave "58m" stranded on its own line.
+Fix: append **hardcoded, season-neutral** UTM defaults to the iframe URL so every booking from this funnel is identifiable, while still preserving any real ad UTMs.
 
-Fix:
-- Wrap the countdown block (`{days}d {hours}h {minutes}m`) in `whitespace-nowrap` so the numbers always stay together on one line.
-- Also wrap the "next cohort starts in" phrase + countdown together in an inline block so the line breaks in a natural place (between "spots —" and "next cohort starts in 3d 5h 58m") rather than mid-countdown.
-- Keep the inline `Clock` icon, `text-base` size, and current colors.
+### Change
 
-### 2. Gold numbers — truly "shadow only"
-Current `.text-gold-metallic` in `src/index.css` already dropped the stroke, but the `drop-shadow(0 0 0.5px …)` renders as a symmetric halo on every edge, which reads visually as a thin outline — that's what still looks like "both".
+In `src/pages/Index.tsx` (the GHL booking iframe, currently around line 638), build the src with a small helper that merges the incoming query string with these defaults:
 
-Fix:
-- Replace the omnidirectional halo with a single **directional** drop-shadow: `drop-shadow(0 1px 0 hsl(30 25% 18% / 0.35))`. That's a soft shadow *underneath* the glyph only, no halo, no outline appearance.
-- Everything else in the gradient stays exactly as-is. Applies site-wide (Index, Training, Thank You), same as before.
+- `utm_source` — only set if missing → `direct`
+- `utm_medium` — only set if missing → `funnel`
+- `utm_content` — **always** overwritten → `offer-funnel`
+- All other incoming params (utm_campaign, gclid, fbclid, etc.) pass through unchanged.
 
-### 3. Body copy readability across the training page
-The offer page got a clarity pass (small serif titles → Inter `font-semibold`, body bumps to `text-base`/`text-lg`). Some spots on `/training` still lag. In `src/pages/Training.tsx`:
+Resulting behaviour:
 
-- **Hero eyebrow** ("Professional Training · Bury…"): `text-sm` → `text-base`.
-- **Hero sub-paragraph**: already `text-lg` — keep.
-- **Trust badges under form** (VTCT / Insurance-Ready / 1,000+ / Small Class Sizes): `text-sm` → `text-base`.
-- **All section eyebrows** ("Who It's For", "Our Courses", "Your Trainer", "The Process", "The Difference", "Training FAQ"): `text-sm` → `text-base`.
-- **Course cards**: subtitle `text-base` keep; `priceNote` `text-sm` → `text-base`; card title `text-xl` keep but ensure it's `font-semibold` Inter (already is).
-- **Trainer stat labels** ("Years Specialist", "Clients Treated", etc.): `text-xs` → `text-sm`.
-- **Why Train With Us tiles**: title currently `text-base font-semibold` → bump to `text-lg font-semibold`; body already `text-base` — keep.
-- **How It Works step titles**: already `text-xl font-semibold` — keep.
-- **Form helper line** under submit ("No obligation…"): `text-xs` → `text-sm`.
-- **Sticky desktop CTA**: keep as-is (desktop only, tight bar).
-- **Privacy popup body**: `text-sm` → `text-base` for legibility.
-- **Footer legal** (line 813+): if still `text-xs`, bump to `text-sm` (already scheduled in prior pass — verify).
+| Visitor arrival | What GHL sees |
+|---|---|
+| Meta ad: `?utm_source=facebook&utm_medium=cpc&utm_campaign=summer` | `utm_source=facebook`, `utm_medium=cpc`, `utm_campaign=summer`, `utm_content=offer-funnel` |
+| Direct / organic (no UTMs) | `utm_source=direct`, `utm_medium=funnel`, `utm_content=offer-funnel` |
 
-Small-title serif → Inter clarity swap: already done in the previous pass across Who It's For / Courses / How It Works / Why Train With Us tiles. No further font-family changes needed — the remaining "hard to read at small sizes" issue is size, not family.
+`utm_content=offer-funnel` is the constant tag that identifies "this funnel" regardless of season. If the page pivots to spring/winter later, the tag doesn't need to change — it always means "the current offer page funnel".
+
+### Training page
+
+`src/pages/Training.tsx` has no calendar iframe — it uses the enquiry form only, which already sends `page: window.location.href` and `formName: "Website contact form"` via the lead router. So GHL/Discord/Sheet already know a lead is a training-page enquiry. **No calendar change needed on `/training` today.**
+
+If a booking calendar is later added to `/training`, the same helper should be used with `utm_content=training-offer-funnel`.
 
 ### Out of scope
-- No copy rewrites, offer changes, image swaps, form logic, or GHL/calendar changes.
-- No hero restructure.
-- No changes to the gold gradient itself — only the shadow.
+- No calendar ID change, no design/layout change.
+- No changes to the lead router or the enquiry forms.
+- No changes to `/training` (no iframe there).
 
 ### Files touched
-- `src/index.css` — swap the halo drop-shadow for a single directional one.
-- `src/pages/Training.tsx` — urgency bar `whitespace-nowrap` fix + typography bumps listed above.
+- `src/pages/Index.tsx` — replace the inline template-string iframe `src` with a small `buildBookingSrc()` helper that merges `window.location.search` with the defaults above.
