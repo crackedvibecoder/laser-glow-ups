@@ -719,7 +719,7 @@ const Index = () => {
               For Good?
             </span>
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8">
             Book your free, no-obligation consultation and claim your £100 Summer Discount.
           </p>
 
