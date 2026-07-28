@@ -344,7 +344,7 @@ const Index = () => {
                 Claim Your £100 Discount →
               </a>
 
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Bury, Manchester
               </p>
             </div>
