@@ -1,22 +1,34 @@
-## Plan: Fix hero heading line breaks so "Save £100" stays on one line
+## Goal
+Make the hero heading feel visually balanced on mobile while keeping the `Save £100` highlight intact and on its own line.
 
-### Current state
-The hero `h1` in `src/pages/Index.tsx` is wrapping on mobile in the wrong places, splitting the line as:
-```
-Full-Body Laser Hair
-Removal — Save
-£100 This Summer
-```
-The user only wants to guarantee that `Save £100` never breaks across lines.
+## Current state
+- The hero `h1` is one continuous sentence: `Full-Body Laser Hair Removal — Save £100 This Summer`.
+- On narrow viewports the browser wraps it unevenly (e.g. "Removal — Save" alone on a line, then "£100 This Summer"), which looks unbalanced.
+- The `Save £100` highlight uses `rounded` (small radius) and sits inside the heading.
 
-### Change
-1. In `src/pages/Index.tsx`, wrap the highlighted `Save £100` span with `whitespace-nowrap` and make it an inline-block so the white/blush background still renders correctly.
-2. Use a non-breaking space between `Save` and `£100` (`Save&nbsp;£100`) as a fallback.
-3. Keep the existing wording, gold script accent on `This Summer`, image placement, CTA text, and all styling untouched.
+## Proposed changes
+1. **Restructure the heading into explicit, balanced lines.**
+   - Mobile: stack the headline as three balanced lines so no single line looks orphaned:
+     ```
+     Full-Body Laser Hair
+     Removal — Save £100
+     This Summer
+     ```
+   - Desktop: keep the headline as one flowing line (or two balanced lines) so it doesn't feel broken on wider screens.
+   - Keep `Save £100` on its own line on mobile and with the white/blush highlight.
+   - Keep `This Summer` in the gold script accent.
 
-### Verification
-- Run the build to confirm no TypeScript/Tailwind errors.
-- Capture mobile and desktop screenshots of the hero to confirm `Save £100` appears on a single line and the overall fold still looks correct.
+2. **Soften the highlight.**
+   - Change the `Save £100` background from `rounded` to `rounded-lg` (or `rounded-xl`) so the pill feels softer and more premium.
+   - Keep the white/blush background color as requested.
 
-### Files to edit
-- `src/pages/Index.tsx` (hero `h1` only)
+3. **Preserve everything else.**
+   - No changes to the image placement, eyebrow text, CTA, location line, or surrounding sections.
+   - No changes to the offer copy or pricing.
+
+## Files to change
+- `src/pages/Index.tsx` (hero heading only)
+
+## Verification
+- Build the project.
+- Capture mobile and desktop screenshots of the hero to confirm the lines look balanced and the highlight radius is softer.
