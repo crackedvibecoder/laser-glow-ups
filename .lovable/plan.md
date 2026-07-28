@@ -1,34 +1,36 @@
-## Goal
-Make the hero heading feel visually balanced on mobile while keeping the `Save £100` highlight intact and on its own line.
+## Plan: Funnel-wide text scale-up for readability
 
-## Current state
-- The hero `h1` is one continuous sentence: `Full-Body Laser Hair Removal — Save £100 This Summer`.
-- On narrow viewports the browser wraps it unevenly (e.g. "Removal — Save" alone on a line, then "£100 This Summer"), which looks unbalanced.
-- The `Save £100` highlight uses `rounded` (small radius) and sits inside the heading.
+Keep the hero heading exactly as it is now. Focus only on scaling body copy and small text across the funnel so it's more readable and accessible on mobile.
 
-## Proposed changes
-1. **Restructure the heading into explicit, balanced lines.**
-   - Mobile: stack the headline as three balanced lines so no single line looks orphaned:
-     ```
-     Full-Body Laser Hair
-     Removal — Save £100
-     This Summer
-     ```
-   - Desktop: keep the headline as one flowing line (or two balanced lines) so it doesn't feel broken on wider screens.
-   - Keep `Save £100` on its own line on mobile and with the white/blush highlight.
-   - Keep `This Summer` in the gold script accent.
+### Changes to `src/pages/Index.tsx`
 
-2. **Soften the highlight.**
-   - Change the `Save £100` background from `rounded` to `rounded-lg` (or `rounded-xl`) so the pill feels softer and more premium.
-   - Keep the white/blush background color as requested.
+| Location | Current | New |
+|---|---|---|
+| Urgency/countdown bar | `text-sm` | `text-base` |
+| Section eyebrows ("Sound Familiar?", "Real Results", "Simple Process", "What to Expect", "Limited Time", "What Our Clients Say", "Got Questions?") | `text-sm` | `text-base` |
+| Pain-point card descriptions | `text-sm` | `text-base` |
+| Before/after captions ("Before & after several sessions") | `text-sm` | `text-base` |
+| How-it-works step descriptions | `text-sm` | `text-base` |
+| Pricing feature list items | `text-sm` | `text-base` |
+| Pricing disclaimer ("Save £100 when you book...") | `text-xs` | `text-sm` |
+| Booking disclaimer ("No payment required · ...") | `text-xs` | `text-sm` |
+| FAQ question triggers | `text-base` | `text-lg` |
+| FAQ answers | `text-sm` | `text-base` |
+| Final CTA trust badges (No payment required / Instant scheduling / Tailored) | `text-xs` | `text-sm` |
+| Footer legal copy | `text-xs` | `text-sm` |
+| Hero location line ("Bury, Manchester") | `text-sm` | `text-base` |
 
-3. **Preserve everything else.**
-   - No changes to the image placement, eyebrow text, CTA, location line, or surrounding sections.
-   - No changes to the offer copy or pricing.
+### Changes to `src/pages/ThankYou.tsx`
+- "Add your slot to calendar" / "Check text/email..." / "15-min consultation..." lines: `text-sm` → `text-base`.
+- Reschedule note: `text-sm` → `text-base`.
+- Location footer: `text-xs` → `text-sm`.
 
-## Files to change
-- `src/pages/Index.tsx` (hero heading only)
+### What stays the same
+- All headings (`h1`, `h2`, `h3`) — hierarchy preserved.
+- CTA button styling (`.btn-gold-metallic` uses `text-sm` uppercase which reads well as a button label).
+- Hero heading, image, layout, colors, and spacing.
+- Any `text-xs` labels used inside form inputs or micro-labels where a larger size would break layout.
 
-## Verification
-- Build the project.
-- Capture mobile and desktop screenshots of the hero to confirm the lines look balanced and the highlight radius is softer.
+### Verification
+- `bun run build` for compile check.
+- Mobile + desktop screenshots to confirm nothing wraps awkwardly and the page feels more readable.
