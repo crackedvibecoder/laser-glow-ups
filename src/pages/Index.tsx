@@ -567,7 +567,7 @@ const Index = () => {
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-base text-muted-foreground">
                     {item}
                   </span>
                 </div>
