@@ -172,6 +172,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-stroke: 1px hsl(30 25% 18%);
+    text-shadow: 0 1px 0 hsl(30 25% 18% / 0.35);
   }
 
   .btn-gold-metallic {
