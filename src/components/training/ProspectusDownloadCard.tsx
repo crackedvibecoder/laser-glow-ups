@@ -117,14 +117,8 @@ export function ProspectusDownloadCard() {
           </h2>
 
           <div className="w-16 h-px mx-auto bg-gradient-to-r from-transparent via-[hsl(43_60%_70%)] to-transparent mb-3" />
+          <div className="mb-6" />
 
-          <p className="text-sm text-muted-foreground max-w-[320px] mx-auto leading-relaxed mb-2">
-            Courses, pricing, entry requirements and career pathways — everything you need before you commit.
-          </p>
-
-          <p className="text-xs text-[hsl(42_50%_50%)] font-medium tracking-wide mb-6">
-            VTCT-accredited courses · Trusted by 500+ students
-          </p>
 
           <button
             type="button"
