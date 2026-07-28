@@ -700,7 +700,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-serif text-lg hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-lg leading-relaxed">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
