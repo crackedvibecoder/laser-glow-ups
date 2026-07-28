@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Check, Clock, Shield, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
-import practitionerTreatment from "@/assets/practitioner-treatment.jpg";
+import legLaser from "@/assets/leg-laser.jpg";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
 import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
 import {
@@ -297,37 +297,46 @@ const Index = () => {
       >
         <div className="content-container">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
-            {/* Hero image — leads on mobile, sits right on desktop */}
-            <div className="w-full md:w-1/2 md:order-2">
-              <img
-                src={practitionerTreatment}
-                alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                className="w-full h-48 sm:h-56 md:h-80 object-cover rounded-2xl shadow-lg"
-                loading="eager"
-              />
-            </div>
-
-            {/* Text content — follows image on mobile, sits left on desktop */}
-            <div className="w-full md:w-1/2 md:order-1 text-center md:text-left">
-              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-4">
+            {/* Text content — leads on mobile, sits left on desktop */}
+            <div className="w-full md:w-1/2 text-center md:text-left">
+              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-4">
-                Full-Body Laser Hair Removal — Save £100{" "}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
+                Full-Body Laser Hair Removal{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
                   This Summer
                 </span>
               </h1>
-              <p className="text-sm text-muted-foreground mb-8">
-                Bury, Manchester
+
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground mb-3">
+                <span className="text-sm font-bold tracking-wide">SAVE £100</span>
+              </div>
+
+              <p className="text-sm text-muted-foreground mb-5">
+                Was £895 — now £795
               </p>
 
               <a
                 href="#book"
-                className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
+                className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
               >
                 Claim Your £100 Discount →
               </a>
+
+              <p className="text-sm text-muted-foreground">
+                Bury, Manchester
+              </p>
+            </div>
+
+            {/* Hero image — follows text on mobile, sits right on desktop */}
+            <div className="w-full md:w-1/2">
+              <img
+                src={legLaser}
+                alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
+                className="w-full h-48 sm:h-56 md:h-80 object-cover rounded-2xl shadow-lg"
+                loading="eager"
+              />
             </div>
           </div>
         </div>
