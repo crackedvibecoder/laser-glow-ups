@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import { sendLeadToRouter } from "@/lib/leadRouter";
+import { ProspectusDownloadCard } from "@/components/training/ProspectusDownloadCard";
 import {
   Accordion,
   AccordionContent,
@@ -500,25 +501,15 @@ const Training = () => {
                   with Confidence
                 </span>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg">
+              <p className="text-lg text-muted-foreground max-w-lg mb-4">
                 VTCT-accredited laser, skin, and aesthetics qualifications. Comprehensive training from practitioners who treat clients daily.
               </p>
-            </div>
+              <p className="text-base text-muted-foreground max-w-lg mb-6">
+                Courses, pricing, entry requirements &amp; career pathways — everything you need before you enrol.
+              </p>
 
-            {/* Right - Lead Capture Form */}
-            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
-              <div className="bg-background rounded-2xl shadow-xl border border-border p-8">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-serif mb-2">Enquire About Training</h2>
-                  <p className="text-muted-foreground text-base">
-                    Discuss your goals and find the <strong className="text-primary">right course</strong> for you
-                  </p>
-                </div>
-                <TrainingLeadForm />
-              </div>
-
-              {/* Trust Badges — moved below the form */}
-              <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-base text-muted-foreground mt-6">
+              {/* Trust Badges */}
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-base text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-primary" /> VTCT Accredited
                 </span>
@@ -532,6 +523,11 @@ const Training = () => {
                   <GraduationCap className="w-4 h-4 text-primary" /> Small Class Sizes
                 </span>
               </div>
+            </div>
+
+            {/* Right - Prospectus Lead Magnet */}
+            <div className="animate-fade-up" style={{ animationDelay: "0.15s" }}>
+              <ProspectusDownloadCard />
             </div>
           </div>
         </div>
