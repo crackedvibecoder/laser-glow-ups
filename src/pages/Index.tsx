@@ -299,11 +299,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
             {/* Text content — leads on mobile, sits left on desktop */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                Medical-Grade Laser Hair Removal
-              </p>
-
-              {/* Mobile-only image: between eyebrow and heading */}
+              {/* Mobile-only image: above the eyebrow and heading */}
               <div className="md:hidden mb-5">
                 <img
                   src={legLaser}
@@ -313,20 +309,17 @@ const Index = () => {
                 />
               </div>
 
+              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
+                Medical-Grade Laser Hair Removal
+              </p>
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
-                Full-Body Laser Hair Removal{" "}
+                Full-Body Laser Hair Removal —{" "}
+                <span className="bg-white/70 px-2 py-1 rounded">Save £100</span>{" "}
                 <span className="text-script-accent text-primary text-[1.15em]">
                   This Summer
                 </span>
               </h1>
-
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground mb-3">
-                <span className="text-sm font-bold tracking-wide">SAVE £100</span>
-              </div>
-
-              <p className="text-sm text-muted-foreground mb-5">
-                Was £895 — now £795
-              </p>
 
               <a
                 href="#book"
