@@ -1,56 +1,49 @@
-## Restyle the prospectus card + lead with it on mobile
+## Two-step prospectus card to match reference
 
-Match the uploaded reference for the prospectus opt-in on `/training`, reorder the mobile hero so the form is the first thing users see, and tighten the post-submit behaviour.
+Restyle `ProspectusDownloadCard.tsx` so the initial view mirrors the uploaded reference exactly — no form fields visible until the user commits.
 
-### 1. Restyle `ProspectusDownloadCard.tsx` to match the reference
+### Step 1 — Intro state (default)
 
-Keep the same form fields, validation, honeypot, router wiring, and success state — only the visual composition and copy change.
+Shown on first load. Centered stack, no visible form:
 
-- Card: cream/`bg-card` background, softer rounded corners, generous padding, thin gold top hairline (matches the reference's gold rule at the top).
-- Content stack (all centered):
-  1. Gold uppercase eyebrow: **"COSMETIC EDUCATION ACADEMY"** (tracking-widest, `text-primary`).
-  2. Prospectus mockup image, centered, slightly smaller with a soft ground-shadow (not the current heavy drop-shadow).
-  3. Serif headline: **"Get the FREE Course Guide"** (`FREE` bolded, same font).
-  4. Serif sub-headline one size down: **"to Find Your Perfect Training Pathway"**.
-  5. Short gold divider (reuse `.gold-divider`).
-  6. Body copy: **"Courses, pricing, entry requirements and career pathways — everything you need before you commit."**
-  7. Trust line in gold: **"VTCT-accredited courses · Trusted by 500+ students"**.
-  8. Form fields (First name, Email, Phone) — kept, but visually de-emphasised until the user engages (still visible, no accordion).
-  9. Full-width gold pill CTA: **"SEND ME THE GUIDE"** (uppercase, tracked, using existing `.btn-gold-metallic`).
-  10. Tiny consent line under the button (kept, smaller).
+1. Gold eyebrow: **COSMETIC EDUCATION ACADEMY**
+2. Prospectus mockup (unchanged image + soft shadow)
+3. Serif headline: **Get the FREE Course Guide**
+4. Serif sub-headline: **to Find Your Perfect Training Pathway**
+5. Short gold divider
+6. Body copy: **Courses, pricing, entry requirements and career pathways — everything you need before you commit.**
+7. Gold trust line: **VTCT-accredited courses · Trusted by 500+ students**
+8. Full-width gold pill CTA: **SEND ME THE GUIDE** — pressing this reveals the form (step 2), does NOT submit
+9. Tertiary text button below: **NO THANKS, I'LL FIND MY OWN WAY** — uppercase, tracked, muted foreground, no border. On click, smooth-scrolls to the enquiry form further down the page (`#enquiry` or the existing lead form anchor).
 
-No new design tokens, no new dependencies — reuse existing `.btn-gold-metallic`, `.gold-divider`, `font-serif`, `text-primary`.
+### Step 2 — Form state (after CTA click)
 
-### 2. Lead with the form on mobile
+Same card, replaces steps 8–9 with:
 
-In `src/pages/Training.tsx` hero, swap the DOM order so the prospectus card renders first on mobile and the copy column second. On desktop keep the current left-copy / right-card layout.
+- First name, Email, Phone inputs (existing validation, honeypot, router wiring untouched)
+- Full-width gold pill CTA: **SEND ME THE GUIDE** (now actually submits; shows "Sending…" during submit)
+- Small consent line under the button (existing copy)
+- Small **← Back** link above the fields so users can collapse back to the intro state
 
-Implementation: use `order-first lg:order-none` on the card column and `lg:order-first` on the copy column (or equivalent flex/grid order utilities). No copy changes to the left column beyond what's already in place.
+Header block (eyebrow → trust line) stays visible above the form so the card still reads like the reference; only the CTA area swaps.
 
-### 3. What happens after "Send Me the Guide"
+### Step 3 — Success state
 
-Current behaviour (kept, with two small refinements):
+Unchanged from current behaviour: checkmark, "Your prospectus is ready", gold Download button, "sent to your email" line, auto-open PDF, `localStorage` set. Returning visitors still skip straight here.
 
-1. Zod validation runs on the 3 fields.
-2. Honeypot `_hp` checked — if filled, silently short-circuits to the success state (no network call).
-3. `sendLeadToRouter({ formName: "Training prospectus download", lead_type: "prospectus_lead", consent, ... })` POSTs to the existing lead router (same endpoint the offer/enquiry forms use). GHL tags the lead as a prospectus download via `lead_type`.
-4. Meta Pixel `Lead` event fires.
-5. `localStorage.prospectus_downloaded = "true"` so returning visitors skip straight to the download state.
-6. Card swaps to success state: checkmark, "Your prospectus is ready", gold **"Download Prospectus"** button linking to the hosted PDF (`CEA-Course-Prospectus.pdf`) in a new tab, and "We've also sent a copy to your email."
+### State machine
 
-Refinements this turn:
-- **Auto-open the PDF** in a new tab immediately on success (in addition to showing the download button), so the user gets the guide without a second click. Wrapped in a try/catch to survive popup blockers — the visible Download button is the fallback.
-- **Button loading state** already exists ("Sending…"); no change.
-- Router failure currently logs to console and leaves the form in place. Change to still advance to the success state on network failure so the user always gets the PDF — the router already audits + retries server-side, and the enquiry form further down the page remains as the "talk to us" path.
+Local `view` state: `"intro" | "form" | "success"`.
+- `intro` → click CTA → `form`
+- `form` → submit success (or router failure) → `success`
+- `localStorage.prospectus_downloaded === "true"` on mount → `success`
 
 ### Files touched
 
-- `src/components/training/ProspectusDownloadCard.tsx` — full visual restyle to match reference; auto-open PDF on success; always advance to success state.
-- `src/pages/Training.tsx` — mobile order swap in the hero grid only.
+- `src/components/training/ProspectusDownloadCard.tsx` — add view state, split intro vs form CTA, add "No thanks" scroll-to-enquiry link, keep all existing router/validation/success logic.
 
 ### Out of scope
 
-- No changes below the hero.
-- No changes to `/` (offer page).
-- No new backend, endpoints, or secrets.
-- No changes to `leadRouter.ts`.
+- No changes to `Training.tsx` layout, order, or any other section.
+- No changes to `leadRouter.ts`, success behaviour, or PDF URL.
+- No new assets or tokens.
