@@ -695,10 +695,10 @@ const Index = () => {
                 value={`faq-${i}`}
                 className="border border-border rounded-lg px-6 bg-card"
               >
-                <AccordionTrigger className="text-left font-serif text-base hover:no-underline">
+                <AccordionTrigger className="text-left font-serif text-lg hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
