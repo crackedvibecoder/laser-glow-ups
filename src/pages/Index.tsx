@@ -649,7 +649,7 @@ const Index = () => {
       <section className="section-padding-compact bg-background">
         <div className="content-container max-w-3xl">
           <div className="text-center mb-12">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">
+            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
               Got Questions?
             </p>
             <h2 className="text-3xl md:text-4xl font-serif">Common Questions</h2>
