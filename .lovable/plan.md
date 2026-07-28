@@ -1,14 +1,19 @@
-## Fixes
+Plan: Simplify the Laser Location hero section
 
-### 1. Exit-intent popup text alignment
-The exit-intent popup (`ExitIntentPopup` in `src/pages/Index.tsx`) has `text-center` on `DialogContent`, but the shared `DialogHeader` component enforces `sm:text-left`. On desktop, the popup title and description become left-aligned while the rest of the popup text stays centered.
+Current state
+- Hero contains: eyebrow ("Medical-Grade Laser Hair Removal"), main heading with "This Summer", location line, a sub-paragraph ("Ditch the razor for good..."), the CTA button, and a row of three trust badges.
+- Vertical padding is `py-16 md:py-24`, which pushes the CTA below the fold on many mobile screens.
 
-**Change:** Add `className="text-center sm:text-center items-center"` to the `DialogHeader` inside `ExitIntentPopup` so all header text stays centered on every breakpoint.
+Changes to make
+1. Remove the sub-paragraph: "Ditch the razor for good. 60-minute sessions, all skin types welcome." (This copy can be reused later in the funnel if needed.)
+2. Keep the eyebrow text, main heading, "Bury, Manchester" location line, and the "Claim Your £100 Discount →" CTA exactly as-is.
+3. Tighten vertical padding so the heading + CTA fit comfortably within one mobile viewport — reduce hero padding from `py-16 md:py-24` to `py-10 md:py-16` (or equivalent).
+4. Remove the trust-badge row from the hero to keep the focus on heading + CTA only. (The social proof still appears elsewhere in the funnel.)
+5. Keep the existing background color, typography, button styling, and the urgency bar above the hero unchanged.
+6. No image added — text-only as agreed.
 
-### 2. Thank-you page next-steps wording
-The current card says `15-min consultation · £100 discount applied`, which is misleading because the discount is only applied if/when the client purchases a package after the consultation.
+Result
+- A cleaner, less cluttered hero that shows the key message and CTA above the fold on mobile.
+- No changes to offer pricing, booking calendar, form logic, or other sections.
 
-**Change:** Update the third next-step line in `src/pages/ThankYou.tsx` to clarify the discount is reserved for the consultation / purchase step, e.g.:
-`15-min consultation · £100 discount reserved for your treatment package`
-
-No other popups, styling, or business logic will be changed.
+Approve to implement.
