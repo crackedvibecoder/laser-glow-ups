@@ -639,7 +639,7 @@ const Index = () => {
             title="Book Your Consultation"
           />
 
-          <p className="text-xs text-muted-foreground mt-4">
+          <p className="text-sm text-muted-foreground mt-4">
             No payment required · Free consultation · All skin types welcome
           </p>
         </div>
