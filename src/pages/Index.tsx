@@ -42,7 +42,10 @@ const CountdownTimer = () => {
 
   return (
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
-      <span>Summer Special — Save £100</span>
+      <span className="inline-flex items-center gap-2">
+        <Clock className="w-5 h-5 text-primary shrink-0" />
+        Summer Special — Save £100
+      </span>
       <span className="hidden md:inline">·</span>
       <span>
         Offer ends in{" "}
@@ -283,8 +286,7 @@ const Index = () => {
 
       {/* Urgency Bar with Countdown */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
-        <div className="text-base font-medium text-foreground flex items-center justify-center gap-2 leading-tight">
-          <Clock className="w-5 h-5 text-primary shrink-0" />
+        <div className="text-base font-medium text-foreground flex items-center justify-center leading-tight">
           <CountdownTimer />
         </div>
       </div>
@@ -372,7 +374,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             The Endless Hair Removal Cycle
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             Temporary fixes cost time, money, and confidence. There's a permanent solution.
           </p>
 
@@ -434,7 +436,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
             See the Difference
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
             Real clients. Real results. Medical-grade laser hair removal that delivers.
           </p>
 
@@ -567,7 +569,7 @@ const Index = () => {
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-base text-muted-foreground">
+                  <span className="text-lg text-muted-foreground">
                     {item}
                   </span>
                 </div>
@@ -698,7 +700,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-serif text-lg hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                <AccordionContent className="text-muted-foreground text-lg leading-relaxed">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -717,7 +719,7 @@ const Index = () => {
               For Good?
             </span>
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8">
             Book your free, no-obligation consultation and claim your £100 Summer Discount.
           </p>
 
@@ -728,7 +730,7 @@ const Index = () => {
             Claim Your £100 Discount →
           </a>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-base text-muted-foreground">
             <span className="flex items-center gap-1">
               <Check className="w-3.5 h-3.5 text-primary" /> No payment required
             </span>

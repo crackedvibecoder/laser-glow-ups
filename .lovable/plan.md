@@ -1,36 +1,31 @@
-Three focused fixes, all presentation-only.
+## 1. Urgency bar icon alignment (real fix)
+The previous fix didn't work because on mobile the countdown text is a two-line stack (`flex-col`: "Summer Special — Save £100" / "Offer ends in Xd Yh Zm"). `items-center` on the row centers the icon against the two-line block, so the icon lands between the lines.
 
-## 1. Urgency bar icon alignment
-The clock icon in the top "Summer Special" bar sits above the text because the icon is `w-4 h-4` while the countdown text wraps to two lines on mobile, so `items-center` centers the icon vertically against a taller text block and it visually drifts.
+Fix: move the `<Clock>` icon *inside* the first `<span>` of `CountdownTimer` so it flows as part of the first text line and aligns naturally regardless of wrapping. Remove the standalone icon from the outer container.
 
-- Bump the icon to `w-5 h-5` so it reads as part of the line.
-- Add `leading-tight` to the countdown container so the text block hugs the icon.
-- Ensure the flex row uses `items-center` (already there) and keep `shrink-0` on the icon.
+## 2. Body copy still too small — another pass
+Bump the following in `src/pages/Index.tsx`:
+- Section intro paragraphs beneath h2s (e.g. lines 349, 437 area): explicit `text-lg text-muted-foreground`
+- Pricing card feature bullets: `text-base` → `text-lg`
+- FAQ answers: `text-base` → `text-lg`
+- Final CTA trust badges (line 731): `text-sm` → `text-base`
+- Footer legal copy: keep `text-sm` (appropriate for fine print)
 
-## 2. Small heading legibility across the funnel
-The card titles ("Razor Burn & Ingrown Hairs", "Chin & Upper Lip", "Free Consultation", "Your Treatment Plan", "Lasting Results", "Hear From Our Clients", etc.) all use `font-serif` (Playfair Display) at `text-xl` or smaller. Playfair is beautiful for large hero headings but hard to read at small sizes — the thin strokes lose definition.
+And in `src/pages/ThankYou.tsx`:
+- Three step labels: `text-base` → `text-lg`
 
-Rule: **keep Playfair for large section headings (h2, `text-3xl`+), switch smaller card titles to Inter (sans-serif) for clarity.**
+## 3. Thin dark outline on ALL gold numbers/text across the funnel
+The `.text-gold-metallic` utility uses a gradient that fades to near-white at the top, killing contrast on light backgrounds. This affects the How It Works step numbers (01/02/03), the pricing "£795", and the training-page stats and course-price numbers.
 
-Changes in `src/pages/Index.tsx`:
-- Pain-point cards (line 414): `text-xl font-serif` → `text-xl font-semibold tracking-tight` (sans)
-- Before/after captions (lines 445, 452): `font-serif text-lg` → `text-lg font-semibold`, and bump the sub-caption to `text-base`
-- How It Works step titles (line 496): `text-xl font-serif` → `text-xl font-semibold tracking-tight`
-- "Hear From Our Clients" label (line 603): already an eyebrow — leave as-is
-- FAQ triggers (already `text-lg font-serif`): keep serif since they read as questions and sit at `text-lg`, which is the size threshold where Playfair is still comfortable. If you'd rather match, we can also switch these — flag me.
+Fix in `src/index.css` directly on the `.text-gold-metallic` utility:
+- Add `-webkit-text-stroke: 1px hsl(30 25% 18%)` (dark brown that matches the palette) and a soft `text-shadow: 0 1px 0 hsl(30 25% 18% / 0.35)` fallback for browsers without text-stroke.
+- Because the outline is applied to the utility class itself, every gold number/text across `/`, `/training`, and any other page picks it up automatically. Buttons use a different class (`.btn-gold-metallic`), so they are unaffected.
 
-Body copy bumps (a second pass on sizing):
-- Card descriptions already at `text-base` — good.
-- Booking helper line (642): `text-sm` → `text-base`
-- Pricing "Was £895" line under card (584): stays `text-sm` (intentionally secondary)
-
-## 3. Booking scroll anchor lands too high
-The `#book` section currently uses `scroll-mt-24` (96px), which lands above the calendar iframe's actual clickable content. On mobile the GHL widget has ~150-200px of its own top padding before the date grid becomes tappable.
-
-- Reduce top padding on the booking section and increase scroll offset so the click lands closer to the calendar's interactive area: change `section-padding-compact` + `scroll-mt-24` on the `#book` section to `scroll-mt-4 pt-2 pb-16`.
-- Net effect: clicking the CTA scrolls further down, landing near the top of the calendar grid instead of above the widget's own header.
+If the outline ends up too heavy on the smaller gold text (like the 2xl stats), we can dial the stroke down to 0.5px or scope the outline to a variant class — but starting with 1px on the utility gives the visibility boost you asked for everywhere.
 
 ## Files touched
-- `src/pages/Index.tsx` (only)
+- `src/pages/Index.tsx` — CountdownTimer JSX, intro paragraphs, pricing features, FAQ answers, final CTA badges
+- `src/pages/ThankYou.tsx` — step label sizes
+- `src/index.css` — add outline to `.text-gold-metallic`
 
-No design token, color, layout, or copy changes — just typography weights/families on small titles, one icon size, and the booking section's scroll offset.
+No color tokens changed, no layout shifts.
