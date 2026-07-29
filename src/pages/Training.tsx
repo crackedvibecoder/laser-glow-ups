@@ -199,7 +199,7 @@ const ExitIntentPopup = () => {
         </button>
         <button
           onClick={() => setOpen(false)}
-          className="text-sm text-muted-foreground hover:text-foreground mt-3 underline underline-offset-4 transition-colors"
+          className="text-sm text-muted-foreground hover:text-foreground mt-3 underline underline-offset-4 transition-colors outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         >
           No thanks, I'll miss out
         </button>
