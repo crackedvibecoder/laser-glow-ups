@@ -1,32 +1,20 @@
-## Simplify the prospectus card intro + reduce hero repetition
+## Fix: Remove blue outline from exit-intent "No thanks" button
 
-### Card intro (`ProspectusDownloadCard.tsx`, step 1 only)
+### Problem
+The "No thanks, I'll pay full price" button in the exit-intent popup shows a browser default blue focus outline/box (visible in the uploaded screenshot).
 
-Trim the stack between the headline and the CTA. Keep it to: eyebrow → mockup → headline pair → gold divider → CTA → "No thanks" link.
+### Root cause
+The dismiss button in `ExitIntentPopup` (inside `src/pages/Index.tsx`) is a native `<button>` without any focus-ring reset, so Chromium/Safari render their default blue `outline` when the element is focused.
 
-Remove:
-- The body paragraph "Courses, pricing, entry requirements and career pathways — everything you need before you commit."
-- The gold trust line "VTCT-accredited courses · Trusted by 500+ students"
+### Change
+Update the dismiss button classes in `src/pages/Index.tsx` to suppress the default blue focus ring while keeping a subtle, on-brand focus indicator for accessibility:
 
-Tighten spacing where those elements were so the CTA sits closer to the divider.
-
-Step 2 (form) and step 3 (success) are unchanged.
-
-### Hero left column (`Training.tsx`, ~lines 495–525)
-
-The hero currently repeats the same beats the card carries. Slim it to headline + one supporting line + trust badges.
-
-Remove:
-- The second paragraph "Courses, pricing, entry requirements & career pathways — everything you need before you enrol." (duplicates the card's promise)
-- The "1,000+ Clients Treated" and "Small Class Sizes" trust badges (keep only "VTCT Accredited" and "Insurance-Ready" — the two credentials that matter for a training decision; the other two are lifted verbatim from the treatments funnel and dilute focus)
-
-Keep: eyebrow, H1, the "VTCT-accredited laser, skin, and aesthetics qualifications…" lede, and the two remaining trust badges.
+- Add `focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2` (or equivalent Tailwind focus tokens already used in the project).
+- Keep existing text styling (`text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors mt-1 underline underline-offset-2`) unchanged.
 
 ### Files touched
-
-- `src/components/training/ProspectusDownloadCard.tsx` — remove the two paragraphs from the intro view.
-- `src/pages/Training.tsx` — remove the duplicate paragraph and the two extra trust badges in the hero left column.
+- `src/pages/Index.tsx` — one className change on the "No thanks, I'll pay full price" button inside `ExitIntentPopup`.
 
 ### Out of scope
-
-No changes to form step, success step, layout order, colors, or any section below the hero.
+- No changes to popup copy, layout, trigger logic, or other buttons.
+- No changes to the main CTA button styling.
