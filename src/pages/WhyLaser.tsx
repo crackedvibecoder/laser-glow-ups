@@ -5,7 +5,7 @@ import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
-import storyShaving from "@/assets/story-shaving.jpg.asset.json";
+import storyShaving from "@/assets/story-shaving.jpg";
 
 import {
   Accordion,
@@ -314,7 +314,7 @@ const WhyLaser = () => {
       {/* Shaving break */}
       <section className="relative">
         <img
-          src={storyShaving.url}
+          src={storyShaving}
           alt="Medical-grade laser hair removal treatment on a client's leg at Laser Location"
           className="w-full h-[380px] md:h-[460px] object-cover"
           loading="lazy"

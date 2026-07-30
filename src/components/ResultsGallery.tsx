@@ -1,7 +1,7 @@
-import baUnderarm from "@/assets/ba-underarm.jpg.asset.json";
-import baBikini from "@/assets/ba-bikini.jpg.asset.json";
-import baNape from "@/assets/ba-nape-female.jpg.asset.json";
-import baNeckMale from "@/assets/ba-neck-male.jpg.asset.json";
+import baUnderarm from "@/assets/ba-underarm.jpg";
+import baBikini from "@/assets/ba-bikini.jpg";
+import baNape from "@/assets/ba-nape-female.jpg";
+import baNeckMale from "@/assets/ba-neck-male.jpg";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
 import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
 
@@ -13,22 +13,22 @@ type Result = {
 
 const RESULTS: Result[] = [
   {
-    src: baUnderarm.url,
+    src: baUnderarm,
     area: "Underarms",
     alt: "Underarm laser hair removal before and after at Laser Location",
   },
   {
-    src: baBikini.url,
+    src: baBikini,
     area: "Bikini Line",
     alt: "Bikini line laser hair removal before and after at Laser Location",
   },
   {
-    src: baNape.url,
+    src: baNape,
     area: "Nape & Hairline",
     alt: "Nape and neck hairline laser hair removal before and after at Laser Location",
   },
   {
-    src: baNeckMale.url,
+    src: baNeckMale,
     area: "Men's Neck & Beard Line",
     alt: "Men's neck and beard line laser hair removal before and after at Laser Location",
   },

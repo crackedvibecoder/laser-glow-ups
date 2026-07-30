@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-import panel1 from "@/assets/story-panel-1.jpg.asset.json";
-import panel2 from "@/assets/story-panel-2.jpg.asset.json";
-import panel3 from "@/assets/story-panel-3.jpg.asset.json";
+import panel1 from "@/assets/story-panel-1.jpg";
+import panel2 from "@/assets/story-panel-2.jpg";
+import panel3 from "@/assets/story-panel-3.jpg";
 
 const PANELS = [
   {
-    src: panel1.url,
+    src: panel1,
     alt: "Practitioner performing laser hair removal on a client's face and neck",
   },
   {
-    src: panel2.url,
+    src: panel2,
     alt: "Qualified practitioner treating facial hair with a medical-grade laser",
   },
   {
-    src: panel3.url,
+    src: panel3,
     alt: "Client receiving a medical-grade facial laser hair removal session",
   },
 ];
