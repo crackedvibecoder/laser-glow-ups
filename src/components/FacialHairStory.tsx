@@ -6,32 +6,18 @@ import panel3 from "@/assets/story-panel-3.jpg";
 const PANELS = [
   {
     src: panel1,
-    alt: "Practitioner performing laser hair removal on a client's face and neck",
+    alt: "As women, there are some things we don't discuss enough",
   },
   {
     src: panel2,
-    alt: "Qualified practitioner treating facial hair with a medical-grade laser",
+    alt: "One of those things is facial hair growth",
   },
   {
     src: panel3,
-    alt: "Client receiving a medical-grade facial laser hair removal session",
+    alt: "Facial hair is more common than you think — up to 40% of women experience it at some point in their life",
   },
 ];
 
-const COPY = [
-  <>
-    As women, there are some things we <strong className="font-semibold">don't</strong>{" "}
-    discuss enough.
-  </>,
-  <>
-    One of those things is <strong className="font-semibold">facial hair growth</strong>.
-  </>,
-  <>
-    And it's a lot more common than you think — up to{" "}
-    <strong className="font-semibold">40% of women</strong> experience it at some point in
-    their life.
-  </>,
-];
 
 const Panel = ({ index }: { index: number }) => {
   const ref = useRef<HTMLDivElement>(null);
