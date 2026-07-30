@@ -3,8 +3,8 @@ import { Check, Clock, Shield, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
-import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
-import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
+import ResultsGallery from "@/components/ResultsGallery";
+
 import {
   Accordion,
   AccordionContent,
