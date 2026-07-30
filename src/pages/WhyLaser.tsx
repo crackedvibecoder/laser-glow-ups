@@ -289,7 +289,46 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      {/* Facial hair story */}
+      <section className="section-padding-compact bg-secondary">
+        <div className="content-container">
+          <div className="text-center mb-10">
+            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+              Let's Talk About It
+            </p>
+            <h2 className="text-3xl md:text-4xl font-serif">
+              The Thing Nobody Talks About
+            </h2>
+          </div>
+
+          <FacialHairStory />
+
+          <div className="text-center mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Shaving break */}
+      <section className="relative">
+        <img
+          src={storyShaving.url}
+          alt="Medical-grade laser hair removal treatment on a client's leg at Laser Location"
+          className="w-full h-[380px] md:h-[460px] object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-foreground/35 flex items-center justify-center px-6">
+          <p className="text-3xl md:text-5xl font-serif text-background text-center max-w-3xl leading-snug">
+            Honestly — what <em className="not-italic font-semibold">is</em> shaving every
+            day?
+          </p>
+        </div>
+      </section>
+
       {/* The real cost */}
+
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
