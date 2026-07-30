@@ -312,20 +312,19 @@ const WhyLaser = () => {
       </section>
 
       {/* Shaving break */}
-      <section className="relative">
-        <img
-          src={storyShaving}
-          alt="Medical-grade laser hair removal treatment on a client's leg at Laser Location"
-          className="w-full h-[380px] md:h-[460px] object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-foreground/35 flex items-center justify-center px-6">
-          <p className="text-3xl md:text-5xl font-serif text-background text-center max-w-3xl leading-snug">
-            Honestly — what <em className="not-italic font-semibold">is</em> shaving every
-            day?
-          </p>
+      <section className="section-padding-compact bg-background">
+        <div className="content-container">
+          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src={storyShaving}
+              alt="Medical-grade laser hair removal treatment on a client's leg — an end to shaving every day"
+              className="w-full"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
+
 
       {/* The real cost */}
 
