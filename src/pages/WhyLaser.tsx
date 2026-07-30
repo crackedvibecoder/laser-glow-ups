@@ -3,8 +3,10 @@ import { Check, Clock, Star, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
-import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
-import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
+import ResultsGallery from "@/components/ResultsGallery";
+import FacialHairStory from "@/components/FacialHairStory";
+import storyShaving from "@/assets/story-shaving.jpg.asset.json";
+
 import {
   Accordion,
   AccordionContent,
