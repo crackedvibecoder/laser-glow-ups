@@ -421,36 +421,13 @@ const WhyLaser = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img
-                src={chinBeforeAfter}
-                alt="Chin laser hair removal before and after"
-                className="w-full h-64 object-cover"
-                loading="lazy"
-              />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Chin &amp; Upper Lip</p>
-                <p className="text-base text-muted-foreground">
-                  Before &amp; after several sessions
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img
-                src={bikiniBeforeAfter}
-                alt="Bikini line laser hair removal before and after"
-                className="w-full h-64 object-cover"
-                loading="lazy"
-              />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Bikini Line</p>
-                <p className="text-base text-muted-foreground">
-                  Before &amp; after several sessions
-                </p>
-              </div>
-            </div>
+          <div className="text-left">
+            <h3 className="text-2xl md:text-3xl font-serif text-center mb-6">
+              Real Client Results
+            </h3>
+            <ResultsGallery />
           </div>
+
         </div>
       </section>
 
