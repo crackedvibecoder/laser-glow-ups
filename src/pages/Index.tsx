@@ -3,8 +3,8 @@ import { Check, Clock, Shield, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
-import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
-import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
+import ResultsGallery from "@/components/ResultsGallery";
+
 import {
   Accordion,
   AccordionContent,
@@ -459,22 +459,10 @@ const Index = () => {
             Real clients. Real results. Medical-grade laser hair removal that delivers.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img src={chinBeforeAfter} alt="Chin laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Chin & Upper Lip</p>
-                <p className="text-base text-muted-foreground">Before & after several sessions</p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img src={bikiniBeforeAfter} alt="Bikini line laser hair removal before and after" className="w-full h-64 object-cover" loading="lazy" />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Bikini Line</p>
-                <p className="text-base text-muted-foreground">Before & after several sessions</p>
-              </div>
-            </div>
+          <div className="text-left">
+            <ResultsGallery />
           </div>
+
 
           <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">

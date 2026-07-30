@@ -3,8 +3,10 @@ import { Check, Clock, Star, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
-import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
-import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
+import ResultsGallery from "@/components/ResultsGallery";
+import FacialHairStory from "@/components/FacialHairStory";
+import storyShaving from "@/assets/story-shaving.jpg";
+
 import {
   Accordion,
   AccordionContent,
@@ -287,7 +289,45 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      {/* Facial hair story */}
+      <section className="section-padding-compact bg-secondary">
+        <div className="content-container">
+          <div className="text-center mb-10">
+            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+              Let's Talk About It
+            </p>
+            <h2 className="text-3xl md:text-4xl font-serif">
+              The Thing Nobody Talks About
+            </h2>
+          </div>
+
+          <FacialHairStory />
+
+          <div className="text-center mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Claim Your £100 Discount →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Shaving break */}
+      <section className="section-padding-compact bg-background">
+        <div className="content-container">
+          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src={storyShaving}
+              alt="Medical-grade laser hair removal treatment on a client's leg — an end to shaving every day"
+              className="w-full"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+
       {/* The real cost */}
+
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
@@ -421,36 +461,13 @@ const WhyLaser = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img
-                src={chinBeforeAfter}
-                alt="Chin laser hair removal before and after"
-                className="w-full h-64 object-cover"
-                loading="lazy"
-              />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Chin &amp; Upper Lip</p>
-                <p className="text-base text-muted-foreground">
-                  Before &amp; after several sessions
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <img
-                src={bikiniBeforeAfter}
-                alt="Bikini line laser hair removal before and after"
-                className="w-full h-64 object-cover"
-                loading="lazy"
-              />
-              <div className="bg-card p-4">
-                <p className="text-lg font-semibold">Bikini Line</p>
-                <p className="text-base text-muted-foreground">
-                  Before &amp; after several sessions
-                </p>
-              </div>
-            </div>
+          <div className="text-left">
+            <h3 className="text-2xl md:text-3xl font-serif text-center mb-6">
+              Real Client Results
+            </h3>
+            <ResultsGallery />
           </div>
+
         </div>
       </section>
 
