@@ -63,13 +63,10 @@ const Panel = ({ index }: { index: number }) => {
       <img
         src={PANELS[index].src}
         alt={PANELS[index].alt}
-        className="w-full aspect-[4/5] sm:aspect-[16/10] object-cover"
+        className="w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
-      <p className="absolute inset-x-0 bottom-0 p-6 md:p-10 text-xl md:text-3xl font-serif leading-snug text-background text-center">
-        {COPY[index]}
-      </p>
+
     </div>
   );
 };
