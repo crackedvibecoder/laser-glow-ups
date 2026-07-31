@@ -1,11 +1,16 @@
 import { useEffect, useState, useCallback } from "react";
-import { Check, Clock, Star, Sparkles } from "lucide-react";
+import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
-import storyShaving from "@/assets/story-shaving.jpg";
+import {
+  ReviewCard,
+  ReviewBreak,
+  ReviewsWidget,
+  reviewByName,
+} from "@/components/GoogleReviews";
 
 import {
   Accordion,
@@ -156,38 +161,6 @@ const ExitIntentPopup = () => {
   );
 };
 
-/* ──────────────────── Highlighted Reviews ──────────────────── */
-const HIGHLIGHTED_REVIEWS = [
-  {
-    name: "Reza Vahid Roudsari",
-    when: "2 years ago",
-    text: "I'm only three sessions into my laser hair removal treatment and I am over the moon with my results! I've saved hours on shaving already and my skin is now free of unsightly razor rashes, all thanks to the incredible skills of Carmen, my therapist. Carmen is extremely experienced and a true expert in her field. She goes above and beyond to make sure you are comfortable throughout the session while giving you excellent results. My only regret: I should have started coming to Carmen years ago!!",
-  },
-  {
-    name: "Shazad Ahmed",
-    when: "4 months ago",
-    text: "I've had six sessions so far on my laser journey. Incredibly pleased with the results. As an Asian male I have darker skin and thick prominent hair. Laser Location were able to tailor my treatments to my specific needs. Carmen and her team are consummate professionals. I highly recommend this clinic.",
-  },
-  {
-    name: "Maisey Trainor",
-    when: "a year ago",
-    text: "The girls in there are absolutely lovely & the results speak for themselves. Your made to feel so comfortable and the only thing I ever say is I wish I went sooner, can't recommend this place enough.",
-  },
-  {
-    name: "Z JJ",
-    when: "a month ago",
-    text: "Have been coming hear for awhile getting different areas lasered — the results I have are amazing! The girls are so friendly and everything is always clean and tidy. The offer good prices as well.",
-  },
-];
-
-const Stars = () => (
-  <div className="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
-    {[0, 1, 2, 3, 4].map((i) => (
-      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-    ))}
-  </div>
-);
-
 /* ──────────────────── Page ──────────────────── */
 const WhyLaser = () => {
   useEffect(() => {
@@ -217,7 +190,7 @@ const WhyLaser = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-background overflow-x-hidden pb-20 md:pb-0">
       <ExitIntentPopup />
 
       {/* Logo */}
@@ -245,15 +218,6 @@ const WhyLaser = () => {
         <div className="content-container">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <div className="md:hidden mb-5">
-                <img
-                  src={legLaser}
-                  alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
-                  className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-lg"
-                  loading="eager"
-                />
-              </div>
-
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
               </p>
@@ -267,6 +231,16 @@ const WhyLaser = () => {
                 The honest answer, for anyone still weighing it up.
               </p>
 
+              {/* Mobile image sits below the question so it doesn't compete with it */}
+              <div className="md:hidden mb-6">
+                <img
+                  src={legLaser}
+                  alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
+                  className="w-full h-40 object-cover rounded-2xl shadow-lg"
+                  loading="eager"
+                />
+              </div>
+
               <a
                 href="#book"
                 className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
@@ -276,6 +250,7 @@ const WhyLaser = () => {
 
               <p className="text-base text-muted-foreground">Bury, Manchester</p>
             </div>
+
 
             <div className="hidden md:block w-full md:w-1/2">
               <img
@@ -311,19 +286,12 @@ const WhyLaser = () => {
         </div>
       </section>
 
-      {/* Shaving break */}
-      <section className="section-padding-compact bg-background">
-        <div className="content-container">
-          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={storyShaving}
-              alt="Medical-grade laser hair removal treatment on a client's leg — an end to shaving every day"
-              className="w-full"
-              loading="lazy"
-            />
-          </div>
-        </div>
+      {/* Proof break */}
+      <section className="py-12 md:py-16 bg-background">
+        <ReviewBreak review={reviewByName("Maisey Trainor")} />
       </section>
+
+
 
 
       {/* The real cost */}
@@ -483,43 +451,14 @@ const WhyLaser = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
-            {HIGHLIGHTED_REVIEWS.map((review) => (
-              <figure
-                key={review.name}
-                className="p-7 rounded-xl bg-card border border-border text-left"
-              >
-                <Stars />
-                <blockquote className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
-                  “{review.text}”
-                </blockquote>
-                <figcaption className="font-serif text-lg text-foreground">
-                  {review.name}
-                  <span className="block text-sm text-muted-foreground font-sans">
-                    Google review · {review.when}
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[reviewByName("Reza Vahid Roudsari"), reviewByName("Shazad Ahmed")].map(
+              (review) => (
+                <ReviewCard key={review.name} review={review} />
+              ),
+            )}
           </div>
 
-          <p className="text-center text-base font-medium tracking-widest uppercase text-primary mb-4">
-            See All Google Reviews
-          </p>
-          <div
-            className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden"
-            style={{ maxHeight: "480px", overflowY: "auto" }}
-          >
-            <iframe
-              className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              style={{ minWidth: "100%", width: "100%" }}
-              title="Laser Location Reviews"
-            />
-          </div>
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
@@ -583,6 +522,11 @@ const WhyLaser = () => {
             No payment required · Free consultation · All skin types welcome
           </p>
         </div>
+      </section>
+
+      {/* All Google reviews (widget) */}
+      <section className="section-padding-compact bg-background overflow-hidden">
+        <ReviewsWidget />
       </section>
 
       {/* FAQ */}

@@ -4,6 +4,13 @@ import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
+import {
+  ReviewCard,
+  ReviewBreak,
+  ReviewsWidget,
+  reviewByName,
+} from "@/components/GoogleReviews";
+
 
 import {
   Accordion,
@@ -289,7 +296,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden pb-24 md:pb-0">
       <StickyDesktopCTA />
       <ExitIntentPopup />
 
@@ -320,15 +327,21 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
             {/* Text content — leads on mobile, sits left on desktop */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              {/* Mobile-only image: above the eyebrow and heading */}
-              <div className="md:hidden mb-5">
+              {/* Mobile-only image with emotive overlay */}
+              <div className="md:hidden mb-5 relative rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src={legLaser}
                   alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                  className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-lg"
+                  className="w-full h-56 sm:h-64 object-cover"
                   loading="eager"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
+                <p className="absolute inset-x-0 bottom-0 p-5 font-serif text-2xl sm:text-3xl leading-snug text-background text-center">
+                  Still shaving{" "}
+                  <em className="not-italic font-semibold">every single day?</em>
+                </p>
               </div>
+
 
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
@@ -372,13 +385,21 @@ const Index = () => {
 
             {/* Desktop-only image — sits right on desktop */}
             <div className="hidden md:block w-full md:w-1/2">
-              <img
-                src={legLaser}
-                alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                className="w-full h-80 object-cover rounded-2xl shadow-lg"
-                loading="eager"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={legLaser}
+                  alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
+                  className="w-full h-80 object-cover"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
+                <p className="absolute inset-x-0 bottom-0 p-6 font-serif text-3xl leading-snug text-background">
+                  Still shaving{" "}
+                  <em className="not-italic font-semibold">every single day?</em>
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -617,16 +638,10 @@ const Index = () => {
             </video>
           </div>
 
-          <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
-            <iframe
-              className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              style={{ minWidth: "100%", width: "100%" }}
-              title="Laser Location Reviews"
-            />
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[reviewByName("Maisey Trainor"), reviewByName("Shazad Ahmed")].map((review) => (
+              <ReviewCard key={review.name} review={review} />
+            ))}
           </div>
 
           {/* Post-reviews CTA */}
@@ -639,7 +654,7 @@ const Index = () => {
       </section>
 
       {/* Booking Calendar */}
-      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4">
+      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4 overflow-hidden">
          <div className="content-container max-w-2xl text-center">
            <iframe
             src={buildBookingSrc()}
@@ -653,6 +668,12 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      {/* All Google reviews (widget) */}
+      <section className="section-padding-compact bg-background overflow-hidden">
+        <ReviewsWidget />
+      </section>
+
 
       {/* FAQ */}
       <section className="section-padding-compact bg-background">
@@ -715,6 +736,13 @@ const Index = () => {
           </Accordion>
         </div>
       </section>
+
+      {/* Proof break */}
+      <section className="py-12 md:py-16 bg-accent">
+        <ReviewBreak review={reviewByName("Z JJ")} />
+      </section>
+
+
 
       {/* Final CTA */}
       <section className="section-padding bg-secondary">
