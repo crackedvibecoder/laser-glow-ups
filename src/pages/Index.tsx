@@ -631,16 +631,10 @@ const Index = () => {
             </video>
           </div>
 
-          <div className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden" style={{ maxHeight: "480px", overflowY: "auto" }}>
-            <iframe
-              className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              style={{ minWidth: "100%", width: "100%" }}
-              title="Laser Location Reviews"
-            />
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[reviewByName("Maisey Trainor"), reviewByName("Shazad Ahmed")].map((review) => (
+              <ReviewCard key={review.name} review={review} />
+            ))}
           </div>
 
           {/* Post-reviews CTA */}
@@ -653,7 +647,7 @@ const Index = () => {
       </section>
 
       {/* Booking Calendar */}
-      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4">
+      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4 overflow-hidden">
          <div className="content-container max-w-2xl text-center">
            <iframe
             src={buildBookingSrc()}
@@ -667,6 +661,12 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      {/* All Google reviews (widget) */}
+      <section className="section-padding-compact bg-background overflow-hidden">
+        <ReviewsWidget />
+      </section>
+
 
       {/* FAQ */}
       <section className="section-padding-compact bg-background">
