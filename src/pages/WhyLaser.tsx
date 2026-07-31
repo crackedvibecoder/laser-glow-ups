@@ -5,7 +5,12 @@ import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
-import storyShaving from "@/assets/story-shaving.jpg";
+import {
+  ReviewCard,
+  ReviewBreak,
+  ReviewsWidget,
+  reviewByName,
+} from "@/components/GoogleReviews";
 
 import {
   Accordion,
@@ -155,38 +160,6 @@ const ExitIntentPopup = () => {
     </Dialog>
   );
 };
-
-/* ──────────────────── Highlighted Reviews ──────────────────── */
-const HIGHLIGHTED_REVIEWS = [
-  {
-    name: "Reza Vahid Roudsari",
-    when: "2 years ago",
-    text: "I'm only three sessions into my laser hair removal treatment and I am over the moon with my results! I've saved hours on shaving already and my skin is now free of unsightly razor rashes, all thanks to the incredible skills of Carmen, my therapist. Carmen is extremely experienced and a true expert in her field. She goes above and beyond to make sure you are comfortable throughout the session while giving you excellent results. My only regret: I should have started coming to Carmen years ago!!",
-  },
-  {
-    name: "Shazad Ahmed",
-    when: "4 months ago",
-    text: "I've had six sessions so far on my laser journey. Incredibly pleased with the results. As an Asian male I have darker skin and thick prominent hair. Laser Location were able to tailor my treatments to my specific needs. Carmen and her team are consummate professionals. I highly recommend this clinic.",
-  },
-  {
-    name: "Maisey Trainor",
-    when: "a year ago",
-    text: "The girls in there are absolutely lovely & the results speak for themselves. Your made to feel so comfortable and the only thing I ever say is I wish I went sooner, can't recommend this place enough.",
-  },
-  {
-    name: "Z JJ",
-    when: "a month ago",
-    text: "Have been coming hear for awhile getting different areas lasered — the results I have are amazing! The girls are so friendly and everything is always clean and tidy. The offer good prices as well.",
-  },
-];
-
-const Stars = () => (
-  <div className="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
-    {[0, 1, 2, 3, 4].map((i) => (
-      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-    ))}
-  </div>
-);
 
 /* ──────────────────── Page ──────────────────── */
 const WhyLaser = () => {
@@ -549,6 +522,11 @@ const WhyLaser = () => {
             No payment required · Free consultation · All skin types welcome
           </p>
         </div>
+      </section>
+
+      {/* All Google reviews (widget) */}
+      <section className="section-padding-compact bg-background overflow-hidden">
+        <ReviewsWidget />
       </section>
 
       {/* FAQ */}
