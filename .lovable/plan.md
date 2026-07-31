@@ -1,46 +1,40 @@
-## 1. New page: `/why-laser`
+## 1. Blank space under the footer (homepage, mobile)
 
-A standalone, fence-sitter-focused CRO funnel page to link from marketing emails/SMS. Same design system, fonts, gold tokens, and components as the offer page — no new visual language.
+Note on current state: I reproduced the homepage at 394px in a headless browser and the document ends exactly at the footer (no gap) — because the ReputationHub review iframe stays collapsed there. So the cause is unconfirmed, and step one is to confirm it rather than guess.
 
-Route added in `App.tsx` as `/why-laser`, new file `src/pages/WhyLaser.tsx`.
+Most likely culprit is a third-party iframe (ReputationHub reviews or the GHL booking widget) reporting a height that overflows its container in a real mobile browser.
 
-Structure (PAS, education-led rather than offer-led):
+Steps:
+1. Reproduce with the widgets actually loaded, measuring `document.scrollHeight` vs the footer's bottom.
+2. Fix the offending container: wrap the review widget in a fixed-height, `overflow-hidden` box, and make the booking iframe container `overflow-hidden` with a sane min-height, so no child can push page height past the footer.
+3. Add `overflow-x-hidden` on the page wrapper and bottom padding equal to the sticky mobile CTA height, so the last content isn't hidden behind it.
 
-1. **Sticky top bar** — same summer offer bar as the offer page.
-2. **Hero** — "Why Laser Hair Removal?" with `leg-laser.jpg`, short subhead ("The honest answer for anyone still weighing it up"), CTA "Claim Your £100 Discount" → `#book`.
-3. **The real cost of shaving/waxing** — comparison block: time spent per year, lifetime cost of razors/waxing vs a 6-session course, razor burn/ingrowns.
-4. **How it actually works** — AW3 Crystal Freeze Diamond, Medical-Grade, why it's comfortable, 60-minute full-body sessions, all skin tones.
-5. **Is it right for me?** — short reassurance grid (skin tones, hair types, all genders, sensitive areas), using existing before/after images.
-6. **What real clients say** — see section 2 below.
-7. **Objection-handling FAQ** — does it hurt, how many sessions, is it lasting, is it safe for dark skin, cheaper than waxing (reuse corrected £795/£895 copy).
-8. **Offer + booking** — £895 → £795 pricing card and the inline GHL calendar (`#book`), iframe src built with `utm_content=why-laser` so bookings from this page are attributable in GHL.
-9. **Footer** — same as offer page.
-10. **Exit-intent popup** — same component behaviour as the offer page.
+## 2. Homepage hero — emotive text-on-image
 
-All primary CTAs anchor to `#book` (no external links).
+Keep the same `leg-laser` photo, but turn it into the hook:
 
-## 2. Highlighted reviews
+- Image becomes a full-bleed hero panel on mobile (and the right-hand panel on desktop keeps its current shape).
+- Add a soft dark gradient overlay (bottom-weighted, via a design token) so text stays legible.
+- Overlay copy in the existing serif, echoing the emotive social post tone: a short line such as "Still shaving every single day?" with the eyebrow "Medical-Grade Laser Hair Removal" above it.
+- The main H1, "Save £100" highlight, CTA and "Bury, Manchester" stay exactly as they are, below the image — so only one H1 remains and the offer hierarchy is unchanged.
 
-Because the ReputationHub widget can't feature individual reviews, add a hand-picked reviews section above the widget on the new page:
+## 3. `/why-laser` page
 
-- Four quoted reviews from the uploaded screenshots, typed out as real text (not images): Reza Vahid Roudsari, Maisey Trainor, Shazad Ahmed, Z JJ — each with 5 gold stars, name, and relative date.
-- Styled as cards in the existing champagne/blush card style, serif attribution, Inter body.
-- The ReputationHub widget stays below them, labelled as "See all Google reviews".
+- **Hero image**: keep it, but reduce its height and move the question headline above it, so the question leads and the image supports. (Not scrapping it — the page needs a visual anchor.)
+- **"WTF is shaving every day" break image**: remove it from its current spot after the three-panel story (too much imagery in a row). Reuse it as the hero treatment on the homepage per section 2 — the same emotive idea, in the place where it actually hooks people.
 
-Screenshots are used as source text only, not embedded as images.
+## 4. Reviews — stop the design clash
 
-## 3. Popup focus box fix
+- Keep the four hand-styled review cards, but split them up: two stay in the reviews section on `/why-laser`, and one or two get sprinkled as single-quote "proof breaks" after the cost-comparison section and after the FAQ.
+- Move the ReputationHub widget **below the pricing card / booking calendar** on both pages, under a quieter heading ("See all Google reviews"), so the styled cards and the raw widget never sit back to back.
 
-Remove the focus outline entirely from the "No thanks" links:
-- `src/pages/Index.tsx` — drop the `focus-visible:ring-*` classes, keep `focus:outline-none` (plus `focus-visible:outline-none`).
-- `src/pages/Training.tsx` — same treatment on its popup "No thanks" button, so both match.
+## 5. Thank-you page
 
-## 4. SEO
-
-`WhyLaser.tsx` gets its own document title and meta description via the existing head-tag approach used on the other pages, single H1, alt text on all imagery.
+- Reorder the next steps: 1) Check text/email for confirmation, 2) Add your slot to calendar, 3) 15-min consultation + discount note.
+- Add light social proof below the steps: one styled Google review card (same style as the funnel) plus a single before/after image, with a short reassurance line reinforcing the decision.
 
 ## Technical notes
 
-- No backend changes; booking stays the inline GHL calendar.
-- Reviews are static content in the page file (or a small local array), no new dependency.
-- Shared pieces (sticky bar, exit-intent popup, footer) are copied in a page-local form to avoid refactoring the existing offer page.
+- No backend changes, no new dependencies; all edits in `src/pages/Index.tsx`, `src/pages/WhyLaser.tsx`, `src/pages/ThankYou.tsx`, plus a small shared review-card component so the quotes can be reused across pages.
+- Overlay colours come from existing tokens (no hardcoded `bg-black`), gold/serif system untouched.
+- All CTAs continue to anchor to `#book`; booking UTM attribution unchanged.
