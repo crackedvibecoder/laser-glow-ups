@@ -364,7 +364,7 @@ const Index = () => {
                 <img
                   src={heroShavingEveryday}
                   alt="Laser hair removal treatment with the message wtf is shaving everyday"
-                  className="w-full h-56 sm:h-64 object-cover object-[50%_42%]"
+                  className="w-full h-56 sm:h-64 object-cover object-[50%_52%]"
                   loading="eager"
                 />
               </div>
