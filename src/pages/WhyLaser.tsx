@@ -2,6 +2,19 @@ import { useEffect, useState, useCallback } from "react";
 import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import armLaser from "@/assets/arm-laser.jpg";
+import embarrassedSlide from "@/assets/why-laser/embarrassed.jpg";
+import sizeSlide from "@/assets/why-laser/size.jpg";
+import ingrownSlide from "@/assets/why-laser/ingrown.jpg";
+import sweatingSlide from "@/assets/why-laser/sweating.jpg";
+import nervousSlide from "@/assets/why-laser/nervous.jpg";
+import hairCyclesSlide from "@/assets/why-laser/hair-cycles.jpg";
+import hormonesRoleSlide from "@/assets/why-laser/hormones-role.jpg";
+import longTermSmoothnessSlide from "@/assets/why-laser/long-term-smoothness.jpg";
+import faceLaserReasonsSlide from "@/assets/why-laser/face-laser-reasons.jpg";
+import faceLaserObjectionsSlide from "@/assets/why-laser/face-laser-objections.jpg";
+import notForEveryoneSlide from "@/assets/why-laser/not-for-everyone.jpg";
+import panicShaveSlide from "@/assets/why-laser/panic-shave.jpg";
+import smoothAllYearSlide from "@/assets/why-laser/smooth-all-year.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
 import {
@@ -41,6 +54,54 @@ const buildBookingSrc = () => {
   params.set("utm_content", "why-laser");
   return `${BOOKING_WIDGET_URL}?${params.toString()}`;
 };
+
+type SocialSlide = {
+  src: string;
+  alt: string;
+};
+
+const REASSURANCE_SLIDES: SocialSlide[] = [
+  { src: embarrassedSlide, alt: "Laser Location reassurance slide: things you do not need to be embarrassed about" },
+  { src: sizeSlide, alt: "Laser Location body confidence slide: every shape and size is welcome" },
+  { src: ingrownSlide, alt: "Laser Location ingrown hairs reassurance slide" },
+  { src: sweatingSlide, alt: "Laser Location sweating reassurance slide" },
+  { src: nervousSlide, alt: "Laser Location feeling nervous reassurance slide" },
+];
+
+const EDUCATION_SLIDES: SocialSlide[] = [
+  { src: hairCyclesSlide, alt: "Laser hair grows in cycles education slide" },
+  { src: hormonesRoleSlide, alt: "Hormones can affect laser hair removal regrowth education slide" },
+  { src: longTermSmoothnessSlide, alt: "Maintenance sessions help preserve long-term smoothness slide" },
+];
+
+const FACE_LASER_SLIDES: SocialSlide[] = [
+  { src: faceLaserReasonsSlide, alt: "Reasons face laser might be the treatment you need" },
+  { src: faceLaserObjectionsSlide, alt: "Face laser reasons: hormonal growth, irritation, time and maintenance" },
+];
+
+const PLAYFUL_SLIDES: SocialSlide[] = [
+  { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone slide" },
+  { src: panicShaveSlide, alt: "Not everyone loves not having to panic shave slide" },
+  { src: smoothAllYearSlide, alt: "Not everyone wants smooth skin all year round slide" },
+];
+
+const SocialProofCarousel = ({ slides }: { slides: SocialSlide[] }) => (
+  <div className="-mx-6 px-6 md:mx-0 md:px-0">
+    <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      {slides.map((slide, index) => (
+        <figure key={slide.src} className="snap-center shrink-0 w-[84%] md:w-auto rounded-2xl overflow-hidden border border-border shadow-lg bg-card">
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            className="w-full aspect-[4/5] object-cover"
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        </figure>
+      ))}
+    </div>
+    <p className="md:hidden text-sm text-muted-foreground text-center">Swipe to keep reading →</p>
+  </div>
+);
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const CountdownTimer = () => {
@@ -259,6 +320,13 @@ const WhyLaser = () => {
             If you&apos;re hesitating, it&apos;s usually one of three things: pain, price, or whether it actually works. This page answers those properly before you book anything.
           </p>
 
+          <a
+            href="#book"
+            className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-7"
+          >
+            Book Free Consultation →
+          </a>
+
           <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-7 text-left">
             {[
               { label: "Will it hurt?", text: "Built-in cooling. Most clients say it is easier than waxing." },
@@ -272,16 +340,30 @@ const WhyLaser = () => {
             ))}
           </div>
 
-          <a
-            href="#book"
-            className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
-          >
-            Book Free Consultation →
-          </a>
-
           <p className="text-base text-muted-foreground">
             Free consultation · No payment required · Bury, Manchester
           </p>
+        </div>
+      </section>
+
+      {/* Reassurance carousel */}
+      <section className="section-padding-compact bg-secondary">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            No Judgement Here
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            The Stuff People Worry About Before Booking
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            Ingrowns, sweating, body confidence, feeling nervous — none of it is embarrassing to us. It is exactly what we help with every day.
+          </p>
+          <SocialProofCarousel slides={REASSURANCE_SLIDES} />
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Book Free Consultation →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -338,8 +420,8 @@ const WhyLaser = () => {
               },
               {
                 emoji: "💷",
-                title: "£500+ Every Year, Forever",
-                desc: "Waxing at £50 every 4–6 weeks is over £500 a year, indefinitely. A 6-session laser course is a one-off £795.",
+                title: "£500+ A Year on Waxing",
+                desc: "Waxing at £50 every 4–6 weeks can add up fast. A 6-session laser course is built for longer-term reduction instead of constant repeat appointments.",
               },
               {
                 emoji: "🪒",
@@ -365,6 +447,22 @@ const WhyLaser = () => {
               Book Free Consultation →
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Course education */}
+      <section className="section-padding-compact bg-accent">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            Why It Takes a Course
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Laser Works With Your Hair Cycle, Not Against It
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            If you are wondering why it is not a one-and-done treatment, this is the simple version: hair grows in cycles, hormones can trigger regrowth, and consistency protects the result.
+          </p>
+          <SocialProofCarousel slides={EDUCATION_SLIDES} />
         </div>
       </section>
 
@@ -457,6 +555,29 @@ const WhyLaser = () => {
             <ResultsGallery />
           </div>
 
+        </div>
+      </section>
+
+      {/* Face and hormonal hair */}
+      <section className="section-padding-compact bg-accent">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            Facial & Hormonal Hair
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            If Face Hair Is the Thing You Keep Thinking About
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            Chin, neck and hormonal hair can feel more personal than body hair. The consultation is private, practical and built around what is actually bothering you.
+          </p>
+          <div className="max-w-3xl mx-auto">
+            <SocialProofCarousel slides={FACE_LASER_SLIDES} />
+          </div>
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Book Free Consultation →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -605,6 +726,22 @@ const WhyLaser = () => {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+
+      {/* Playful final nudge */}
+      <section className="section-padding-compact bg-accent">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            One Last Thought
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            You Could Keep Panic Shaving. Or Not.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            If you are still here, you probably already know which problem you want gone. The consultation is just the next low-pressure step.
+          </p>
+          <SocialProofCarousel slides={PLAYFUL_SLIDES} />
         </div>
       </section>
 
