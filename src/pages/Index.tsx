@@ -320,15 +320,21 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
             {/* Text content — leads on mobile, sits left on desktop */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              {/* Mobile-only image: above the eyebrow and heading */}
-              <div className="md:hidden mb-5">
+              {/* Mobile-only image with emotive overlay */}
+              <div className="md:hidden mb-5 relative rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src={legLaser}
                   alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                  className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-lg"
+                  className="w-full h-56 sm:h-64 object-cover"
                   loading="eager"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
+                <p className="absolute inset-x-0 bottom-0 p-5 font-serif text-2xl sm:text-3xl leading-snug text-background text-center">
+                  Still shaving{" "}
+                  <em className="not-italic font-semibold">every single day?</em>
+                </p>
               </div>
+
 
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
