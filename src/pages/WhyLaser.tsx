@@ -15,6 +15,8 @@ import faceLaserObjectionsSlide from "@/assets/why-laser/face-laser-objections.j
 import notForEveryoneSlide from "@/assets/why-laser/not-for-everyone.jpg";
 import panicShaveSlide from "@/assets/why-laser/panic-shave.jpg";
 import smoothAllYearSlide from "@/assets/why-laser/smooth-all-year.jpg";
+import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
+import maintainingResultsSlide from "@/assets/why-laser/maintaining-results.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
 import {
@@ -83,6 +85,8 @@ const PLAYFUL_SLIDES: SocialSlide[] = [
   { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone slide" },
   { src: panicShaveSlide, alt: "Not everyone loves not having to panic shave slide" },
   { src: smoothAllYearSlide, alt: "Not everyone wants smooth skin all year round slide" },
+  { src: maintenanceMatterSlide, alt: "Laser hair removal maintenance matters slide" },
+  { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
 ];
 
 const SocialProofCarousel = ({ slides }: { slides: SocialSlide[] }) => (
@@ -367,6 +371,11 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      {/* Proof break */}
+      <section className="py-12 md:py-16 bg-background">
+        <ReviewBreak review={reviewByName("Maisey Trainor")} />
+      </section>
+
       {/* Facial hair story */}
       <section className="section-padding-compact bg-secondary">
         <div className="content-container">
@@ -388,13 +397,6 @@ const WhyLaser = () => {
           </div>
         </div>
       </section>
-
-      {/* Proof break */}
-      <section className="py-12 md:py-16 bg-background">
-        <ReviewBreak review={reviewByName("Maisey Trainor")} />
-      </section>
-
-
 
 
       {/* The real cost */}
@@ -463,6 +465,11 @@ const WhyLaser = () => {
             If you are wondering why it is not a one-and-done treatment, this is the simple version: hair grows in cycles, hormones can trigger regrowth, and consistency protects the result.
           </p>
           <SocialProofCarousel slides={EDUCATION_SLIDES} />
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Check If Laser Is Right For Me →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -562,13 +569,13 @@ const WhyLaser = () => {
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Facial & Hormonal Hair
+            Chin, Neck & Hormonal Growth
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            If Face Hair Is the Thing You Keep Thinking About
+            A Practical Look at Face Laser
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Chin, neck and hormonal hair can feel more personal than body hair. The consultation is private, practical and built around what is actually bothering you.
+            If chin, neck or hormonal hair is your main concern, this breaks down the practical reasons people choose face laser: persistent regrowth, irritation, time and maintenance.
           </p>
           <div className="max-w-3xl mx-auto">
             <SocialProofCarousel slides={FACE_LASER_SLIDES} />
