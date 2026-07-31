@@ -4,6 +4,13 @@ import { toast } from "sonner";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
+import {
+  ReviewCard,
+  ReviewBreak,
+  ReviewsWidget,
+  reviewByName,
+} from "@/components/GoogleReviews";
+
 
 import {
   Accordion,
