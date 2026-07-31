@@ -737,6 +737,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Proof break */}
+      <section className="py-12 md:py-16 bg-accent">
+        <ReviewBreak review={reviewByName("Z JJ")} />
+      </section>
+
+
+
       {/* Final CTA */}
       <section className="section-padding bg-secondary">
         <div className="content-container max-w-xl text-center">
