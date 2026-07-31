@@ -516,6 +516,61 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      {/* Why Laser Location */}
+      <section className="section-padding-compact bg-background">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            Why Laser Location
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Not Just Laser. The Right Place To Start.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            If you are comparing clinics, the decision is not only about price. It is about whether you feel comfortable, whether the technology is suitable for your skin and hair, and whether the team explains the plan properly before treatment.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+            {[
+              {
+                title: "Free consultation first",
+                desc: "No payment pressure before you understand your options, treatment areas and suitability.",
+              },
+              {
+                title: "Medical-grade 3-wavelength tech",
+                desc: "AW3 Crystal Freeze Diamond technology is built to treat different skin tones and areas safely with cooling for comfort.",
+              },
+              {
+                title: "Real local results",
+                desc: "You can see actual before-and-after examples and client reviews from people treated by the team.",
+              },
+              {
+                title: "Private, judgement-free appointments",
+                desc: "Face, chin, bikini, hormonal growth, ingrowns or body confidence - the consultation is practical and discreet.",
+              },
+              {
+                title: "Clear course pricing",
+                desc: "A structured 6-session full-body course, with payment-plan options and no vague per-area surprises.",
+              },
+              {
+                title: "Bury, Manchester clinic",
+                desc: "A local clinic you can speak to, visit and book with directly instead of a faceless chain or home device guesswork.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="p-6 rounded-xl bg-card border border-border">
+                <h3 className="text-lg font-semibold tracking-tight mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Book Free Consultation →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Is it right for me */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
