@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { Check, Clock, Star, Sparkles } from "lucide-react";
+import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
@@ -190,7 +190,7 @@ const WhyLaser = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-background overflow-x-hidden pb-20 md:pb-0">
       <ExitIntentPopup />
 
       {/* Logo */}
