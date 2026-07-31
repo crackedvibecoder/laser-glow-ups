@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
-import armLaser from "@/assets/arm-laser.jpg";
+import practitionerTreatment from "@/assets/practitioner-treatment.jpg";
 import embarrassedSlide from "@/assets/why-laser/embarrassed.jpg";
 import sizeSlide from "@/assets/why-laser/size.jpg";
 import ingrownSlide from "@/assets/why-laser/ingrown.jpg";
@@ -74,6 +74,8 @@ const EDUCATION_SLIDES: SocialSlide[] = [
   { src: hairCyclesSlide, alt: "Laser hair grows in cycles education slide" },
   { src: hormonesRoleSlide, alt: "Hormones can affect laser hair removal regrowth education slide" },
   { src: longTermSmoothnessSlide, alt: "Maintenance sessions help preserve long-term smoothness slide" },
+  { src: maintenanceMatterSlide, alt: "Why laser maintenance sessions matter slide" },
+  { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
 ];
 
 const FACE_LASER_SLIDES: SocialSlide[] = [
@@ -85,8 +87,6 @@ const PLAYFUL_SLIDES: SocialSlide[] = [
   { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone slide" },
   { src: panicShaveSlide, alt: "Not everyone loves not having to panic shave slide" },
   { src: smoothAllYearSlide, alt: "Not everyone wants smooth skin all year round slide" },
-  { src: maintenanceMatterSlide, alt: "Laser hair removal maintenance matters slide" },
-  { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
 ];
 
 const SocialProofCarousel = ({ slides }: { slides: SocialSlide[] }) => (
@@ -487,8 +487,8 @@ const WhyLaser = () => {
 
           <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
             <img
-              src={armLaser}
-              alt="Practitioner treating a client's arm with the AW3 Crystal Freeze Diamond laser"
+              src={practitionerTreatment}
+              alt="Laser Location practitioner using the AW3 Crystal Freeze Diamond laser during treatment"
               className="w-full h-72 object-cover rounded-2xl shadow-lg"
               loading="lazy"
             />
@@ -509,61 +509,6 @@ const WhyLaser = () => {
           </div>
 
           <div className="text-center mt-12">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Laser Location */}
-      <section className="section-padding-compact bg-background">
-        <div className="content-container text-center">
-          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Why Laser Location
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Not Just Laser. The Right Place To Start.
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            If you are comparing clinics, the decision is not only about price. It is about whether you feel comfortable, whether the technology is suitable for your skin and hair, and whether the team explains the plan properly before treatment.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
-            {[
-              {
-                title: "Free consultation first",
-                desc: "No payment pressure before you understand your options, treatment areas and suitability.",
-              },
-              {
-                title: "Medical-grade 3-wavelength tech",
-                desc: "AW3 Crystal Freeze Diamond technology is built to treat different skin tones and areas safely with cooling for comfort.",
-              },
-              {
-                title: "Real local results",
-                desc: "You can see actual before-and-after examples and client reviews from people treated by the team.",
-              },
-              {
-                title: "Private, judgement-free appointments",
-                desc: "Face, chin, bikini, hormonal growth, ingrowns or body confidence - the consultation is practical and discreet.",
-              },
-              {
-                title: "Clear course pricing",
-                desc: "A structured 6-session full-body course, with payment-plan options and no vague per-area surprises.",
-              },
-              {
-                title: "Bury, Manchester clinic",
-                desc: "A local clinic you can speak to, visit and book with directly instead of a faceless chain or home device guesswork.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="p-6 rounded-xl bg-card border border-border">
-                <h3 className="text-lg font-semibold tracking-tight mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-base">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">
               Book Free Consultation →
             </a>
@@ -671,6 +616,62 @@ const WhyLaser = () => {
           </div>
         </div>
       </section>
+
+      {/* Why Laser Location */}
+      <section className="section-padding-compact bg-background">
+        <div className="content-container text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            Why Laser Location
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Not Just Laser. The Right Place To Start.
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            If you are comparing clinics, choose the place that checks suitability properly, explains the plan clearly and makes you feel comfortable before treatment.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+            {[
+              {
+                title: "Free consultation first",
+                desc: "No payment pressure before you understand your options, treatment areas and suitability.",
+              },
+              {
+                title: "Medical-grade 3-wavelength tech",
+                desc: "AW3 Crystal Freeze Diamond technology is built to treat different skin tones and areas safely with cooling for comfort.",
+              },
+              {
+                title: "Real local results",
+                desc: "You can see actual before-and-after examples and client reviews from people treated by the team.",
+              },
+              {
+                title: "Private, judgement-free appointments",
+                desc: "Face, chin, bikini, hormonal growth, ingrowns or body confidence - the consultation is practical and discreet.",
+              },
+              {
+                title: "Clear course pricing",
+                desc: "A structured 6-session full-body course, with payment-plan options and no vague per-area surprises.",
+              },
+              {
+                title: "Bury, Manchester clinic",
+                desc: "A local clinic you can speak to, visit and book with directly instead of a faceless chain or home device guesswork.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="p-6 rounded-xl bg-card border border-border">
+                <h3 className="text-lg font-semibold tracking-tight mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a href="#book" className="btn-gold-metallic">
+              Book Free Consultation →
+            </a>
+          </div>
+        </div>
+      </section>
+
 
       {/* Pricing */}
       <section className="bg-accent section-padding-compact">
