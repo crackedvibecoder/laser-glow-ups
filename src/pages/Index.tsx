@@ -169,7 +169,7 @@ const ExitIntentPopup = () => {
           ⏳ Limited spots available this week
         </p>
          <a href="#book" onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
-           Claim My £100 Discount →
+           Book My Free Consultation →
          </a>
         <button
           onClick={() => setOpen(false)}
@@ -274,9 +274,39 @@ const StickyDesktopCTA = () => {
           href="#book"
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
-          Book Now →
+          Book Free Consultation →
         </a>
       </div>
+    </div>
+  );
+};
+
+const StickyMobileCTA = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.querySelector("[data-hero]");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3 transition-transform duration-300 ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
+      <a
+        href="#book"
+        className="btn-gold-metallic w-full !block !text-center !py-3.5"
+      >
+        Claim £100 Off — Book Free Consultation →
+      </a>
     </div>
   );
 };
@@ -299,6 +329,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden pb-24 md:pb-0">
       <StickyDesktopCTA />
+      <StickyMobileCTA />
       <ExitIntentPopup />
 
       {/* Logo */}
@@ -333,7 +364,7 @@ const Index = () => {
                 <img
                   src={heroShavingEveryday}
                   alt="Laser hair removal treatment with the message wtf is shaving everyday"
-                  className="w-full h-56 sm:h-64 object-cover object-[50%_65%]"
+                  className="w-full h-56 sm:h-64 object-cover object-[50%_42%]"
                   loading="eager"
                 />
               </div>
@@ -371,7 +402,7 @@ const Index = () => {
                 href="#book"
                 className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
               >
-                Claim Your £100 Discount →
+                Book Free Consultation →
               </a>
 
               <p className="text-base text-muted-foreground">
@@ -385,7 +416,7 @@ const Index = () => {
                 <img
                   src={heroShavingEveryday}
                   alt="Laser hair removal treatment with the message wtf is shaving everyday"
-                  className="w-full h-80 object-cover object-[50%_65%]"
+                  className="w-full h-80 object-cover object-[50%_42%]"
                   loading="eager"
                 />
               </div>
@@ -452,7 +483,7 @@ const Index = () => {
 
           <div className="mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -478,7 +509,7 @@ const Index = () => {
 
           <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -522,7 +553,7 @@ const Index = () => {
 
           <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -548,7 +579,7 @@ const Index = () => {
 
           <div className="mt-10">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -599,7 +630,7 @@ const Index = () => {
               href="#book"
               className="btn-gold-metallic w-full !block !text-center"
             >
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
 
             <p className="text-sm mt-4 text-muted-foreground">
@@ -638,7 +669,7 @@ const Index = () => {
           {/* Post-reviews CTA */}
           <div className="mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -753,7 +784,7 @@ const Index = () => {
             href="#book"
             className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
           >
-            Claim Your £100 Discount →
+            Book Free Consultation →
           </a>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-base text-muted-foreground">
@@ -795,15 +826,6 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3">
-        <a
-          href="#book"
-          className="btn-gold-metallic w-full !block !text-center !py-3.5"
-        >
-          Claim £100 Off — Book Free Consultation →
-        </a>
-      </div>
     </div>
   );
 };
