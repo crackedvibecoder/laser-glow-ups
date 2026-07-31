@@ -378,13 +378,21 @@ const Index = () => {
 
             {/* Desktop-only image — sits right on desktop */}
             <div className="hidden md:block w-full md:w-1/2">
-              <img
-                src={legLaser}
-                alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
-                className="w-full h-80 object-cover rounded-2xl shadow-lg"
-                loading="eager"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src={legLaser}
+                  alt="Laser hair removal treatment at Laser Location, Bury, Manchester"
+                  className="w-full h-80 object-cover"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/25 to-transparent" />
+                <p className="absolute inset-x-0 bottom-0 p-6 font-serif text-3xl leading-snug text-background">
+                  Still shaving{" "}
+                  <em className="not-italic font-semibold">every single day?</em>
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
