@@ -8,6 +8,7 @@ import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
 type Result = {
   src: string;
   area: string;
+  caption: string;
   alt: string;
 };
 
@@ -15,31 +16,37 @@ const RESULTS: Result[] = [
   {
     src: baUnderarm,
     area: "Underarms",
-    alt: "Underarm laser hair removal before and after at Laser Location",
+    caption: "Before and after 6 sessions",
+    alt: "Underarm laser hair removal before and after 6 sessions at Laser Location",
   },
   {
     src: baBikini,
     area: "Bikini Line",
+    caption: "Visible reduction across a treatment course",
     alt: "Bikini line laser hair removal before and after at Laser Location",
   },
   {
     src: baNape,
     area: "Nape & Hairline",
+    caption: "Cleaner hairline and smoother neck area",
     alt: "Nape and neck hairline laser hair removal before and after at Laser Location",
   },
   {
     src: baNeckMale,
     area: "Men's Neck & Beard Line",
-    alt: "Men's neck and beard line laser hair removal before and after at Laser Location",
+    caption: "Before and after 3 sessions of laser hair removal",
+    alt: "Men's neck and beard line laser hair removal before and after 3 sessions at Laser Location",
   },
   {
     src: chinBeforeAfter,
-    area: "Chin & Upper Lip",
-    alt: "Chin and upper lip laser hair removal before and after at Laser Location",
+    area: "Chin & Neck",
+    caption: "Before: 5 days no shaving. After: 5 weeks no shaving.",
+    alt: "Chin and neck laser hair removal before after 5 days no shaving and after 5 weeks no shaving at Laser Location",
   },
   {
     src: bikiniBeforeAfter,
     area: "Bikini & Intimate",
+    caption: "Progress after a structured treatment plan",
     alt: "Intimate area laser hair removal before and after at Laser Location",
   },
 ];
@@ -54,9 +61,7 @@ const ResultCard = ({ item, eager }: { item: Result; eager?: boolean }) => (
     />
     <figcaption className="p-4">
       <p className="text-lg font-semibold tracking-tight">{item.area}</p>
-      <p className="text-base text-muted-foreground">
-        Before &amp; after a course of sessions
-      </p>
+      <p className="text-base text-muted-foreground">{item.caption}</p>
     </figcaption>
   </figure>
 );

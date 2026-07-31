@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
-import legLaser from "@/assets/leg-laser.jpg";
 import armLaser from "@/assets/arm-laser.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
@@ -145,7 +144,7 @@ const ExitIntentPopup = () => {
           onClick={() => setOpen(false)}
           className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center"
         >
-          Claim My £100 Discount →
+          Book My Free Consultation →
         </a>
         <button
           onClick={() => setOpen(false)}
@@ -158,6 +157,33 @@ const ExitIntentPopup = () => {
         </p>
       </DialogContent>
     </Dialog>
+  );
+};
+
+const StickyMobileCTA = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.querySelector("[data-hero]");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3 transition-transform duration-300 ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
+      <a href="#book" className="btn-gold-metallic w-full !block !text-center !py-3.5">
+        Claim £100 Off — Book Free Consultation →
+      </a>
+    </div>
   );
 };
 
@@ -192,6 +218,7 @@ const WhyLaser = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden pb-20 md:pb-0">
       <ExitIntentPopup />
+      <StickyMobileCTA />
 
       {/* Logo */}
       <div className="pt-4 pb-3.5 bg-[hsl(30,10%,6%)] border-b border-foreground/10 text-center">
@@ -212,55 +239,49 @@ const WhyLaser = () => {
 
       {/* Hero */}
       <section
+        data-hero
         className="relative py-10 md:py-16"
         style={{ backgroundColor: "hsl(var(--hero-bg, 36 30% 92%))" }}
       >
-        <div className="content-container">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
-            <div className="w-full md:w-1/2 text-center md:text-left">
-              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                Medical-Grade Laser Hair Removal
-              </p>
+        <div className="content-container max-w-4xl text-center animate-fade-up">
+          <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
+            Still Thinking It Over?
+          </p>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-4">
-                Why Laser Hair{" "}
-                <span className="whitespace-nowrap">Removal?</span>
-              </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08] mb-4">
+            You clicked because shaving is annoying.
+            <span className="block text-script-accent text-primary text-[1.15em] mt-1">
+              Here&apos;s why laser is worth booking.
+            </span>
+          </h1>
 
-              <p className="text-lg text-muted-foreground mb-6">
-                The honest answer, for anyone still weighing it up.
-              </p>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
+            If you&apos;re hesitating, it&apos;s usually one of three things: pain, price, or whether it actually works. This page answers those properly before you book anything.
+          </p>
 
-              {/* Mobile image sits below the question so it doesn't compete with it */}
-              <div className="md:hidden mb-6">
-                <img
-                  src={legLaser}
-                  alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
-                  className="w-full h-40 object-cover rounded-2xl shadow-lg"
-                  loading="eager"
-                />
+          <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-7 text-left">
+            {[
+              { label: "Will it hurt?", text: "Built-in cooling. Most clients say it is easier than waxing." },
+              { label: "Is it worth it?", text: "Waxing repeats forever. A course is built for long-term reduction." },
+              { label: "Will it work for me?", text: "All skin tones are assessed before treatment, with medical-grade tech." },
+            ].map((item) => (
+              <div key={item.label} className="rounded-xl bg-card border border-border p-4">
+                <p className="font-semibold text-foreground mb-1">{item.label}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
               </div>
-
-              <a
-                href="#book"
-                className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
-              >
-                Claim Your £100 Discount →
-              </a>
-
-              <p className="text-base text-muted-foreground">Bury, Manchester</p>
-            </div>
-
-
-            <div className="hidden md:block w-full md:w-1/2">
-              <img
-                src={legLaser}
-                alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
-                className="w-full h-80 object-cover rounded-2xl shadow-lg"
-                loading="eager"
-              />
-            </div>
+            ))}
           </div>
+
+          <a
+            href="#book"
+            className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
+          >
+            Book Free Consultation →
+          </a>
+
+          <p className="text-base text-muted-foreground">
+            Free consultation · No payment required · Bury, Manchester
+          </p>
         </div>
       </section>
 
@@ -280,7 +301,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-10">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -341,7 +362,7 @@ const WhyLaser = () => {
 
           <div className="mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -384,7 +405,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -462,7 +483,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
           </div>
         </div>
@@ -500,7 +521,7 @@ const WhyLaser = () => {
             </div>
 
             <a href="#book" className="btn-gold-metallic w-full !block !text-center">
-              Claim Your £100 Discount →
+              Book Free Consultation →
             </a>
 
             <p className="text-sm mt-4 text-muted-foreground">
@@ -600,7 +621,7 @@ const WhyLaser = () => {
           </p>
 
           <a href="#book" className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg">
-            Claim Your £100 Discount →
+            Book Free Consultation →
           </a>
         </div>
       </section>
@@ -624,12 +645,6 @@ const WhyLaser = () => {
         </div>
       </footer>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[hsl(30,10%,6%)] border-t border-primary/20 p-3">
-        <a href="#book" className="btn-gold-metallic w-full !block !text-center !py-3.5">
-          Claim £100 Off — Book Free Consultation →
-        </a>
-      </div>
     </div>
   );
 };
