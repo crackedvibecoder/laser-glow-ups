@@ -313,19 +313,12 @@ const WhyLaser = () => {
         </div>
       </section>
 
-      {/* Shaving break */}
-      <section className="section-padding-compact bg-background">
-        <div className="content-container">
-          <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={storyShaving}
-              alt="Medical-grade laser hair removal treatment on a client's leg — an end to shaving every day"
-              className="w-full"
-              loading="lazy"
-            />
-          </div>
-        </div>
+      {/* Proof break */}
+      <section className="py-12 md:py-16 bg-background">
+        <ReviewBreak review={reviewByName("Maisey Trainor")} />
       </section>
+
+
 
 
       {/* The real cost */}
