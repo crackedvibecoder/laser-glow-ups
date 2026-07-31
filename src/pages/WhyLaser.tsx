@@ -478,43 +478,14 @@ const WhyLaser = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
-            {HIGHLIGHTED_REVIEWS.map((review) => (
-              <figure
-                key={review.name}
-                className="p-7 rounded-xl bg-card border border-border text-left"
-              >
-                <Stars />
-                <blockquote className="text-base md:text-lg text-muted-foreground leading-relaxed mb-4">
-                  “{review.text}”
-                </blockquote>
-                <figcaption className="font-serif text-lg text-foreground">
-                  {review.name}
-                  <span className="block text-sm text-muted-foreground font-sans">
-                    Google review · {review.when}
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {[reviewByName("Reza Vahid Roudsari"), reviewByName("Shazad Ahmed")].map(
+              (review) => (
+                <ReviewCard key={review.name} review={review} />
+              ),
+            )}
           </div>
 
-          <p className="text-center text-base font-medium tracking-widest uppercase text-primary mb-4">
-            See All Google Reviews
-          </p>
-          <div
-            className="max-w-4xl mx-auto rounded-2xl border border-border overflow-hidden"
-            style={{ maxHeight: "480px", overflowY: "auto" }}
-          >
-            <iframe
-              className="lc_reviews_widget"
-              src="https://reputationhub.site/reputation/widgets/review_widget/PWKfLNPWUuSeU4ukiccO"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              style={{ minWidth: "100%", width: "100%" }}
-              title="Laser Location Reviews"
-            />
-          </div>
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
