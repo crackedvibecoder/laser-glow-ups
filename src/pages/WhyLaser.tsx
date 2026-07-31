@@ -245,15 +245,6 @@ const WhyLaser = () => {
         <div className="content-container">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-fade-up">
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <div className="md:hidden mb-5">
-                <img
-                  src={legLaser}
-                  alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
-                  className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-lg"
-                  loading="eager"
-                />
-              </div>
-
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
                 Medical-Grade Laser Hair Removal
               </p>
@@ -267,6 +258,16 @@ const WhyLaser = () => {
                 The honest answer, for anyone still weighing it up.
               </p>
 
+              {/* Mobile image sits below the question so it doesn't compete with it */}
+              <div className="md:hidden mb-6">
+                <img
+                  src={legLaser}
+                  alt="Medical-grade laser hair removal session at Laser Location in Bury, Manchester"
+                  className="w-full h-40 object-cover rounded-2xl shadow-lg"
+                  loading="eager"
+                />
+              </div>
+
               <a
                 href="#book"
                 className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
@@ -276,6 +277,7 @@ const WhyLaser = () => {
 
               <p className="text-base text-muted-foreground">Bury, Manchester</p>
             </div>
+
 
             <div className="hidden md:block w-full md:w-1/2">
               <img
