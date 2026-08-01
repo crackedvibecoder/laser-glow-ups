@@ -83,10 +83,10 @@ const FACE_LASER_SLIDES: SocialSlide[] = [
   { src: faceLaserObjectionsSlide, alt: "Face laser reasons: hormonal growth, irritation, time and maintenance" },
 ];
 
-const PLAYFUL_SLIDES: SocialSlide[] = [
-  { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone slide" },
-  { src: panicShaveSlide, alt: "Not everyone loves not having to panic shave slide" },
-  { src: smoothAllYearSlide, alt: "Not everyone wants smooth skin all year round slide" },
+const FINAL_NUDGE_SLIDES: SocialSlide[] = [
+  { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone final thought slide" },
+  { src: panicShaveSlide, alt: "Panic shaving final thought slide" },
+  { src: smoothAllYearSlide, alt: "Smooth skin all year round final thought slide" },
 ];
 
 const SocialProofCarousel = ({ slides }: { slides: SocialSlide[] }) => (
@@ -804,7 +804,7 @@ const WhyLaser = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
             If you are still here, you probably already know which problem you want gone. The consultation is just the next low-pressure step.
           </p>
-          <SocialProofCarousel slides={PLAYFUL_SLIDES} />
+          <SocialProofCarousel slides={FINAL_NUDGE_SLIDES} />
         </div>
       </section>
 
