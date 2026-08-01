@@ -3,7 +3,6 @@ import { dirname, join } from 'node:path';
 
 const dist = 'dist';
 const baseHtmlPath = join(dist, 'index.html');
-const baseHtml = readFileSync(baseHtmlPath, 'utf8');
 
 const routes = [
   {
@@ -14,6 +13,8 @@ const routes = [
     url: 'https://offer.laserlocation.co.uk/why-laser',
   },
 ];
+
+const SOCIAL_IMAGE = 'https://offer.laserlocation.co.uk/og-image.jpg';
 
 const escapeAttr = (value) =>
   String(value)
@@ -28,7 +29,8 @@ function setTag(html, matcher, replacement) {
 }
 
 for (const route of routes) {
-  let html = baseHtml;
+  // Read the base HTML fresh for each route so we never pick up stale route output.
+  let html = readFileSync(baseHtmlPath, 'utf8');
   const title = escapeAttr(route.title);
   const desc = escapeAttr(route.description);
   const url = escapeAttr(route.url);
@@ -39,8 +41,13 @@ for (const route of routes) {
   html = setTag(html, /<meta name="twitter:title" content=".*?">/s, `<meta name="twitter:title" content="${title}">`);
   html = setTag(html, /<meta property="og:description" content=".*?">/s, `<meta property="og:description" content="${desc}">`);
   html = setTag(html, /<meta name="twitter:description" content=".*?">/s, `<meta name="twitter:description" content="${desc}">`);
-  html = setTag(html, /<meta property="og:url" content=".*?">/s, `<meta property="og:url" content="${url}">`);
+  // The base og:url tag is self-closing (` />`), so the matcher must allow the slash.
+  html = setTag(html, /<meta property="og:url" content=".*?" \/>/s, `<meta property="og:url" content="${url}" />`);
   html = setTag(html, /<link rel="canonical" href=".*?" \/>/s, `<link rel="canonical" href="${url}" />`);
+  // Preserve the base og:image and twitter:image tags for route pages so the
+  // branded social preview is served on every route instead of a host default.
+  html = setTag(html, /<meta property="og:image" content=".*?">/s, `<meta property="og:image" content="${SOCIAL_IMAGE}">`);
+  html = setTag(html, /<meta name="twitter:image" content=".*?">/s, `<meta name="twitter:image" content="${SOCIAL_IMAGE}">`);
 
   const out = join(dist, route.path);
   mkdirSync(dirname(out), { recursive: true });
