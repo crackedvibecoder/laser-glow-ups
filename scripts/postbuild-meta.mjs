@@ -41,13 +41,21 @@ for (const route of routes) {
   const url = escapeAttr(route.url);
 
   html = setTag(html, /<title>.*?<\/title>/s, `<title>${title}</title>`);
+  console.error('DEBUG after title:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta name="description" content=".*?">/s, `<meta name="description" content="${desc}">`);
+  console.error('DEBUG after desc:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta property="og:title" content=".*?">/s, `<meta property="og:title" content="${title}">`);
+  console.error('DEBUG after og:title:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta name="twitter:title" content=".*?">/s, `<meta name="twitter:title" content="${title}">`);
+  console.error('DEBUG after tw:title:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta property="og:description" content=".*?">/s, `<meta property="og:description" content="${desc}">`);
+  console.error('DEBUG after og:desc:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta name="twitter:description" content=".*?">/s, `<meta name="twitter:description" content="${desc}">`);
+  console.error('DEBUG after tw:desc:', html.length, html.includes('og:image'));
   html = setTag(html, /<meta property="og:url" content=".*?">/s, `<meta property="og:url" content="${url}">`);
+  console.error('DEBUG after og:url:', html.length, html.includes('og:image'));
   html = setTag(html, /<link rel="canonical" href=".*?" \/>/s, `<link rel="canonical" href="${url}" />`);
+  console.error('DEBUG after canonical:', html.length, html.includes('og:image'));
   // Preserve the base og:image and twitter:image tags for route pages so the
   // branded social preview is served on every route instead of a host default.
   html = setTag(html, /<meta property="og:image" content=".*?">/s, `<meta property="og:image" content="https://offer.laserlocation.co.uk/og-image.jpg">`);
