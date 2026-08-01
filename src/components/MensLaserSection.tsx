@@ -5,15 +5,15 @@ const MensLaserSection = ({ backgroundClass = "bg-secondary" }: { backgroundClas
   <section className={`section-padding-compact ${backgroundClass}`}>
     <div className="content-container">
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
-        <div className="order-2 md:order-1">
+        <div className="order-1">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Laser Hair Removal For Men
+            Not Just For Women
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Less Shaving. Cleaner Lines. Smoother Skin.
+            Laser Hair Removal For Men
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
-            Laser is not just for women. Men choose it to reduce unwanted hair, tidy difficult areas and stop constantly dealing with shaving irritation, bumps and ingrowns.
+            Less shaving, cleaner lines and smoother skin. Men choose laser to reduce unwanted hair, tidy difficult areas and stop constantly dealing with shaving irritation, bumps and ingrowns.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -35,7 +35,7 @@ const MensLaserSection = ({ backgroundClass = "bg-secondary" }: { backgroundClas
           </a>
         </div>
 
-        <figure className="order-1 md:order-2 rounded-2xl overflow-hidden border border-border shadow-lg bg-card">
+        <figure className="order-2 rounded-2xl overflow-hidden border border-border shadow-lg bg-card">
           <img
             src={maleNeckResult}
             alt="Male neck and beard-line laser hair removal result after three sessions at Laser Location"
