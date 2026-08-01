@@ -22,17 +22,13 @@ const escapeAttr = (value) =>
     .replaceAll('>', '&gt;');
 
 function setTag(html, matcher, replacement) {
-  if (!matcher.test(html)) {
-    console.error('DEBUG: matcher failed for', replacement);
-    console.error('DEBUG: html length:', html.length);
-    console.error('DEBUG: html head:', html.slice(0, 1500));
-    throw new Error(`Missing metadata tag for ${replacement}`);
-  }
+  if (!matcher.test(html)) throw new Error(`Missing metadata tag for ${replacement}`);
   return html.replace(matcher, replacement);
 }
 
 for (const route of routes) {
-  let html = baseHtml;
+  // Read the base HTML fresh for each route so we never pick up stale route output.
+  let html = readFileSync(baseHtmlPath, 'utf8');
   const title = escapeAttr(route.title);
   const desc = escapeAttr(route.description);
   const url = escapeAttr(route.url);
