@@ -391,6 +391,19 @@ const WhyLaser = () => {
 
           <FacialHairStory />
 
+          <div className="text-center mt-12 mb-6">
+            <h3 className="text-2xl md:text-3xl font-serif mb-3">
+              Why Women Choose Face Laser
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Persistent chin, neck or hormonal growth is common. Laser can reduce the cycle of regrowth, irritation, shaving and constant maintenance.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <SocialProofCarousel slides={FACE_LASER_SLIDES} />
+          </div>
+
           <div className="text-center mt-10">
             <a href="#book" className="btn-gold-metallic">
               Book Free Consultation →
@@ -399,7 +412,7 @@ const WhyLaser = () => {
         </div>
       </section>
 
-      <MensLaserSection />
+      <MensLaserSection backgroundClass="bg-accent" />
 
       {/* The real cost */}
 
@@ -525,10 +538,10 @@ const WhyLaser = () => {
             Is It Right For Me?
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Laser Is For Everyone
+            Laser Can Work For More People Than You Think
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            All genders, all skin tones, all areas — assessed properly before we ever treat you.
+            Different genders, skin tones, hair types and treatment areas can be suitable — always assessed properly before we treat you.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
@@ -564,29 +577,6 @@ const WhyLaser = () => {
             <ResultsGallery />
           </div>
 
-        </div>
-      </section>
-
-      {/* Face and hormonal hair */}
-      <section className="section-padding-compact bg-accent">
-        <div className="content-container text-center">
-          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Chin, Neck & Hormonal Growth
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            A Practical Look at Face Laser
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            If chin, neck or hormonal hair is your main concern, this breaks down the practical reasons people choose face laser: persistent regrowth, irritation, time and maintenance.
-          </p>
-          <div className="max-w-3xl mx-auto">
-            <SocialProofCarousel slides={FACE_LASER_SLIDES} />
-          </div>
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
 

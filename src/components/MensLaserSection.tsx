@@ -1,8 +1,8 @@
 import { Check } from "lucide-react";
 import maleNeckResult from "@/assets/ba-neck-male.jpg";
 
-const MensLaserSection = () => (
-  <section className="section-padding-compact bg-secondary">
+const MensLaserSection = ({ backgroundClass = "bg-secondary" }: { backgroundClass?: string }) => (
+  <section className={`section-padding-compact ${backgroundClass}`}>
     <div className="content-container">
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
         <div className="order-2 md:order-1">
