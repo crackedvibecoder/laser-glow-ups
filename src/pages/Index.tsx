@@ -444,13 +444,13 @@ const Index = () => {
             {[
               {
                 emoji: "🪒",
-                title: "Razor Burn & Ingrown Hairs",
-                desc: "Shaving damages your skin and the results barely last a day.",
+                title: "Razor Burn, Spots & Ingrown Hairs",
+                desc: "Shaving can leave your skin irritated, bumpy or breaking out in spots — and the results barely last a day.",
               },
               {
                 emoji: "😣",
                 title: "Painful, Expensive Waxing",
-                desc: "£50+ every 4–6 weeks. The pain never gets easier. The bill never stops.",
+                desc: "£50+ every 4–6 weeks, with bumps, spots or irritation that can hang around long after the appointment.",
               },
               {
                 emoji: "🔄",

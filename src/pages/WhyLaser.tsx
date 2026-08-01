@@ -360,7 +360,7 @@ const WhyLaser = () => {
             The Stuff People Worry About Before Booking
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Ingrowns, sweating, body confidence, feeling nervous — none of it is embarrassing to us. It is exactly what we help with every day.
+            Ingrowns, shaving spots, post-waxing bumps, sweating, body confidence, feeling nervous — none of it is embarrassing to us. It is exactly what we help with every day.
           </p>
           <SocialProofCarousel slides={REASSURANCE_SLIDES} />
           <div className="mt-10">
@@ -427,8 +427,8 @@ const WhyLaser = () => {
               },
               {
                 emoji: "🪒",
-                title: "Razor Burn & Ingrowns",
-                desc: "Constant shaving and waxing irritates skin, causes ingrown hairs and leaves darkening and bumps behind.",
+                title: "Razor Burn, Spots & Ingrowns",
+                desc: "Constant shaving and waxing can irritate skin, trigger spots or bumps, cause ingrown hairs and leave darkening behind.",
               },
             ].map((item) => (
               <div
