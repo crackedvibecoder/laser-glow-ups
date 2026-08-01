@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
-import { Check, Clock, Sparkles } from "lucide-react";
+import { CalendarCheck, Check, Clock, CreditCard, HeartHandshake, MapPin, ShieldCheck, Sparkles, Star } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
-import practitionerTreatment from "@/assets/practitioner-treatment.jpg";
+import carmenLaserMachine from "@/assets/carmen-laser-machine.jpeg";
 import embarrassedSlide from "@/assets/why-laser/embarrassed.jpg";
 import sizeSlide from "@/assets/why-laser/size.jpg";
 import ingrownSlide from "@/assets/why-laser/ingrown.jpg";
@@ -487,8 +487,8 @@ const WhyLaser = () => {
 
           <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
             <img
-              src={practitionerTreatment}
-              alt="Laser Location practitioner using the AW3 Crystal Freeze Diamond laser during treatment"
+              src={carmenLaserMachine}
+              alt="Carmen at Laser Location with the AW3 Crystal Freeze Diamond laser machine"
               className="w-full h-72 object-cover rounded-2xl shadow-lg"
               loading="lazy"
             />
@@ -633,35 +633,47 @@ const WhyLaser = () => {
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
             {[
               {
+                icon: CalendarCheck,
                 title: "Free consultation first",
                 desc: "No payment pressure before you understand your options, treatment areas and suitability.",
               },
               {
+                icon: ShieldCheck,
                 title: "Medical-grade 3-wavelength tech",
                 desc: "AW3 Crystal Freeze Diamond technology is built to treat different skin tones and areas safely with cooling for comfort.",
               },
               {
+                icon: Star,
                 title: "Real local results",
                 desc: "You can see actual before-and-after examples and client reviews from people treated by the team.",
               },
               {
+                icon: HeartHandshake,
                 title: "Private, judgement-free appointments",
                 desc: "Face, chin, bikini, hormonal growth, ingrowns or body confidence - the consultation is practical and discreet.",
               },
               {
+                icon: CreditCard,
                 title: "Clear course pricing",
                 desc: "A structured 6-session full-body course, with payment-plan options and no vague per-area surprises.",
               },
               {
+                icon: MapPin,
                 title: "Bury, Manchester clinic",
                 desc: "A local clinic you can speak to, visit and book with directly instead of a faceless chain or home device guesswork.",
               },
-            ].map((item) => (
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border">
+                <div className="w-11 h-11 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                </div>
                 <h3 className="text-lg font-semibold tracking-tight mb-2">{item.title}</h3>
                 <p className="text-muted-foreground text-base">{item.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-10">
