@@ -1,15 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
-import { Check, Clock, Shield, Sparkles } from "lucide-react";
-import { toast } from "sonner";
+import { useState, useEffect } from "react";
+import { Check, Clock, Sparkles } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
-import legLaser from "@/assets/leg-laser.jpg";
 import heroShavingEveryday from "@/assets/hero-shaving-everyday.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
-import MensLaserSection from "@/components/MensLaserSection";
 import {
   ReviewCard,
   ReviewBreak,
-  ReviewsWidget,
   reviewByName,
 } from "@/components/GoogleReviews";
 
@@ -28,7 +24,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-/* ──────────────────── Countdown Timer ──────────────────── */
+/* ──────────────────── Offer links ──────────────────── */
 const BOOKING_WIDGET_URL = "https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH";
 const PAYDAY_CHECKOUT_URL =
   "https://link.fastpaydirect.com/payment-link/6a6cbce37b99151a540418e7";
@@ -49,75 +45,19 @@ const buildBookingSrc = () => {
   return `${BOOKING_WIDGET_URL}?${params.toString()}`;
 };
 
-const CountdownTimer = () => {
-
-  const getTimeLeft = useCallback(() => {
-    const now = new Date();
-    const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
-    const diff = endOfToday.getTime() - now.getTime();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-    };
-  }, []);
-
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
-
-  useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 60000);
-    return () => clearInterval(interval);
-  }, [getTimeLeft]);
-
+const OfferBanner = () => {
   return (
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
       <span className="inline-flex items-center gap-2">
         <Clock className="w-5 h-5 text-primary shrink-0" />
-        Payday Offer — Save £200
+        <span className="whitespace-nowrap">
+          Payday Offer — 6 sessions for <strong className="text-primary">£695</strong>
+        </span>
       </span>
       <span className="hidden md:inline">·</span>
-      <span>
-        Offer ends in{" "}
-        <strong className="text-primary">
-          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
-        </strong>
-      </span>
+      <span>Usually £895 · Save £200</span>
     </span>
   );
-};
-
-/* ──────────────────── Social Proof Toasts ──────────────────── */
-const SOCIAL_PROOF = [
-  { name: "Sophie", area: "Didsbury" },
-  { name: "James", area: "Bury" },
-  { name: "Amira", area: "Salford" },
-  { name: "Rachel", area: "Prestwich" },
-  { name: "Dan", area: "Bolton" },
-  { name: "Priya", area: "Whitefield" },
-  { name: "Emma", area: "Ramsbottom" },
-  { name: "Liam", area: "Rochdale" },
-];
-
-const useSocialProofToasts = () => {
-  useEffect(() => {
-    let index = Math.floor(Math.random() * SOCIAL_PROOF.length);
-    const initialDelay = setTimeout(() => {
-      const show = () => {
-        const person = SOCIAL_PROOF[index % SOCIAL_PROOF.length];
-        toast(`${person.name} from ${person.area} just booked a consultation`, {
-          duration: 4000,
-          position: "bottom-left",
-          className: "",
-        });
-        index++;
-      };
-      show();
-      const interval = setInterval(show, 25000 + Math.random() * 10000);
-      return () => clearInterval(interval);
-    }, 10000);
-    return () => clearTimeout(initialDelay);
-  }, []);
 };
 
 /* ──────────────────── Exit Intent Popup ──────────────────── */
@@ -172,7 +112,7 @@ const ExitIntentPopup = () => {
           ⏳ Limited spots available this week
         </p>
          <a href={PAYDAY_CHECKOUT_URL} onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
-           Claim My £200 Saving →
+           Secure 6 Sessions for £695 →
          </a>
         <button
           onClick={() => setOpen(false)}
@@ -277,7 +217,7 @@ const StickyDesktopCTA = () => {
           href={PAYDAY_CHECKOUT_URL}
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
-          Claim £200 Off →
+          Secure £695 Offer →
         </a>
       </div>
     </div>
@@ -290,12 +230,14 @@ const StickyMobileCTA = () => {
   useEffect(() => {
     const hero = document.querySelector("[data-hero]");
     if (!hero) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(hero);
-    return () => observer.disconnect();
+    const updateVisibility = () => setVisible(hero.getBoundingClientRect().bottom <= 0);
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
   }, []);
 
   return (
@@ -308,7 +250,7 @@ const StickyMobileCTA = () => {
         href={PAYDAY_CHECKOUT_URL}
         className="btn-gold-metallic w-full !block !text-center !py-3.5"
       >
-        Claim £200 Off →
+        Secure 6 Sessions for £695 →
       </a>
     </div>
   );
@@ -316,7 +258,6 @@ const StickyMobileCTA = () => {
 
 /* ──────────────────── Main Page ──────────────────── */
 const Index = () => {
-  useSocialProofToasts();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -345,10 +286,10 @@ const Index = () => {
         />
       </div>
 
-      {/* Urgency Bar with Countdown */}
+      {/* Offer bar */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
         <div className="text-base font-medium text-foreground flex items-center justify-center leading-tight">
-          <CountdownTimer />
+          <OfferBanner />
         </div>
       </div>
 
@@ -366,7 +307,7 @@ const Index = () => {
               <div className="md:hidden mb-5 relative rounded-2xl overflow-hidden shadow-lg bg-foreground">
                 <img
                   src={heroShavingEveryday}
-                  alt="Laser hair removal treatment with the message wtf is shaving everyday"
+                  alt="Laser hair removal treatment at Laser Location"
                   className="w-full h-56 sm:h-64 object-cover object-[50%_52%]"
                   loading="eager"
                 />
@@ -374,42 +315,32 @@ const Index = () => {
 
 
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                Medical-Grade Laser Hair Removal
+                Payday Offer · Bury, Manchester
               </p>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.1] mb-3">
-                <span className="block md:hidden">
-                  <span className="block">Full-Body Laser Hair</span>
-                  <span className="block whitespace-nowrap">
-                    Removal —{" "}
-                    <span className="inline-block bg-white/70 px-2 py-1 rounded-lg">
-                      Save&nbsp;£200
-                    </span>
-                  </span>
-                  <span className="block text-script-accent text-primary text-[1.15em]">
-                    Today Only
-                  </span>
-                </span>
-                <span className="hidden md:inline">
-                  Full-Body Laser Hair Removal —{" "}
-                  <span className="inline-block whitespace-nowrap bg-white/70 px-2 py-1 rounded-lg">
-                    Save&nbsp;£200
-                  </span>{" "}
-                  <span className="text-script-accent text-primary text-[1.15em]">
-                    Today Only
-                  </span>
-                </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08] mb-4">
+                6 Full-Body Laser Sessions{" "}
+                <span className="block text-script-accent text-primary text-[1.1em]">for £695</span>
               </h1>
 
-              <a
-                href="#book"
-                className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-4"
-              >
-                Book Free Consultation →
-              </a>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0 mb-6">
+                Usually £895. Secure the complete six-session course, then book your consultation so the team can confirm suitability and personalise your treatment plan.
+              </p>
 
-              <p className="text-base text-muted-foreground">
-                Bury, Manchester
+              <div className="flex flex-col items-center md:items-start gap-2 mb-4">
+                <a
+                  href={PAYDAY_CHECKOUT_URL}
+                  className="btn-gold-metallic inline-block !py-4 !px-8 !text-lg w-full sm:w-auto text-center"
+                >
+                  Secure My 6 Sessions →
+                </a>
+                <a href="#book" className="text-sm text-primary underline underline-offset-4 py-3">
+                  Prefer to talk first? Book free
+                </a>
+              </div>
+
+              <p className="text-sm text-muted-foreground">
+                Enter PAYDAY200 at checkout · Treatment starts after your suitability assessment
               </p>
             </div>
 
@@ -418,7 +349,7 @@ const Index = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-lg bg-foreground">
                 <img
                   src={heroShavingEveryday}
-                  alt="Laser hair removal treatment with the message wtf is shaving everyday"
+                  alt="Laser hair removal treatment at Laser Location"
                   className="w-full h-80 object-cover object-[50%_42%]"
                   loading="eager"
                 />
@@ -429,53 +360,94 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Offer details */}
+      <section id="offer" className="bg-accent section-padding-compact scroll-mt-6">
+        <div className="content-container text-center relative z-10">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            What You Get
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            The Complete 6-Session Package
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            One clear package, a proper suitability assessment and a treatment plan built around your skin, hair and goals.
+          </p>
+
+          <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-8 md:p-10">
+            <div className="mb-5">
+              <span className="text-2xl text-muted-foreground line-through mr-3">£895</span>
+              <span className="text-5xl font-serif text-gold-metallic font-semibold">£695</span>
+            </div>
+            <p className="text-lg font-serif mb-8 text-foreground">for 6 Full-Body Sessions</p>
+
+            <div className="text-left space-y-3 mb-8">
+              {[
+                "6 full-body sessions covering legs, arms, underarms, bikini, back, chest and stomach",
+                "Consultation before treatment to confirm suitability and personalise your plan",
+                "3-wavelength AW3 Crystal Freeze Diamond laser",
+                "Qualified, fully insured practitioner",
+                "Aftercare guidance throughout your course",
+                "Payment-plan options available",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <span className="text-lg text-muted-foreground">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center">
+              Secure 6 Sessions for £695 →
+            </a>
+            <p className="text-sm mt-4 text-muted-foreground">
+              Enter PAYDAY200 at checkout to reduce the package from £895 to £695.
+            </p>
+            <a href="#book" className="inline-block mt-4 text-sm text-primary underline underline-offset-4">
+              Not ready to purchase? Book a free consultation
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Pain Points */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Sound Familiar?
+            Why People Make the Switch
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            The Endless Hair Removal Cycle
+            Stop Paying for the Same Hair to Come Back
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Temporary fixes cost time, money, and confidence. There's a permanent solution.
+            Shaving and waxing solve the next few days. A structured laser course is designed to reduce the amount of hair that returns and the time you spend managing it.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {[
               {
                 emoji: "🪒",
-                title: "Razor Burn, Spots & Ingrown Hairs",
-                desc: "Shaving can leave your skin irritated, bumpy or breaking out in spots — and the results barely last a day.",
+                title: "Less Shaving, Less Planning",
+                desc: "Spend less time organising outfits, trips and last-minute plans around shaving and fast regrowth.",
               },
               {
-                emoji: "😣",
-                title: "Painful, Expensive Waxing",
-                desc: "£50+ every 4–6 weeks, with bumps, spots or irritation that can hang around long after the appointment.",
+                emoji: "💷",
+                title: "A Fixed Course, Not Repeat Waxing",
+                desc: "At £50+ every 4–6 weeks, waxing costs keep restarting. This offer fixes the price for a complete six-session course.",
               },
               {
-                emoji: "🔄",
-                title: "The Never-Ending Cycle",
-                desc: "You've spent thousands on temporary fixes. It's time for a long-term solution.",
+                emoji: "✦",
+                title: "Fewer Bumps and Ingrowns",
+                desc: "Laser can reduce the regrowth that often leads to shaving irritation, bumps and ingrown hairs.",
               },
               {
-                emoji: "🌸",
-                title: "PCOS or Hormonal Hair Growth?",
-                desc: "Excessive or coarse facial and body hair affects 1 in 10 women. Laser targets the root cause — not just the surface.",
+                emoji: "✓",
+                title: "A Plan Built Around You",
+                desc: "Your consultation confirms suitability, settings, treatment areas and realistic expectations before treatment begins.",
               },
-              {
-                emoji: "💪",
-                title: "All Genders. All Areas.",
-                desc: "Back, chest, shoulders, jawline — laser hair removal is for everyone. Discreet, professional sessions with lasting results.",
-              },
-            ].map((item, index) => (
+            ].map((item) => (
               <div
                 key={item.title}
-                className={`p-8 rounded-xl bg-card border border-border text-center ${
-                  index < 3 ? "lg:col-span-2" : "lg:col-span-3"
-                }`}
+                className="p-8 rounded-xl bg-card border border-border text-center"
               >
                 <span className="text-4xl mb-4 block">{item.emoji}</span>
                 <h3 className="text-xl font-semibold tracking-tight mb-3">{item.title}</h3>
@@ -483,38 +455,29 @@ const Index = () => {
               </div>
             ))}
           </div>
-
-          <div className="mt-12">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
-
-      <MensLaserSection />
 
       {/* Real Results - Before & After */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Real Results
+            Real Client Progress
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            See the Difference
+            See What a Structured Course Can Change
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Real clients. Real results. Medical-grade laser hair removal that delivers.
+            Results vary, but these clients show the visible reduction possible with consistent treatment and a plan suited to their skin and hair.
           </p>
 
           <div className="text-left">
             <ResultsGallery />
           </div>
 
-
           <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
+            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic">
+              Secure My 6 Sessions for £695 →
             </a>
           </div>
         </div>
@@ -524,26 +487,29 @@ const Index = () => {
       <section className="section-padding-compact bg-secondary">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Simple Process
+            From Checkout to Treatment
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-12">How It Works</h2>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">What Happens Next</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+            You can secure the offer now or speak to the team first. Either way, suitability is assessed before treatment begins.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-8 how-it-works-grid">
             {[
               {
                 step: "01",
-                title: "Free Consultation",
-                desc: "We assess your skin type, hair, and goals. No cost. No pressure. No payment.",
+                title: "Secure the Offer",
+                desc: "Purchase the six-session package with PAYDAY200, or book a free consultation first if you would rather talk it through.",
               },
               {
                 step: "02",
-                title: "Your Treatment Plan",
-                desc: "6 sessions spaced with your natural hair growth cycle for maximum results.",
+                title: "Consultation and Treatment Plan",
+                desc: "The team assesses your skin and hair, confirms suitability and explains timing, aftercare and realistic expectations.",
               },
               {
                 step: "03",
-                title: "Lasting Results",
-                desc: "Enjoy smooth, confident skin with up to 90% hair reduction and occasional maintenance as needed.",
+                title: "Complete Your Course",
+                desc: "Your six sessions are spaced around your hair-growth cycle, with progress and settings reviewed as you go.",
               },
             ].map((item, index) => (
               <div key={item.step} className={`how-it-works-step p-8 rounded-xl bg-card border border-border text-center relative ${index < 2 ? "how-it-works-has-connector" : ""}`}>
@@ -555,12 +521,6 @@ const Index = () => {
               </div>
             ))}
           </div>
-
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -568,82 +528,18 @@ const Index = () => {
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            What to Expect
+            Meet the Team
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Your First Visit
+            Know What to Expect Before You Start
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-10">
-            See what to expect at your first session
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+            A quick look at the clinic, the team and what happens before your treatment course begins.
           </p>
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg">
             <video autoPlay muted playsInline controls className="w-full">
               <source src="/videos/first-visit.mp4" type="video/mp4" />
             </video>
-          </div>
-
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Card */}
-      <section className="bg-accent section-padding-compact">
-        <div className="content-container text-center relative z-10">
-          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Limited Time
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-12">
-            Payday Offer
-          </h2>
-
-          <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
-            <div className="mb-6">
-              <span className="text-2xl text-muted-foreground line-through mr-3">
-                £895
-              </span>
-              <span className="text-5xl font-serif text-gold-metallic font-semibold">
-                £695
-              </span>
-            </div>
-            <p className="text-lg font-serif mb-8 text-foreground">
-              for 6 Full-Body Sessions
-            </p>
-
-            <div className="text-left space-y-3 mb-8">
-              {[
-                "6 full-body sessions (legs, arms, underarms, bikini, back, chest, stomach)",
-                "AW3 Crystal Freeze Diamond laser system (3-wavelength)",
-                "Qualified, fully insured practitioner",
-                "Personalised treatment plan",
-                "Aftercare guidance included",
-                "Payment plans available (from £133/mo)",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-lg text-muted-foreground">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href={PAYDAY_CHECKOUT_URL}
-              className="btn-gold-metallic w-full !block !text-center"
-            >
-              Claim Your £200 Off →
-            </a>
-
-            <p className="text-sm mt-4 text-muted-foreground">
-              Save £200 with code PAYDAY200 before tonight at 11:59pm
-            </p>
-            <a href="#book" className="inline-block mt-4 text-sm text-primary underline underline-offset-4">
-              Prefer to talk first? Book a free consultation
-            </a>
           </div>
         </div>
       </section>
@@ -654,9 +550,12 @@ const Index = () => {
            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
              What Our Clients Say
            </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
             Trusted by 1,000+ Clients in Manchester
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+            Hear what clients say about the treatment, the team and the results they have seen.
+          </p>
 
           {/* Testimonial Video */}
           <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-border shadow-lg mb-12">
@@ -676,82 +575,64 @@ const Index = () => {
 
           {/* Post-reviews CTA */}
           <div className="mt-12">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
+            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic">
+              Secure the £695 Package →
             </a>
           </div>
         </div>
       </section>
-
-      {/* Booking Calendar */}
-      <section id="book" className="pt-2 pb-16 bg-secondary scroll-mt-4 overflow-hidden">
-         <div className="content-container max-w-2xl text-center">
-           <iframe
-            src={buildBookingSrc()}
-            style={{ width: "100%", border: "none", minHeight: "800px", overflow: "hidden" }}
-            id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
-            title="Book Your Consultation"
-          />
-
-          <p className="text-base text-muted-foreground mt-4">
-            No payment required · Free consultation · All skin types welcome
-          </p>
-        </div>
-      </section>
-
-      {/* All Google reviews (widget) */}
-      <section className="section-padding-compact bg-background overflow-hidden">
-        <ReviewsWidget />
-      </section>
-
 
       {/* FAQ */}
       <section className="section-padding-compact bg-background">
         <div className="content-container max-w-3xl">
           <div className="text-center mb-12">
             <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-              Got Questions?
+              Before You Decide
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif">Common Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-serif">Your Questions, Answered</h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-2">
             {[
               {
-                q: "Is laser hair removal suitable for men?",
-                a: "Yes. We treat men across the back, shoulders, chest, neck, beard line, underarms and other areas. Your free consultation confirms the right treatment plan for your skin, hair and goals.",
+                q: "What areas are included in the full-body package?",
+                a: "The package covers legs, arms, underarms, bikini, back, chest and stomach. It is available to women and men; confirm any specific area with the team during your consultation.",
               },
               {
                 q: "Does laser hair removal hurt?",
-                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our AW3 Crystal Freeze Diamond laser features patented Crystal Freeze cooling technology for maximum comfort during treatment.",
+                a: "Most clients describe a warm snapping sensation and find it easier than waxing. Integrated cooling is used throughout treatment for comfort.",
               },
               {
-                q: "Is it safe for all skin types?",
-                a: "Yes. Our AW3 Crystal Freeze Diamond laser uses 3-wavelength technology (755/810/1064nm) that is clinically proven safe and effective for all skin types and tones (Fitzpatrick I–VI).",
+                q: "Is it suitable for all skin types?",
+                a: "The AW3 system is designed for Fitzpatrick skin types I–VI. Your skin, hair and treatment settings are still assessed individually, and treatment only proceeds if it is suitable for you.",
               },
               {
-                q: "How many sessions do I need?",
-                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions, with up to 90% hair reduction overall.",
+                q: "Is there any recovery time or downtime?",
+                a: "Most people return to their normal daily activities straight away. Mild redness or sensitivity can happen and usually settles quickly. The team will explain your aftercare and any short-term precautions.",
+              },
+              {
+                q: "Why does the package include six sessions?",
+                a: "Hair grows in cycles, so one session cannot catch every hair at the right stage. This package includes six sessions, with the timing set around your growth cycle after assessment.",
               },
               {
                 q: "How long does each session take?",
-                a: "A full-body session typically takes 60–90 minutes. Individual areas like underarms take just 10–15 minutes.",
+                a: "A full-body session typically takes 60–90 minutes. The team will confirm the expected appointment length based on the areas in your plan.",
               },
               {
                 q: "Who performs the treatments?",
-                a: "All treatments are carried out by fully qualified and insured practitioners with VTCT-accredited laser hair removal qualifications (Level 3 & Level 4).",
+                a: "Treatments are carried out by fully qualified and insured practitioners with VTCT-accredited Level 3 and Level 4 laser hair removal qualifications.",
               },
               {
                 q: "What happens during the free consultation?",
-                a: "We'll assess your skin type and hair, discuss your goals, answer all your questions, and create a personalised treatment plan. No cost, no obligation, no pressure.",
+                a: "The team assesses your skin and hair, discusses your goals, completes any required patch testing and explains the treatment plan and aftercare. There is no cost or obligation.",
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 with the £200 Payday Offer (normally £895) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Regular waxing can cost hundreds each year because every appointment is temporary. This six-session course is £695 with the Payday Offer, normally £895, and is designed for longer-term reduction.",
               },
               {
                 q: "Are payment plans available?",
-                a: "Yes. We offer flexible payment plans from £133 per month over 6 months. We'll discuss all options during your free consultation.",
+                a: "Yes. Available options depend on the package, and the team can talk them through with you before you commit.",
               },
             ].map((item, i) => (
               <AccordionItem
@@ -778,38 +659,57 @@ const Index = () => {
 
 
 
-      {/* Final CTA */}
+      {/* Final decision */}
       <section className="section-padding bg-secondary">
         <div className="content-container max-w-xl text-center">
           <Sparkles className="w-8 h-8 text-primary mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Ready to Ditch the Razor{" "}
-            <span className="text-script-accent text-primary text-[1.1em]">
-              For Good?
-            </span>
+            Secure the Full Course for £695
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Book your free, no-obligation consultation and claim your £200 Payday Offer.
+            Enter PAYDAY200 at checkout to save £200. If you would rather confirm suitability first, book the free consultation instead.
           </p>
 
-          <a
-            href="#book"
-            className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg"
-          >
-            Book Free Consultation →
-          </a>
-
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-base text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Check className="w-3.5 h-3.5 text-primary" /> No payment required
-            </span>
-            <span className="flex items-center gap-1">
-              <Check className="w-3.5 h-3.5 text-primary" /> Instant scheduling
-            </span>
-            <span className="flex items-center gap-1">
-              <Check className="w-3.5 h-3.5 text-primary" /> Tailored to your skin
-            </span>
+          <div className="flex flex-col items-center gap-4">
+            <a
+              href={PAYDAY_CHECKOUT_URL}
+              className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg w-full sm:w-auto"
+            >
+              Secure My 6 Sessions →
+            </a>
+            <a href="#book" className="text-sm text-primary underline underline-offset-4">
+              Book a free consultation first
+            </a>
           </div>
+
+          <p className="text-sm text-muted-foreground mt-6">
+            Offer subject to availability · Treatment starts after a suitability assessment
+          </p>
+        </div>
+      </section>
+
+      {/* Booking Calendar */}
+      <section id="book" className="section-padding-compact bg-background scroll-mt-4 overflow-hidden">
+        <div className="content-container max-w-2xl text-center">
+          <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
+            Prefer to Talk First?
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            Book Your Free Consultation
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
+            Ask questions, confirm the areas you want treated and let the team assess suitability before you make a decision.
+          </p>
+          <iframe
+            src={buildBookingSrc()}
+            style={{ width: "100%", border: "none", minHeight: "960px", overflow: "hidden" }}
+            id="WKJHfaDYyUDdQrbeGrlS_1774829119118"
+            title="Book Your Consultation"
+          />
+
+          <p className="text-base text-muted-foreground mt-4">
+            No payment required · Free consultation · No obligation
+          </p>
         </div>
       </section>
 

@@ -49,7 +49,7 @@ const ThankYou = () => {
             </div>
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-primary shrink-0" />
-              <p className="text-lg font-semibold text-foreground">15-min consultation · £200 Payday Offer reserved for your treatment package</p>
+              <p className="text-lg font-semibold text-foreground">30-minute consultation · £695 Payday Offer available subject to suitability</p>
             </div>
           </div>
 
