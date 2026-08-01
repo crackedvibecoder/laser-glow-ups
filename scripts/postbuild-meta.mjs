@@ -1,10 +1,8 @@
-import { mkdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 const dist = 'dist';
 const baseHtmlPath = join(dist, 'index.html');
-console.error('DEBUG: reading from', baseHtmlPath, 'size?', (() => { try { return statSync(baseHtmlPath).size; } catch { return 'no'; } })());
-const baseHtml = readFileSync(baseHtmlPath, 'utf8');
 
 const routes = [
   {
