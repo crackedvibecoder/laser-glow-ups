@@ -316,7 +316,7 @@ const WhyLaser = () => {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08] mb-4">
             You clicked because shaving is annoying.
             <span className="block text-script-accent text-primary text-[1.15em] mt-1">
-              Here&apos;s why laser is worth booking.
+              Here&apos;s why laser hair removal is worth booking.
             </span>
           </h1>
 
