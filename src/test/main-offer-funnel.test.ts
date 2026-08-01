@@ -20,6 +20,7 @@ describe("main offer funnel copy and routing", () => {
     expect(offerSource).toContain("What areas are included in the full-body package?");
     expect(offerSource).toContain("Is there any recovery time or downtime?");
     expect(offerSource).toContain("What happens during the free consultation?");
+    expect(offerSource).toContain('href="/why-laser"');
   });
 
   it("keeps the decision flow in the intended order", () => {

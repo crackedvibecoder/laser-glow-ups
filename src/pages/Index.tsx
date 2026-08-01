@@ -455,6 +455,10 @@ const Index = () => {
               </div>
             ))}
           </div>
+
+          <a href="/why-laser" className="inline-block mt-10 text-primary underline underline-offset-4">
+            Still deciding? Read why laser hair removal is worth it →
+          </a>
         </div>
       </section>
 
