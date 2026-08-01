@@ -50,8 +50,8 @@ const CountdownTimer = () => {
 
   const getTimeLeft = useCallback(() => {
     const now = new Date();
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
-    const diff = endOfMonth.getTime() - now.getTime();
+    const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    const diff = endOfToday.getTime() - now.getTime();
     if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -71,7 +71,7 @@ const CountdownTimer = () => {
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
       <span className="inline-flex items-center gap-2">
         <Clock className="w-5 h-5 text-primary shrink-0" />
-        Summer Special — Save £100
+        Payday Offer — Save £200
       </span>
       <span className="hidden md:inline">·</span>
       <span>
@@ -156,10 +156,10 @@ const ExitIntentPopup = () => {
       <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30 shadow-2xl">
         <DialogHeader className="space-y-5 text-center sm:text-center items-center">
           <div className="mx-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary/15">
-            <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£100 OFF</span>
+            <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£200 OFF</span>
           </div>
           <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
-            Your Summer Discount Is Still Waiting
+            Your Payday Offer Is Still Waiting
           </DialogTitle>
           <DialogDescription className="text-muted-foreground text-lg">
             Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
@@ -266,8 +266,8 @@ const StickyDesktopCTA = () => {
     >
       <div className="content-container flex items-center justify-between py-2.5">
         <p className="text-sm text-[hsl(40,20%,85%)]">
-          <span className="font-serif">Summer Special</span> — Full-body laser hair removal{" "}
-          <strong className="text-primary">£795</strong>{" "}
+          <span className="font-serif">Payday Offer</span> — Full-body laser hair removal{" "}
+          <strong className="text-primary">£695</strong>{" "}
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
@@ -305,7 +305,7 @@ const StickyMobileCTA = () => {
         href="#book"
         className="btn-gold-metallic w-full !block !text-center !py-3.5"
       >
-        Claim £100 Off — Book Free Consultation →
+        Claim £200 Off — Book Free Consultation →
       </a>
     </div>
   );
@@ -380,20 +380,20 @@ const Index = () => {
                   <span className="block whitespace-nowrap">
                     Removal —{" "}
                     <span className="inline-block bg-white/70 px-2 py-1 rounded-lg">
-                      Save&nbsp;£100
+                      Save&nbsp;£200
                     </span>
                   </span>
                   <span className="block text-script-accent text-primary text-[1.15em]">
-                    This Summer
+                    Today Only
                   </span>
                 </span>
                 <span className="hidden md:inline">
                   Full-Body Laser Hair Removal —{" "}
                   <span className="inline-block whitespace-nowrap bg-white/70 px-2 py-1 rounded-lg">
-                    Save&nbsp;£100
+                    Save&nbsp;£200
                   </span>{" "}
                   <span className="text-script-accent text-primary text-[1.15em]">
-                    This Summer
+                    Today Only
                   </span>
                 </span>
               </h1>
@@ -592,7 +592,7 @@ const Index = () => {
             Limited Time
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-12">
-            Summer 2026 Special
+            Payday Offer
           </h2>
 
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
@@ -601,7 +601,7 @@ const Index = () => {
                 £895
               </span>
               <span className="text-5xl font-serif text-gold-metallic font-semibold">
-                £795
+                £695
               </span>
             </div>
             <p className="text-lg font-serif mb-8 text-foreground">
@@ -634,7 +634,7 @@ const Index = () => {
             </a>
 
             <p className="text-sm mt-4 text-muted-foreground">
-              Save £100 when you book your free consultation this month
+              Save £200 with code PAYDAY200 before tonight at 11:59pm
             </p>
           </div>
         </div>
@@ -735,7 +735,7 @@ const Index = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £795 with the £100 summer discount (normally £895) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 with the £200 Payday Offer (normally £895) for lasting results, making it a fraction of the long-term cost of waxing.",
               },
               {
                 q: "Are payment plans available?",
@@ -777,7 +777,7 @@ const Index = () => {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Book your free, no-obligation consultation and claim your £100 Summer Discount.
+            Book your free, no-obligation consultation and claim your £200 Payday Offer.
           </p>
 
           <a
@@ -819,7 +819,7 @@ const Index = () => {
             </a>
           </p>
           <p>
-            Summer 2026 offer subject to availability. Treatment suitability
+            Payday offer subject to availability. Treatment suitability
             assessed during consultation.
           </p>
           <PrivacyPolicyPopup />
