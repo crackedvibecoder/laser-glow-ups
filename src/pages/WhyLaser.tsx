@@ -19,6 +19,7 @@ import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
 import maintainingResultsSlide from "@/assets/why-laser/maintaining-results.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
+import MensLaserSection from "@/components/MensLaserSection";
 import {
   ReviewCard,
   ReviewBreak,
@@ -565,6 +566,8 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      <MensLaserSection />
+
       {/* Face and hormonal hair */}
       <section className="section-padding-compact bg-accent">
         <div className="content-container text-center">
@@ -758,6 +761,10 @@ const WhyLaser = () => {
 
           <Accordion type="single" collapsible className="space-y-2">
             {[
+              {
+                q: "Is laser hair removal suitable for men?",
+                a: "Yes. We treat men across the back, shoulders, chest, neck, beard line, underarms and other areas. Your free consultation confirms the right treatment plan for your skin, hair and goals.",
+              },
               {
                 q: "Does laser hair removal hurt?",
                 a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our AW3 Crystal Freeze Diamond laser features patented Crystal Freeze cooling technology for maximum comfort during treatment.",
