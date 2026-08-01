@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import panel1 from "@/assets/story-panel-1.jpg";
 import panel2 from "@/assets/story-panel-2.jpg";
+import panel3 from "@/assets/story-panel-3.jpg";
 
 const PANELS = [
   {
@@ -10,6 +11,10 @@ const PANELS = [
   {
     src: panel2,
     alt: "One of those things is facial hair growth",
+  },
+  {
+    src: panel3,
+    alt: "Facial hair is more common than you think — up to 40% of women experience it at some point in their life",
   },
 ];
 

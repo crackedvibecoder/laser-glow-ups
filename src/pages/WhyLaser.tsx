@@ -10,6 +10,8 @@ import nervousSlide from "@/assets/why-laser/nervous.jpg";
 import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
 import hairCyclesSlide from "@/assets/why-laser/hair-cycles.jpg";
 import hormonesRoleSlide from "@/assets/why-laser/hormones-role.jpg";
+import longTermSmoothnessSlide from "@/assets/why-laser/long-term-smoothness.jpg";
+import maintainingResultsSlide from "@/assets/why-laser/maintaining-results.jpg";
 import faceLaserReasonsSlide from "@/assets/why-laser/face-laser-reasons.jpg";
 import faceLaserObjectionsSlide from "@/assets/why-laser/face-laser-objections.jpg";
 import notForEveryoneSlide from "@/assets/why-laser/not-for-everyone.jpg";
@@ -77,6 +79,8 @@ const EDUCATION_SLIDES: SocialSlide[] = [
   { src: maintenanceMatterSlide, alt: "Why laser maintenance sessions matter slide" },
   { src: hairCyclesSlide, alt: "Laser hair grows in cycles education slide" },
   { src: hormonesRoleSlide, alt: "How hormones affect laser hair removal results slide" },
+  { src: longTermSmoothnessSlide, alt: "Maintenance sessions help preserve long-term smoothness slide" },
+  { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
 ];
 
 const FACE_LASER_SLIDES: SocialSlide[] = [
