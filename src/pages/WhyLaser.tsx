@@ -399,6 +399,7 @@ const WhyLaser = () => {
         </div>
       </section>
 
+      <MensLaserSection />
 
       {/* The real cost */}
 
@@ -565,8 +566,6 @@ const WhyLaser = () => {
 
         </div>
       </section>
-
-      <MensLaserSection />
 
       {/* Face and hormonal hair */}
       <section className="section-padding-compact bg-accent">
