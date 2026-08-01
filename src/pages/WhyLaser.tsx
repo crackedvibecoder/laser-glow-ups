@@ -335,7 +335,7 @@ const WhyLaser = () => {
             href="#book"
             className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg mb-7"
           >
-            Book Free Consultation →
+            See If Laser Is Right For Me →
           </a>
 
           <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-7 text-left">
@@ -367,14 +367,9 @@ const WhyLaser = () => {
             The Stuff People Worry About Before Booking
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Ingrowns, shaving spots, post-waxing bumps, sweating, body confidence, feeling nervous — none of it is embarrassing to us. It is exactly what we help with every day.
+            Whatever brought you here, our team has heard it before. You will be met with practical advice, not judgement.
           </p>
           <SocialProofCarousel slides={REASSURANCE_SLIDES} />
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -388,13 +383,13 @@ const WhyLaser = () => {
         <div className="content-container">
           <div className="text-center mb-10">
             <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-              Things People Don't Always Talk About
+              Choose What Feels Relevant
             </p>
             <h2 className="text-3xl md:text-4xl font-serif">
-              Unwanted Hair Affects Women And Men Differently
+              Women And Men Often Want Laser For Different Reasons
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">
-              For many women, it is facial or hormonal growth. For men, it may be back, chest or neckline hair, shaving irritation or ingrowns. Different concerns — but the same effect on confidence, time and constant maintenance.
+              Start with the concern that sounds most like yours.
             </p>
             <nav className="flex flex-wrap items-center justify-center gap-3 mt-6" aria-label="Choose the most relevant laser hair removal concerns">
               <a href="#laser-for-women" className="px-5 py-2.5 rounded-full border border-primary/30 bg-card text-foreground hover:border-primary transition-colors">
@@ -415,7 +410,7 @@ const WhyLaser = () => {
               Why Women Choose Face Laser
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Persistent chin, neck or hormonal growth is common. Laser can reduce the cycle of regrowth, irritation, shaving and constant maintenance.
+              For many women, this is less about perfection and more about feeling comfortable without managing visible regrowth every day.
             </p>
           </div>
 
@@ -425,7 +420,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-10">
             <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
+              Talk Through My Options →
             </a>
           </div>
         </div>
@@ -444,20 +439,20 @@ const WhyLaser = () => {
             More Time. Less Planning. One Less Thing To Think About.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Laser is not only about smoother skin. It is being able to wear what you want, say yes to a last-minute plan or pack for a trip without first thinking about shaving. The time adds up — but so does the mental load.
+            The real luxury is not smoother skin alone. It is getting dressed, packing for a trip or saying yes to plans without organising everything around hair removal.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
             {[
               {
                 emoji: "⏳",
-                title: "Time, Freedom & Headspace",
-                desc: "It is not just the time spent shaving. It is changing outfits, planning around waxing appointments or worrying whether you feel ready. Longer-term hair reduction means less maintenance and far less time thinking about it.",
+                title: "Time Back, Every Week",
+                desc: "Shaving and repeat waxing appointments take time. Longer-term hair reduction means fewer routines to plan and less upkeep competing for your attention.",
               },
               {
                 emoji: "💷",
-                title: "£500+ A Year on Waxing",
-                desc: "Waxing at £50 every 4–6 weeks can add up fast. A 6-session laser course is built for longer-term reduction instead of constant repeat appointments.",
+                title: "The Cost Never Stops",
+                desc: "At around £50 a visit, regular waxing can run into hundreds each year — and starts again as soon as the hair returns. A laser course is built for longer-term reduction instead of repeat appointments.",
               },
               {
                 emoji: "🪒",
@@ -478,11 +473,6 @@ const WhyLaser = () => {
             ))}
           </div>
 
-          <div className="mt-12">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -496,14 +486,9 @@ const WhyLaser = () => {
             Laser Works With Your Hair Cycle, Not Against It
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            If you are wondering why it is not a one-and-done treatment, this is the simple version: hair grows in cycles, hormones can trigger regrowth, and consistency protects the result.
+            Hair grows at different times, so one session cannot catch everything. Hormones can also affect regrowth, which is why consistency and occasional maintenance matter.
           </p>
           <SocialProofCarousel slides={EDUCATION_SLIDES} />
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Check If Laser Is Right For Me →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -528,11 +513,11 @@ const WhyLaser = () => {
             />
             <div className="space-y-4">
               {[
-                "The AW3 Crystal Freeze Diamond laser targets the pigment in the hair follicle, disabling its ability to regrow.",
-                "3 wavelengths (755/810/1064nm) mean it's clinically proven safe and effective for every skin tone, Fitzpatrick I–VI.",
+                "The AW3 Crystal Freeze Diamond laser targets pigment in the hair follicle to reduce future growth.",
+                "3 wavelengths (755/810/1064nm) allow treatment settings to be tailored across Fitzpatrick skin types I–VI after assessment.",
                 "Patented Crystal Freeze cooling keeps the skin comfortable — most clients describe a warm snapping sensation, far easier than waxing.",
                 "A full-body session takes around 60 minutes, with 6 sessions spaced to your natural hair growth cycle.",
-                "Up to 90% lasting hair reduction, with occasional maintenance as needed.",
+                "Results vary according to your hair, skin and hormonal factors.",
               ].map((line) => (
                 <div key={line} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-1 shrink-0" />
@@ -544,7 +529,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
+              Check My Suitability →
             </a>
           </div>
         </div>
@@ -560,26 +545,26 @@ const WhyLaser = () => {
             Laser Can Work For More People Than You Think
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Different genders, skin tones, hair types and treatment areas can be suitable — always assessed properly before we treat you.
+            Suitability depends on your skin, hair and goals, which is why every plan starts with a proper assessment.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
             {[
               {
                 title: "Every Skin Tone",
-                desc: "3-wavelength technology safely treats Fitzpatrick I–VI, including darker skin.",
+                desc: "Your consultation lets us choose settings for your skin and hair rather than taking a one-size-fits-all approach.",
               },
               {
                 title: "Coarse or Hormonal Hair",
-                desc: "PCOS and hormonal growth affect 1 in 10 women. Laser targets the follicle, not just the surface.",
+                desc: "These concerns can respond well, although hormonal regrowth may require realistic expectations and follow-up sessions.",
               },
               {
-                title: "All Genders",
-                desc: "Back, chest, shoulders, jawline — discreet, professional sessions for men and women.",
+                title: "Different Treatment Goals",
+                desc: "Treat a focused area or build a full-body plan around the result and amount of upkeep you want.",
               },
               {
                 title: "Sensitive Areas",
-                desc: "Bikini, underarms, face and chin treated with cooling and care by qualified practitioners.",
+                desc: "Face, bikini and underarms can be treated discreetly, with settings and cooling adapted for comfort.",
               },
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border text-left">
@@ -622,7 +607,7 @@ const WhyLaser = () => {
 
           <div className="text-center mt-12">
             <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
+              Book My Consultation →
             </a>
           </div>
         </div>
@@ -650,8 +635,8 @@ const WhyLaser = () => {
               },
               {
                 icon: ShieldCheck,
-                title: "Medical-grade 3-wavelength tech",
-                desc: "AW3 Crystal Freeze Diamond technology is built to treat different skin tones and areas safely with cooling for comfort.",
+                title: "Technology tailored to you",
+                desc: "Settings are selected for your skin, hair and treatment area, with integrated cooling for comfort.",
               },
               {
                 icon: Star,
@@ -661,7 +646,7 @@ const WhyLaser = () => {
               {
                 icon: HeartHandshake,
                 title: "Private, judgement-free appointments",
-                desc: "Face, chin, bikini, hormonal growth, ingrowns or body confidence - the consultation is practical and discreet.",
+                desc: "Every conversation is handled discreetly, from your first questions through treatment and aftercare.",
               },
               {
                 icon: CreditCard,
@@ -687,11 +672,6 @@ const WhyLaser = () => {
             })}
           </div>
 
-          <div className="mt-10">
-            <a href="#book" className="btn-gold-metallic">
-              Book Free Consultation →
-            </a>
-          </div>
         </div>
       </section>
 
@@ -718,7 +698,7 @@ const WhyLaser = () => {
                 "Qualified, fully insured practitioner",
                 "Personalised treatment plan",
                 "Aftercare guidance included",
-                "Payment plans available (from £133/mo)",
+                "Payment-plan options available",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -774,11 +754,11 @@ const WhyLaser = () => {
             {[
               {
                 q: "Is laser hair removal suitable for men?",
-                a: "Yes. We treat men across the back, shoulders, chest, neck, beard line, underarms and other areas. Your free consultation confirms the right treatment plan for your skin, hair and goals.",
+                a: "Yes. We treat a wide range of areas for men, with a consultation to confirm the right plan for your skin, hair and goals.",
               },
               {
                 q: "Does laser hair removal hurt?",
-                a: "Most clients describe it as a warm snapping sensation, much less painful than waxing. Our AW3 Crystal Freeze Diamond laser features patented Crystal Freeze cooling technology for maximum comfort during treatment.",
+                a: "Most clients describe a warm snapping sensation and find it easier than waxing. Integrated cooling is used throughout treatment for comfort.",
               },
               {
                 q: "How many sessions will I actually need?",
@@ -786,15 +766,15 @@ const WhyLaser = () => {
               },
               {
                 q: "Are the results really lasting?",
-                a: "Yes. Once a follicle is disabled it doesn't regrow. Most clients achieve up to 90% lasting reduction, with occasional maintenance sessions to keep on top of any hormonal regrowth.",
+                a: "Laser is designed for lasting reduction, although hormonal changes can trigger new growth. Occasional maintenance may be needed to preserve the result.",
               },
               {
                 q: "Is it safe for darker skin tones?",
-                a: "Yes. Our AW3 Crystal Freeze Diamond laser uses 3-wavelength technology (755/810/1064nm) that is clinically proven safe and effective for all skin types and tones (Fitzpatrick I–VI).",
+                a: "The system is designed for Fitzpatrick I–VI. Your skin, hair and settings are still assessed individually before treatment.",
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Yes. Most clients spend £50+ every 4–6 weeks on waxing — that's over £500 a year, indefinitely. Our 6-session course costs £695 with the £200 Payday Offer (normally £895) for lasting results, making it a fraction of the long-term cost of waxing.",
+                a: "Regular waxing can cost hundreds each year because every appointment is temporary. Our 6-session course is £695 with the Payday Offer (normally £895) and is built for longer-term reduction.",
               },
               {
                 q: "What happens during the free consultation?",
@@ -802,7 +782,7 @@ const WhyLaser = () => {
               },
               {
                 q: "Are payment plans available?",
-                a: "Yes. We offer flexible payment plans from £133 per month over 6 months. We'll discuss all options during your free consultation.",
+                a: "Yes. Available options depend on the package, and we can talk them through before you book.",
               },
             ].map((item, i) => (
               <AccordionItem
@@ -832,7 +812,7 @@ const WhyLaser = () => {
             You Could Keep Panic Shaving. Or Not.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            If you are still here, you probably already know which part you want gone — the panic shaving, outfits planned around hair removal or the constant maintenance. The consultation is simply the next low-pressure step.
+            If this feels familiar, you probably already know which part of the routine you are ready to leave behind. The consultation simply helps you find the right plan.
           </p>
           <SocialProofCarousel slides={FINAL_NUDGE_SLIDES} />
         </div>
@@ -843,8 +823,7 @@ const WhyLaser = () => {
         <div className="content-container max-w-xl text-center">
           <Sparkles className="w-8 h-8 text-primary mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Ready to Ditch the Razor{" "}
-            <span className="text-script-accent text-primary text-[1.1em]">For Good?</span>
+            Ready to Ditch the Razor?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
             Book your free, no-obligation consultation and claim your £200 Payday Offer.

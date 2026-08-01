@@ -20,8 +20,8 @@ const MensLaserSection = ({
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             {contextualIntro
-              ? "Unwanted hair and constant maintenance are not only women’s concerns. For men, it can mean feeling self-conscious about back or shoulder hair, repeatedly shaving the neckline, or dealing with bumps and ingrowns. Laser can reduce the work and make difficult areas easier to manage."
-              : "Less shaving, cleaner lines and smoother skin. Men choose laser to reduce unwanted hair, tidy difficult areas and stop constantly dealing with shaving irritation, bumps and ingrowns."}
+              ? "For men, the frustration is often hard-to-reach areas, neckline regrowth or irritation from frequent shaving. Laser can make those areas easier to manage with far less day-to-day upkeep."
+              : "Less shaving, cleaner lines and smoother skin. Laser offers a lower-maintenance option for areas that are awkward to manage on your own."}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -39,7 +39,7 @@ const MensLaserSection = ({
           </div>
 
           <a href="#book" className="btn-gold-metallic inline-block">
-            Book A Free Consultation →
+            {contextualIntro ? "Talk Through My Options →" : "Book A Free Consultation →"}
           </a>
         </div>
 
