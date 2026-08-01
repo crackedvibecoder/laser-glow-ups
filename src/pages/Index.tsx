@@ -30,6 +30,8 @@ import {
 
 /* ──────────────────── Countdown Timer ──────────────────── */
 const BOOKING_WIDGET_URL = "https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH";
+const PAYDAY_CHECKOUT_URL =
+  "https://link.fastpaydirect.com/payment-link/6a6cbce37b99151a540418e7";
 
 /**
  * Builds the GHL booking iframe URL with funnel attribution.
@@ -169,17 +171,17 @@ const ExitIntentPopup = () => {
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
           ⏳ Limited spots available this week
         </p>
-         <a href="#book" onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
-           Book My Free Consultation →
+         <a href={PAYDAY_CHECKOUT_URL} onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
+           Claim My £200 Saving →
          </a>
         <button
           onClick={() => setOpen(false)}
           className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors mt-1 underline underline-offset-2 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         >
-          No thanks, I'll pay full price
+          No thanks, I'll keep reading
         </button>
         <p className="text-xs text-muted-foreground mt-1">
-          No payment required · Free consultation · No obligation
+          Use code PAYDAY200 at checkout · Book your first appointment later
         </p>
       </DialogContent>
     </Dialog>
@@ -272,10 +274,10 @@ const StickyDesktopCTA = () => {
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
-          href="#book"
+          href={PAYDAY_CHECKOUT_URL}
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
-          Book Free Consultation →
+          Claim £200 Off →
         </a>
       </div>
     </div>
@@ -303,10 +305,10 @@ const StickyMobileCTA = () => {
       }`}
     >
       <a
-        href="#book"
+        href={PAYDAY_CHECKOUT_URL}
         className="btn-gold-metallic w-full !block !text-center !py-3.5"
       >
-        Claim £200 Off — Book Free Consultation →
+        Claim £200 Off →
       </a>
     </div>
   );
@@ -630,15 +632,18 @@ const Index = () => {
             </div>
 
             <a
-              href="#book"
+              href={PAYDAY_CHECKOUT_URL}
               className="btn-gold-metallic w-full !block !text-center"
             >
-              Book Free Consultation →
+              Claim Your £200 Off →
             </a>
 
             <p className="text-sm mt-4 text-muted-foreground">
               Save £200 with code PAYDAY200 before tonight at 11:59pm
             </p>
+            <a href="#book" className="inline-block mt-4 text-sm text-primary underline underline-offset-4">
+              Prefer to talk first? Book a free consultation
+            </a>
           </div>
         </div>
       </section>
