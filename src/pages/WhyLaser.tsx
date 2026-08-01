@@ -388,14 +388,27 @@ const WhyLaser = () => {
         <div className="content-container">
           <div className="text-center mb-10">
             <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-              Let's Talk About It
+              Things People Don't Always Talk About
             </p>
             <h2 className="text-3xl md:text-4xl font-serif">
-              The Thing Nobody Talks About
+              Unwanted Hair Affects Women And Men Differently
             </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">
+              For many women, it is facial or hormonal growth. For men, it may be back, chest or neckline hair, shaving irritation or ingrowns. Different concerns — but the same effect on confidence, time and constant maintenance.
+            </p>
+            <nav className="flex flex-wrap items-center justify-center gap-3 mt-6" aria-label="Choose the most relevant laser hair removal concerns">
+              <a href="#laser-for-women" className="px-5 py-2.5 rounded-full border border-primary/30 bg-card text-foreground hover:border-primary transition-colors">
+                Women&apos;s concerns ↓
+              </a>
+              <a href="#laser-for-men" className="px-5 py-2.5 rounded-full border border-primary/30 bg-card text-foreground hover:border-primary transition-colors">
+                Men&apos;s concerns ↓
+              </a>
+            </nav>
           </div>
 
-          <FacialHairStory />
+          <div id="laser-for-women" className="scroll-mt-4">
+            <FacialHairStory />
+          </div>
 
           <div className="text-center mt-12 mb-6">
             <h3 className="text-2xl md:text-3xl font-serif mb-3">
@@ -418,7 +431,7 @@ const WhyLaser = () => {
         </div>
       </section>
 
-      <MensLaserSection backgroundClass="bg-accent" />
+      <MensLaserSection backgroundClass="bg-accent" contextualIntro />
 
       {/* The real cost */}
 

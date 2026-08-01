@@ -1,19 +1,27 @@
 import { Check } from "lucide-react";
 import maleNeckResult from "@/assets/ba-neck-male.jpg";
 
-const MensLaserSection = ({ backgroundClass = "bg-secondary" }: { backgroundClass?: string }) => (
-  <section className={`section-padding-compact ${backgroundClass}`}>
+const MensLaserSection = ({
+  backgroundClass = "bg-secondary",
+  contextualIntro = false,
+}: {
+  backgroundClass?: string;
+  contextualIntro?: boolean;
+}) => (
+  <section id="laser-for-men" className={`section-padding-compact scroll-mt-4 ${backgroundClass}`}>
     <div className="content-container">
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
         <div className="order-1">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Not Just For Women
+            {contextualIntro ? "For Men" : "Not Just For Women"}
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Laser Hair Removal For Men
+            {contextualIntro ? "Men Have Their Own Version Of This" : "Laser Hair Removal For Men"}
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
-            Less shaving, cleaner lines and smoother skin. Men choose laser to reduce unwanted hair, tidy difficult areas and stop constantly dealing with shaving irritation, bumps and ingrowns.
+            {contextualIntro
+              ? "Unwanted hair and constant maintenance are not only women’s concerns. For men, it can mean feeling self-conscious about back or shoulder hair, repeatedly shaving the neckline, or dealing with bumps and ingrowns. Laser can reduce the work and make difficult areas easier to manage."
+              : "Less shaving, cleaner lines and smoother skin. Men choose laser to reduce unwanted hair, tidy difficult areas and stop constantly dealing with shaving irritation, bumps and ingrowns."}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-8">
