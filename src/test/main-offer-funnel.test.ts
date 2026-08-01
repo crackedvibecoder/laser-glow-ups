@@ -21,6 +21,7 @@ describe("main offer funnel copy and routing", () => {
     expect(offerSource).toContain("Is there any recovery time or downtime?");
     expect(offerSource).toContain("What happens during the free consultation?");
     expect(offerSource).toContain('href="/why-laser"');
+    expect(offerSource).toContain("<ReviewsWidget />");
   });
 
   it("keeps the decision flow in the intended order", () => {
@@ -31,7 +32,8 @@ describe("main offer funnel copy and routing", () => {
       "{/* Real Results - Before & After */}",
       "{/* How It Works */}",
       "{/* Your First Visit - Video */}",
-      "{/* Reviews Widget */}",
+      "{/* Selected reviews */}",
+      "{/* Full Google reviews widget */}",
       "{/* FAQ */}",
       "{/* Final decision */}",
       "{/* Booking Calendar */}",

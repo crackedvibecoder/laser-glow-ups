@@ -6,6 +6,7 @@ import ResultsGallery from "@/components/ResultsGallery";
 import {
   ReviewCard,
   ReviewBreak,
+  ReviewsWidget,
   reviewByName,
 } from "@/components/GoogleReviews";
 
@@ -548,7 +549,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews Widget */}
+      {/* Selected reviews */}
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
            <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
@@ -584,6 +585,11 @@ const Index = () => {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Full Google reviews widget */}
+      <section className="section-padding-compact bg-background overflow-hidden">
+        <ReviewsWidget />
       </section>
 
       {/* FAQ */}
