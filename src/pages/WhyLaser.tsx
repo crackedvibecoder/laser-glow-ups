@@ -7,9 +7,9 @@ import sizeSlide from "@/assets/why-laser/size.jpg";
 import ingrownSlide from "@/assets/why-laser/ingrown.jpg";
 import sweatingSlide from "@/assets/why-laser/sweating.jpg";
 import nervousSlide from "@/assets/why-laser/nervous.jpg";
+import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
 import hairCyclesSlide from "@/assets/why-laser/hair-cycles.jpg";
 import hormonesRoleSlide from "@/assets/why-laser/hormones-role.jpg";
-import longTermSmoothnessSlide from "@/assets/why-laser/long-term-smoothness.jpg";
 import faceLaserReasonsSlide from "@/assets/why-laser/face-laser-reasons.jpg";
 import faceLaserObjectionsSlide from "@/assets/why-laser/face-laser-objections.jpg";
 import notForEveryoneSlide from "@/assets/why-laser/not-for-everyone.jpg";
@@ -17,8 +17,6 @@ import ingrownFreeSlide from "@/assets/why-laser/one-last-thought-ingrown-free.j
 import noShavingSlide from "@/assets/why-laser/one-last-thought-no-shaving.jpg";
 import panicShaveSlide from "@/assets/why-laser/panic-shave.jpg";
 import smoothAllYearSlide from "@/assets/why-laser/smooth-all-year.jpg";
-import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
-import maintainingResultsSlide from "@/assets/why-laser/maintaining-results.jpg";
 import ResultsGallery from "@/components/ResultsGallery";
 import FacialHairStory from "@/components/FacialHairStory";
 import MensLaserSection from "@/components/MensLaserSection";
@@ -78,9 +76,7 @@ const REASSURANCE_SLIDES: SocialSlide[] = [
 const EDUCATION_SLIDES: SocialSlide[] = [
   { src: maintenanceMatterSlide, alt: "Why laser maintenance sessions matter slide" },
   { src: hairCyclesSlide, alt: "Laser hair grows in cycles education slide" },
-  { src: hormonesRoleSlide, alt: "Hormones can affect laser hair removal regrowth education slide" },
-  { src: longTermSmoothnessSlide, alt: "Maintenance sessions help preserve long-term smoothness slide" },
-  { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
+  { src: hormonesRoleSlide, alt: "How hormones affect laser hair removal results slide" },
 ];
 
 const FACE_LASER_SLIDES: SocialSlide[] = [
@@ -209,7 +205,7 @@ const ExitIntentPopup = () => {
           </DialogDescription>
         </DialogHeader>
         <p className="text-sm text-primary font-medium mt-2 animate-pulse">
-          ⏳ Limited spots available this week
+          ⏳ Payday offer ends at 11:59pm today
         </p>
         <a
           href={PAYDAY_CHECKOUT_URL}
@@ -328,7 +324,7 @@ const WhyLaser = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
-            If you&apos;re hesitating, it&apos;s usually one of three things: pain, price, or whether it actually works. This page answers those properly before you book anything.
+            Most people hesitate over pain, price or results. Here is what to know before you book.
           </p>
 
           <a
@@ -342,7 +338,7 @@ const WhyLaser = () => {
             {[
               { label: "Will it hurt?", text: "Built-in cooling. Most clients say it is easier than waxing." },
               { label: "Is it worth it?", text: "Waxing repeats forever. A course is built for long-term reduction." },
-              { label: "Will it work for me?", text: "All skin tones are assessed before treatment, with medical-grade tech." },
+              { label: "Will it work for me?", text: "Suitability is checked before treatment." },
             ].map((item) => (
               <div key={item.label} className="rounded-xl bg-card border border-border p-4">
                 <p className="font-semibold text-foreground mb-1">{item.label}</p>
@@ -367,7 +363,7 @@ const WhyLaser = () => {
             The Stuff People Worry About Before Booking
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Whatever brought you here, our team has heard it before. You will be met with practical advice, not judgement.
+            These are some of the questions clients ask before booking.
           </p>
           <SocialProofCarousel slides={REASSURANCE_SLIDES} />
         </div>
@@ -386,7 +382,7 @@ const WhyLaser = () => {
               Choose What Feels Relevant
             </p>
             <h2 className="text-3xl md:text-4xl font-serif">
-              Women And Men Often Want Laser For Different Reasons
+              Women And Men Often Choose Laser For Different Reasons
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">
               Start with the concern that sounds most like yours.
@@ -564,7 +560,7 @@ const WhyLaser = () => {
               },
               {
                 title: "Sensitive Areas",
-                desc: "Face, bikini and underarms can be treated discreetly, with settings and cooling adapted for comfort.",
+                desc: "Face, bikini and underarms can be treated discreetly, with settings adapted to the area.",
               },
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-xl bg-card border border-border text-left">
@@ -636,7 +632,7 @@ const WhyLaser = () => {
               {
                 icon: ShieldCheck,
                 title: "Technology tailored to you",
-                desc: "Settings are selected for your skin, hair and treatment area, with integrated cooling for comfort.",
+                desc: "The three-wavelength system gives your practitioner flexibility across different hair and skin profiles.",
               },
               {
                 icon: Star,
@@ -762,7 +758,7 @@ const WhyLaser = () => {
               },
               {
                 q: "How many sessions will I actually need?",
-                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Most clients see significant reduction after just 2–3 sessions, with up to 90% hair reduction overall.",
+                a: "6 sessions is the standard course, spaced 4–6 weeks apart to align with your hair growth cycle. Many clients notice reduction after 2–3 sessions. Some may see up to 90% overall, but results vary.",
               },
               {
                 q: "Are the results really lasting?",

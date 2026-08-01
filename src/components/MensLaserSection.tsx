@@ -20,7 +20,7 @@ const MensLaserSection = ({
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             {contextualIntro
-              ? "For men, the frustration is often hard-to-reach areas, neckline regrowth or irritation from frequent shaving. Laser can make those areas easier to manage with far less day-to-day upkeep."
+              ? "It may be talked about less, but the frustration is real. Laser can reduce regrowth over time and make day-to-day grooming easier."
               : "Less shaving, cleaner lines and smoother skin. Laser offers a lower-maintenance option for areas that are awkward to manage on your own."}
           </p>
 

@@ -1,7 +1,6 @@
 import baUnderarm from "@/assets/ba-underarm.jpg";
 import baBikini from "@/assets/ba-bikini.jpg";
 import baNape from "@/assets/ba-nape-female.jpg";
-import baNeckMale from "@/assets/ba-neck-male.jpg";
 import chinBeforeAfter from "@/assets/chin-laser-before-after.jpg";
 import bikiniBeforeAfter from "@/assets/laser-bikini-before-after.jpg";
 
@@ -32,12 +31,6 @@ const RESULTS: Result[] = [
     alt: "Nape and neck hairline laser hair removal before and after at Laser Location",
   },
   {
-    src: baNeckMale,
-    area: "Men's Neck & Beard Line",
-    caption: "Before and after 3 sessions of laser hair removal",
-    alt: "Men's neck and beard line laser hair removal before and after 3 sessions at Laser Location",
-  },
-  {
     src: chinBeforeAfter,
     area: "Chin & Neck",
     caption: "Before: 5 days no shaving. After: 5 weeks no shaving.",
@@ -52,14 +45,14 @@ const RESULTS: Result[] = [
 ];
 
 const ResultCard = ({ item, eager }: { item: Result; eager?: boolean }) => (
-  <figure className="rounded-2xl overflow-hidden border border-border shadow-lg bg-card">
+  <figure className="h-full flex flex-col rounded-2xl overflow-hidden border border-border shadow-lg bg-card">
     <img
       src={item.src}
       alt={item.alt}
       className="w-full aspect-[4/5] object-cover"
       loading={eager ? "eager" : "lazy"}
     />
-    <figcaption className="p-4">
+    <figcaption className="p-4 flex-1">
       <p className="text-lg font-semibold tracking-tight">{item.area}</p>
       <p className="text-base text-muted-foreground">{item.caption}</p>
     </figcaption>
@@ -84,9 +77,18 @@ const ResultsGallery = () => {
       </div>
 
       {/* Desktop: grid */}
-      <div className="hidden md:grid md:grid-cols-3 gap-6">
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-6 gap-6">
         {RESULTS.map((item, i) => (
-          <ResultCard key={item.area} item={item} eager={i === 0} />
+          <div
+            key={item.area}
+            className={`lg:col-span-2 ${i === 3 ? "lg:col-start-2" : ""} ${
+              i === 4
+                ? "md:col-span-2 md:w-[calc(50%-0.75rem)] md:justify-self-center lg:w-auto lg:justify-self-stretch"
+                : ""
+            }`}
+          >
+            <ResultCard item={item} eager={i === 0} />
+          </div>
         ))}
       </div>
     </div>
