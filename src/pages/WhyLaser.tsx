@@ -13,6 +13,8 @@ import longTermSmoothnessSlide from "@/assets/why-laser/long-term-smoothness.jpg
 import faceLaserReasonsSlide from "@/assets/why-laser/face-laser-reasons.jpg";
 import faceLaserObjectionsSlide from "@/assets/why-laser/face-laser-objections.jpg";
 import notForEveryoneSlide from "@/assets/why-laser/not-for-everyone.jpg";
+import ingrownFreeSlide from "@/assets/why-laser/one-last-thought-ingrown-free.jpg";
+import noShavingSlide from "@/assets/why-laser/one-last-thought-no-shaving.jpg";
 import panicShaveSlide from "@/assets/why-laser/panic-shave.jpg";
 import smoothAllYearSlide from "@/assets/why-laser/smooth-all-year.jpg";
 import maintenanceMatterSlide from "@/assets/why-laser/maintenance-matter.jpg";
@@ -86,6 +88,8 @@ const FACE_LASER_SLIDES: SocialSlide[] = [
 
 const FINAL_NUDGE_SLIDES: SocialSlide[] = [
   { src: notForEveryoneSlide, alt: "Laser hair removal is not for everyone final thought slide" },
+  { src: ingrownFreeSlide, alt: "Being ingrown hair free is not for everyone humorous final thought slide" },
+  { src: noShavingSlide, alt: "Not everyone wants the convenience of not having to shave humorous final thought slide" },
   { src: panicShaveSlide, alt: "Panic shaving final thought slide" },
   { src: smoothAllYearSlide, alt: "Smooth skin all year round final thought slide" },
 ];
