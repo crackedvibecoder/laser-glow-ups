@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path';
 
 const dist = 'dist';
 const baseHtmlPath = join(dist, 'index.html');
+console.error('DEBUG: reading from', baseHtmlPath, 'exists?', (() => { try { return require('fs').statSync(baseHtmlPath).size; } catch { return 'no'; } })());
 const baseHtml = readFileSync(baseHtmlPath, 'utf8');
 
 const routes = [
