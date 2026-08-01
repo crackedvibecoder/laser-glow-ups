@@ -71,10 +71,10 @@ const REASSURANCE_SLIDES: SocialSlide[] = [
 ];
 
 const EDUCATION_SLIDES: SocialSlide[] = [
+  { src: maintenanceMatterSlide, alt: "Why laser maintenance sessions matter slide" },
   { src: hairCyclesSlide, alt: "Laser hair grows in cycles education slide" },
   { src: hormonesRoleSlide, alt: "Hormones can affect laser hair removal regrowth education slide" },
   { src: longTermSmoothnessSlide, alt: "Maintenance sessions help preserve long-term smoothness slide" },
-  { src: maintenanceMatterSlide, alt: "Why laser maintenance sessions matter slide" },
   { src: maintainingResultsSlide, alt: "Maintaining laser hair removal results slide" },
 ];
 
