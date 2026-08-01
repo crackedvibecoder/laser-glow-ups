@@ -425,21 +425,21 @@ const WhyLaser = () => {
       <section className="section-padding-compact bg-background">
         <div className="content-container text-center">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            The Maths
+            The Real Luxury
           </p>
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            What Shaving &amp; Waxing Really Cost You
+            More Time. Less Planning. One Less Thing To Think About.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Temporary hair removal never ends — and the bill never stops.
+            Laser is not only about smoother skin. It is being able to wear what you want, say yes to a last-minute plan or pack for a trip without first thinking about shaving. The time adds up — but so does the mental load.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
             {[
               {
                 emoji: "⏳",
-                title: "Hours You Never Get Back",
-                desc: "Shaving 3–4 times a week adds up to days of your life every single year — and the results barely last 24 hours.",
+                title: "Time, Freedom & Headspace",
+                desc: "It is not just the time spent shaving. It is changing outfits, planning around waxing appointments or worrying whether you feel ready. Longer-term hair reduction means less maintenance and far less time thinking about it.",
               },
               {
                 emoji: "💷",
@@ -819,7 +819,7 @@ const WhyLaser = () => {
             You Could Keep Panic Shaving. Or Not.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            If you are still here, you probably already know which problem you want gone. The consultation is just the next low-pressure step.
+            If you are still here, you probably already know which part you want gone — the panic shaving, outfits planned around hair removal or the constant maintenance. The consultation is simply the next low-pressure step.
           </p>
           <SocialProofCarousel slides={FINAL_NUDGE_SLIDES} />
         </div>
