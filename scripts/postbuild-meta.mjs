@@ -25,7 +25,8 @@ const escapeAttr = (value) =>
 function setTag(html, matcher, replacement) {
   if (!matcher.test(html)) {
     console.error('DEBUG: matcher failed for', replacement);
-    console.error('DEBUG: html snippet around og:image:', html.match(/og:image.{0,200}/s));
+    console.error('DEBUG: html length:', html.length);
+    console.error('DEBUG: html head:', html.slice(0, 1500));
     throw new Error(`Missing metadata tag for ${replacement}`);
   }
   return html.replace(matcher, replacement);
