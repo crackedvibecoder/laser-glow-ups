@@ -41,6 +41,10 @@ for (const route of routes) {
   html = setTag(html, /<meta name="twitter:description" content=".*?">/s, `<meta name="twitter:description" content="${desc}">`);
   html = setTag(html, /<meta property="og:url" content=".*?">/s, `<meta property="og:url" content="${url}">`);
   html = setTag(html, /<link rel="canonical" href=".*?" \/>/s, `<link rel="canonical" href="${url}" />`);
+  // Preserve the base og:image and twitter:image tags for route pages so the
+  // branded social preview is served on every route instead of a host default.
+  html = setTag(html, /<meta property="og:image" content=".*?">/s, `<meta property="og:image" content="https://offer.laserlocation.co.uk/og-image.jpg">`);
+  html = setTag(html, /<meta name="twitter:image" content=".*?">/s, `<meta name="twitter:image" content="https://offer.laserlocation.co.uk/og-image.jpg">`);
 
   const out = join(dist, route.path);
   mkdirSync(dirname(out), { recursive: true });
