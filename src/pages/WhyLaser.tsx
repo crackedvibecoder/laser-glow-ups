@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { CalendarCheck, Check, Clock, CreditCard, HeartHandshake, MapPin, ShieldCheck, Sparkles, Star } from "lucide-react";
 import laserWatermark from "@/assets/laser-watermark.png";
 import carmenLaserMachine from "@/assets/carmen-laser-machine.jpeg";
@@ -45,7 +45,7 @@ import {
 
 const BOOKING_WIDGET_URL =
   "https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH";
-const PAYDAY_CHECKOUT_URL =
+const FULL_BODY_CHECKOUT_URL =
   "https://link.fastpaydirect.com/payment-link/6a6cbce37b99151a540418e7";
 
 /**
@@ -114,40 +114,16 @@ const SocialProofCarousel = ({ slides }: { slides: SocialSlide[] }) => (
   </div>
 );
 
-/* ──────────────────── Countdown Timer ──────────────────── */
-const CountdownTimer = () => {
-  const getTimeLeft = useCallback(() => {
-    const now = new Date();
-    const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
-    const diff = endOfToday.getTime() - now.getTime();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
-    return {
-      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((diff / (1000 * 60)) % 60),
-    };
-  }, []);
-
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
-
-  useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 60000);
-    return () => clearInterval(interval);
-  }, [getTimeLeft]);
-
+/* ──────────────────── Offer Banner ──────────────────── */
+const OfferBanner = () => {
   return (
     <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-1">
       <span className="inline-flex items-center gap-2">
         <Clock className="w-5 h-5 text-primary shrink-0" />
-        Payday Offer — Save £200
+        Summer Special — Save £100
       </span>
       <span className="hidden md:inline">·</span>
-      <span>
-        Offer ends in{" "}
-        <strong className="text-primary">
-          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
-        </strong>
-      </span>
+      <span>6 full-body sessions for £795</span>
     </span>
   );
 };
@@ -198,25 +174,25 @@ const ExitIntentPopup = () => {
         <DialogHeader className="space-y-5 text-center sm:text-center items-center">
           <div className="mx-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary/15">
             <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">
-              £200 OFF
+              £100 OFF
             </span>
           </div>
           <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
-            Your Payday Offer Is Still Waiting
+            Your Summer Special Is Still Waiting
           </DialogTitle>
           <DialogDescription className="text-muted-foreground text-lg">
             Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
           </DialogDescription>
         </DialogHeader>
-        <p className="text-sm text-primary font-medium mt-2 animate-pulse">
-          ⏳ Payday offer ends at 11:59pm today
+        <p className="text-sm text-primary font-medium mt-2">
+          Save £100 on the complete six-session package
         </p>
         <a
-          href={PAYDAY_CHECKOUT_URL}
+          href={FULL_BODY_CHECKOUT_URL}
           onClick={() => setOpen(false)}
           className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center"
         >
-          Claim My £200 Saving →
+          Secure 6 Sessions for £795 →
         </a>
         <button
           onClick={() => setOpen(false)}
@@ -225,7 +201,7 @@ const ExitIntentPopup = () => {
           No thanks, I'll keep reading
         </button>
         <p className="text-xs text-muted-foreground mt-1">
-          Use code PAYDAY200 at checkout · Book your first appointment later
+          £100 saving already applied · Book your first appointment later
         </p>
       </DialogContent>
     </Dialog>
@@ -252,8 +228,8 @@ const StickyMobileCTA = () => {
         visible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center !py-3.5">
-        Claim £200 Off →
+      <a href={FULL_BODY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center !py-3.5">
+        Secure 6 Sessions for £795 →
       </a>
     </div>
   );
@@ -268,7 +244,7 @@ const WhyLaser = () => {
     const prevDesc = meta?.getAttribute("content") ?? "";
     meta?.setAttribute(
       "content",
-      "Still deciding? The honest case for medical-grade laser hair removal — cost vs waxing, comfort, results and safety for all skin tones. Save £200 with the Payday Offer.",
+      "Still deciding? The honest case for medical-grade laser hair removal — cost vs waxing, comfort, results and suitability. Save £100 with the Summer Special.",
     );
     return () => {
       document.title = prevTitle;
@@ -302,10 +278,10 @@ const WhyLaser = () => {
         />
       </div>
 
-      {/* Urgency bar */}
+      {/* Offer bar */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 md:py-2.5 px-4 text-center">
         <div className="text-base font-medium text-foreground flex items-center justify-center leading-tight">
-          <CountdownTimer />
+          <OfferBanner />
         </div>
       </div>
 
@@ -680,14 +656,14 @@ const WhyLaser = () => {
       <section className="bg-accent section-padding-compact">
         <div className="content-container text-center relative z-10">
           <p className="text-base font-medium tracking-widest uppercase text-primary mb-3">
-            Limited Time
+            Current Offer
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif mb-12">Payday Offer</h2>
+          <h2 className="text-3xl md:text-4xl font-serif mb-12">Summer Special</h2>
 
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-10">
             <div className="mb-6">
               <span className="text-2xl text-muted-foreground line-through mr-3">£895</span>
-              <span className="text-5xl font-serif text-gold-metallic font-semibold">£695</span>
+              <span className="text-5xl font-serif text-gold-metallic font-semibold">£795</span>
             </div>
             <p className="text-lg font-serif mb-8 text-foreground">for 6 Full-Body Sessions</p>
 
@@ -707,12 +683,12 @@ const WhyLaser = () => {
               ))}
             </div>
 
-            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center">
-              Claim Your £200 Off →
+            <a href={FULL_BODY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center">
+              Secure 6 Sessions for £795 →
             </a>
 
             <p className="text-sm mt-4 text-muted-foreground">
-              Save £200 with code PAYDAY200 before tonight at 11:59pm
+              The £100 saving is already included in the £795 checkout price.
             </p>
             <a href="#book" className="inline-block mt-4 text-sm text-primary underline underline-offset-4">
               Prefer to talk first? Book a free consultation
@@ -774,7 +750,7 @@ const WhyLaser = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Regular waxing can cost hundreds each year because every appointment is temporary. Our 6-session course is £695 with the Payday Offer (normally £895) and is built for longer-term reduction.",
+                a: "Regular waxing can cost hundreds each year because every appointment is temporary. Our 6-session course is £795 with the Summer Special (normally £895) and is built for longer-term reduction.",
               },
               {
                 q: "What happens during the free consultation?",
@@ -826,7 +802,7 @@ const WhyLaser = () => {
             Ready to Ditch the Razor?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Book your free, no-obligation consultation and claim your £200 Payday Offer.
+            Book your free, no-obligation consultation or secure the six-session course for £795.
           </p>
 
           <a href="#book" className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg">
@@ -848,7 +824,7 @@ const WhyLaser = () => {
             </a>
           </p>
           <p>
-            Payday offer subject to availability. Treatment suitability assessed during
+            Summer Special subject to availability. Treatment suitability assessed during
             consultation.
           </p>
         </div>

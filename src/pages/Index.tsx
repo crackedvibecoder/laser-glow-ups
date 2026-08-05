@@ -27,7 +27,7 @@ import {
 
 /* ──────────────────── Offer links ──────────────────── */
 const BOOKING_WIDGET_URL = "https://api.leadconnectorhq.com/widget/booking/XFCIVqAZ7Ha6pnxEiKXH";
-const PAYDAY_CHECKOUT_URL =
+const FULL_BODY_CHECKOUT_URL =
   "https://link.fastpaydirect.com/payment-link/6a6cbce37b99151a540418e7";
 
 /**
@@ -52,11 +52,11 @@ const OfferBanner = () => {
       <span className="inline-flex items-center gap-2">
         <Clock className="w-5 h-5 text-primary shrink-0" />
         <span className="whitespace-nowrap">
-          Payday Offer — 6 sessions for <strong className="text-primary">£695</strong>
+          Summer Special — 6 sessions for <strong className="text-primary">£795</strong>
         </span>
       </span>
       <span className="hidden md:inline">·</span>
-      <span>Usually £895 · Save £200</span>
+      <span>Usually £895 · Save £100</span>
     </span>
   );
 };
@@ -100,20 +100,20 @@ const ExitIntentPopup = () => {
       <DialogContent className="max-w-lg text-center p-10 md:p-12 border-2 border-primary/30 shadow-2xl">
         <DialogHeader className="space-y-5 text-center sm:text-center items-center">
           <div className="mx-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary/15">
-            <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£200 OFF</span>
+            <span className="text-5xl md:text-6xl font-bold text-primary tracking-tight">£100 OFF</span>
           </div>
           <DialogTitle className="text-3xl md:text-4xl font-serif leading-tight">
-            Your Payday Offer Is Still Waiting
+            Your Summer Special Is Still Waiting
           </DialogTitle>
           <DialogDescription className="text-muted-foreground text-lg">
             Trusted by <strong className="text-foreground">1,000+ clients</strong> in Manchester
           </DialogDescription>
         </DialogHeader>
-        <p className="text-sm text-primary font-medium mt-2 animate-pulse">
-          ⏳ Limited spots available this week
+        <p className="text-sm text-primary font-medium mt-2">
+          Save £100 on the complete six-session package
         </p>
-         <a href={PAYDAY_CHECKOUT_URL} onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
-           Secure 6 Sessions for £695 →
+         <a href={FULL_BODY_CHECKOUT_URL} onClick={() => setOpen(false)} className="btn-gold-metallic w-full mt-3 text-lg py-5 tracking-wider inline-block text-center">
+           Secure 6 Sessions for £795 →
          </a>
         <button
           onClick={() => setOpen(false)}
@@ -122,7 +122,7 @@ const ExitIntentPopup = () => {
           No thanks, I'll keep reading
         </button>
         <p className="text-xs text-muted-foreground mt-1">
-          Use code PAYDAY200 at checkout · Book your first appointment later
+          £100 saving already applied · Book your first appointment later
         </p>
       </DialogContent>
     </Dialog>
@@ -210,15 +210,15 @@ const StickyDesktopCTA = () => {
     >
       <div className="content-container flex items-center justify-between py-2.5">
         <p className="text-sm text-[hsl(40,20%,85%)]">
-          <span className="font-serif">Payday Offer</span> — Full-body laser hair removal{" "}
-          <strong className="text-primary">£695</strong>{" "}
+          <span className="font-serif">Summer Special</span> — Full-body laser hair removal{" "}
+          <strong className="text-primary">£795</strong>{" "}
           <span className="text-[hsl(40,20%,60%)] line-through">£895</span>
         </p>
         <a
-          href={PAYDAY_CHECKOUT_URL}
+          href={FULL_BODY_CHECKOUT_URL}
           className="btn-gold-metallic !py-2 !px-6 !text-xs"
         >
-          Secure £695 Offer →
+          Secure £795 Offer →
         </a>
       </div>
     </div>
@@ -248,10 +248,10 @@ const StickyMobileCTA = () => {
       }`}
     >
       <a
-        href={PAYDAY_CHECKOUT_URL}
+        href={FULL_BODY_CHECKOUT_URL}
         className="btn-gold-metallic w-full !block !text-center !py-3.5"
       >
-        Secure 6 Sessions for £695 →
+        Secure 6 Sessions for £795 →
       </a>
     </div>
   );
@@ -316,12 +316,12 @@ const Index = () => {
 
 
               <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                Payday Offer · Bury, Manchester
+                Summer Special · Bury, Manchester
               </p>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08] mb-4">
                 6 Full-Body Laser Sessions{" "}
-                <span className="block text-script-accent text-primary text-[1.1em]">for £695</span>
+                <span className="block text-script-accent text-primary text-[1.1em]">for £795</span>
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto md:mx-0 mb-6">
@@ -330,7 +330,7 @@ const Index = () => {
 
               <div className="flex flex-col items-center md:items-start gap-2 mb-4">
                 <a
-                  href={PAYDAY_CHECKOUT_URL}
+                  href={FULL_BODY_CHECKOUT_URL}
                   className="btn-gold-metallic inline-block !py-4 !px-8 !text-lg w-full sm:w-auto text-center"
                 >
                   Secure My 6 Sessions →
@@ -341,7 +341,7 @@ const Index = () => {
               </div>
 
               <p className="text-sm text-muted-foreground">
-                Enter PAYDAY200 at checkout · Treatment starts after your suitability assessment
+                £100 saving already applied · Treatment starts after your suitability assessment
               </p>
             </div>
 
@@ -377,7 +377,7 @@ const Index = () => {
           <div className="max-w-lg mx-auto bg-card border border-border shadow-xl rounded-2xl p-8 md:p-10">
             <div className="mb-5">
               <span className="text-2xl text-muted-foreground line-through mr-3">£895</span>
-              <span className="text-5xl font-serif text-gold-metallic font-semibold">£695</span>
+              <span className="text-5xl font-serif text-gold-metallic font-semibold">£795</span>
             </div>
             <p className="text-lg font-serif mb-8 text-foreground">for 6 Full-Body Sessions</p>
 
@@ -397,11 +397,11 @@ const Index = () => {
               ))}
             </div>
 
-            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center">
-              Secure 6 Sessions for £695 →
+            <a href={FULL_BODY_CHECKOUT_URL} className="btn-gold-metallic w-full !block !text-center">
+              Secure 6 Sessions for £795 →
             </a>
             <p className="text-sm mt-4 text-muted-foreground">
-              Enter PAYDAY200 at checkout to reduce the package from £895 to £695.
+              The £100 saving is already included in the £795 checkout price.
             </p>
             <a href="#book" className="inline-block mt-4 text-sm text-primary underline underline-offset-4">
               Not ready to purchase? Book a free consultation
@@ -481,8 +481,8 @@ const Index = () => {
           </div>
 
           <div className="mt-10">
-            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic">
-              Secure My 6 Sessions for £695 →
+            <a href={FULL_BODY_CHECKOUT_URL} className="btn-gold-metallic">
+              Secure My 6 Sessions for £795 →
             </a>
           </div>
         </div>
@@ -504,7 +504,7 @@ const Index = () => {
               {
                 step: "01",
                 title: "Secure the Offer",
-                desc: "Purchase the six-session package with PAYDAY200, or book a free consultation first if you would rather talk it through.",
+                desc: "Purchase the six-session package for £795, or book a free consultation first if you would rather talk it through.",
               },
               {
                 step: "02",
@@ -580,8 +580,8 @@ const Index = () => {
 
           {/* Post-reviews CTA */}
           <div className="mt-12">
-            <a href={PAYDAY_CHECKOUT_URL} className="btn-gold-metallic">
-              Secure the £695 Package →
+            <a href={FULL_BODY_CHECKOUT_URL} className="btn-gold-metallic">
+              Secure the £795 Package →
             </a>
           </div>
         </div>
@@ -638,7 +638,7 @@ const Index = () => {
               },
               {
                 q: "Is laser cheaper than waxing long-term?",
-                a: "Regular waxing can cost hundreds each year because every appointment is temporary. This six-session course is £695 with the Payday Offer, normally £895, and is designed for longer-term reduction.",
+                a: "Regular waxing can cost hundreds each year because every appointment is temporary. This six-session course is £795 with the Summer Special, normally £895, and is designed for longer-term reduction.",
               },
               {
                 q: "Are payment plans available?",
@@ -674,15 +674,15 @@ const Index = () => {
         <div className="content-container max-w-xl text-center">
           <Sparkles className="w-8 h-8 text-primary mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif mb-4">
-            Secure the Full Course for £695
+            Secure the Full Course for £795
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Enter PAYDAY200 at checkout to save £200. If you would rather confirm suitability first, book the free consultation instead.
+            The £100 saving is already included in the checkout price. If you would rather confirm suitability first, book the free consultation instead.
           </p>
 
           <div className="flex flex-col items-center gap-4">
             <a
-              href={PAYDAY_CHECKOUT_URL}
+              href={FULL_BODY_CHECKOUT_URL}
               className="btn-gold-metallic inline-block !py-4 !px-10 !text-lg w-full sm:w-auto"
             >
               Secure My 6 Sessions →
@@ -741,7 +741,7 @@ const Index = () => {
             </a>
           </p>
           <p>
-            Payday offer subject to availability. Treatment suitability
+            Summer Special subject to availability. Treatment suitability
             assessed during consultation.
           </p>
           <PrivacyPolicyPopup />
